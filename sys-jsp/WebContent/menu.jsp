@@ -7,7 +7,7 @@
 <head>
 
 <meta charset="ISO-8859-1">
-<title>Login</title>
+<title>Insert title here</title>
 
 </head>
 
