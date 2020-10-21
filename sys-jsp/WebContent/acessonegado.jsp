@@ -5,14 +5,25 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="resources/css/acessoNegado.css"/>
+<title>Acesso Negado</title>
 </head>
 
 <body>
 
 	<div class="form">
-	
-	
+		
+		<form>
+		
+			<h1>Ops!</h1>
+			
+			<h2>Acesso negado ao sistema para o seu usuário!</h2>
+			
+			<img alt="" src="resources/img/iconeerro.png">
+			
+			<a href="index.jsp">Logar novamente</a>
+			
+		</form>
 	
 	</div>
 
