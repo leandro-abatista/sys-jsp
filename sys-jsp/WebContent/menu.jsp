@@ -20,74 +20,85 @@ scope="page"/>
 
 <body>
 
-	<input type="checkbox" id="btn_menu">
-	<label for="btn_menu">&#9776;</label>
-
-	<nav class="menu">
 	
-		<ul>
-			
-			<li><a href="#">Home</a>
-			
-			
-			
-			</li>
-			
-			<li><a href="#">Cadastro</a>
-				
-				<ul>
-					
-					<li><a href="#">Cadastro Usuários</a></li>
-					<li><a href="#">Cadastro Clientes</a></li>
-					<li><a href="#">Cadastro Produtos</a></li>
-				
-				</ul>
-			
-			</li>
-			
-			<li><a href="#">Relatório</a>
-			
-							
-			
-			</li>
-			
-			<li><a href="#">Consulta</a>
-			
-			
-			
-			</li>
-			
-			<li><a href="#">Agendamento</a>
-			
-			
-			
-			</li>
-			
-			<li><a href="#">Sobre</a>
-			
-				<ul>
-					
-					<li><a href="#">Sobre o Sistema</a></li>
-					<li><a href="#">Sobre o Desenvolvedor</a></li>
-				
-				</ul>
-			
-			</li>
-			
-			<li><a href="#">Sair</a>
-				
-				<ul>
-					
-					<li><a href="#">Logout</a></li>
-				
-				</ul>
-			
-			</li>
+	
+    	
+
+			<input type="checkbox" id="btn_menu">
+			<label for="btn_menu"><img alt="init" src="resources/img/init.png"></label>
 		
-		</ul>
+			<nav class="menu">
+			
+				<ul>
+					
+					<li><a href="#">Home</a>
+					
+						<ul>
+					
+						<li><a href="menu.jsp">Início</a></li>
+						
+						</ul>
+						
+					</li>
+					
+					<li><a href="#">Cadastro</a>
+						
+						<ul>
+							
+							<li><a href="#">Cadastro Usuários</a></li>
+							<li><a href="#">Cadastro Clientes</a></li>
+							<li><a href="#">Cadastro Produtos</a></li>
+						
+						</ul>
+					
+					</li>
+					
+					<li><a href="#">Relatório</a>
+					
+									
+					
+					</li>
+					
+					<li><a href="#">Consulta</a>
+					
+					
+					
+					</li>
+					
+					<li><a href="#">Agendamento</a>
+					
+					
+					
+					</li>
+					
+					<li><a href="#">Sobre</a>
+					
+						<ul>
+							
+							<li><a href="#">Sobre o Sistema</a></li>
+							<li><a href="#">Sobre o Desenvolvedor</a></li>
+						
+						</ul>
+					
+					</li>
+					
+					<li><a href="#">Sair</a>
+						
+						<ul>
+							
+							<li><a href="#">Logout</a></li>
+						
+						</ul>
+					
+					</li>
+				
+				</ul>
+			
+			</nav>
 	
-	</nav>
+	
 
+	
 </body>
 
 </html>
