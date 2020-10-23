@@ -1,5 +1,7 @@
 package br.com.sysjsp.classes.model;
 
+import java.util.Date;
+
 public class Cliente {
 
 	private Long id;
@@ -7,6 +9,7 @@ public class Cliente {
 	private String cpf;
 	private String rg;
 	private String orgaoexpeditor;
+	private Date datanascimento;
 	private String telefonefixo;
 	private String telefonecelular;
 	private String email;
@@ -82,6 +85,14 @@ public class Cliente {
 
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
+	}
+
+	public Date getDatanascimento() {
+		return datanascimento;
+	}
+
+	public void setDatanascimento(Date datanascimento) {
+		this.datanascimento = datanascimento;
 	}
 
 }
