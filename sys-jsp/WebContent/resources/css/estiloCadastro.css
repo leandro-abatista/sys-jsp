@@ -15,7 +15,7 @@ a{
 	border: 1em;
 	background: #7FFFD4;
 	margin: 0.3em;
-	padding: 0.6em;
+	padding: 0.4em;
 	border-radius: 5px;
 	box-shadow: 2px 2px 2px rgba(0,0,0,0.3);/*muda a sobra do botão*/
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.5);/*muda a sobra do texto*/
@@ -48,7 +48,9 @@ a:hover{
 	background: #FB0;
 	box-shadow: inset 2px 2px 2px rgba(0,0,0,0.3);
 	text-shadow: none;
+	color: black;
 }
+
 
 fieldset{
 	border: 0;
@@ -171,19 +173,19 @@ fieldset.grupo .campo {
 /* personalizar a barra em geral, aqui estou definindo 10px de largura para a barra vertical
 e 10px de altura para a barra horizontal */
 ::-webkit-scrollbar {
-width:10px;
-height: 10px;
+	width:10px;
+	height: 10px;
 }
  
 /* aqui é para personalizar o fundo da barra, neste caso estou colocando um fundo cinza escuro*/
 ::-webkit-scrollbar-track {
-background:#DCDCDC;
+	background:#DCDCDC;
 }
  
 /* aqui é a alça da barra, que demonstra a altura que você está na página
 estou colocando uma cor azul clara nela*/
 ::-webkit-scrollbar-thumb {
-background: #708090;
+	background: #708090;
 }
 
 /*==========================================================================================================*/
@@ -192,21 +194,23 @@ background: #708090;
 
 .div-tabela{
   background: #012B39;
-  border-radius: 0.25em;
+  border-radius: 0.5em;
   border-collapse: collapse;
   margin: 1em; 
+  height: 500px;
+  overflow: scroll;
 }
+
 
 caption{
 	margin-top: 15px;
 	color: #E2B842;
 	text-align: center;
 	font-weight: bold;
-	background-color: 
 }
 
 th {
-  border-bottom: 1px solid #364043;
+  border-bottom: 3px solid #364043;
   color: #E2B842;
   font-size: 0.85em;
   font-weight: 600;

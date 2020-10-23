@@ -9,14 +9,22 @@
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" type="text/css" href="resources/css/estiloCadastro.css"/>
+
+
+<!-- ara a mascara funcionar tem que colocar estas bibliotecas abaixo -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <title>Cadastro de Usuários</title>
 </head>
 
 <body>
-
 	
 	<div class="form">
-
+	
 		<form id="formulario" action="ServletUsuario" method="post">
 		
 			<div class="div-cadastrousuario">
@@ -27,7 +35,7 @@
 				<h2>Dados do Usuário</h2>
 			</div>
 			
-			<a class="div-a" href="menu.jsp">Voltar para o menu</a>
+			<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Voltar para o menu</a>
 			
 			<!-- agrupa os campos -->
 			<fieldset>
@@ -37,7 +45,7 @@
 					<div class="campo">
 						
 						<label for="id">Código:</label>
-						<input type="text" id="id" name="id" value="${user.id}">
+						<input type="text" id="id" name="id" value="${user.id}" readonly="readonly">
 						
 					</div>
 						
@@ -48,21 +56,24 @@
 					<div class="campo">
 						
 						<label for="primeironome">Nome:</label>
-						<input type="text" id="primeironome" name="primeironome" style="width: 15em;" value="${user.primeironome}">
+						<input type="text" id="primeironome" name="primeironome" style="width: 15em;" 
+						value="${user.primeironome}" required="required">
 						
 					</div>
 						
 					<div class="campo">
 						
 						<label for="sobrenome">Sobrenome:</label>
-						<input type="text" id="sobrenome" name="sobrenome" style="width: 15em;" value="${user.sobrenome}">
+						<input type="text" id="sobrenome" name="sobrenome" style="width: 15em;" 
+						value="${user.sobrenome}" required="required">
 						
 					</div>
 						
 					<div class="campo">
 						
 						<label for="ultimonome">Último Nome:</label>
-						<input type="text" id="ultimonome" name="ultimonome" style="width: 15em;" value="${user.ultimonome}">
+						<input type="text" id="ultimonome" name="ultimonome" style="width: 15em;" 
+						value="${user.ultimonome}" required="required">
 						
 					</div>
 				
@@ -73,14 +84,16 @@
 					<div class="campo">
 						
 						<label for="usuario">Usuário:</label>
-						<input type="text" id="usuario" name="usuario" style="width: 20em;" value="${user.usuario}">
+						<input type="text" id="usuario" name="usuario" style="width: 20em;" 
+						value="${user.usuario}" required="required">
 					
 					</div>
 					
 					<div class="campo">
 						
 						<label for="senha">Senha:</label>
-						<input type="password" id="senha" name="senha" style="width: 20em;" value="${user.senha}">
+						<input type="password" id="senha" name="senha" style="width: 20em;" 
+						value="${user.senha}" required="required">
 					
 					</div>
 				
@@ -91,14 +104,17 @@
 					<div class="campo">
 						
 						<label for="telefone">Tel. Celular:</label>
-						<input type="text" id="telefone" name="telefone" style="width: 10em;" value="${user.telefone}">
+						<input type="text" id="telefone" name="telefone" style="width: 10em;" 
+						value="${user.telefone}" required="required"
+						onkeypress="$(this).mask('(00) 9.0000-0000')">
 					
 					</div>
 					
 					<div class="campo">
 						
 						<label for="email">E-mail:</label>
-						<input type="text" id="email" name="email" style="width: 25em;" value="${user.email}">
+						<input type="text" id="email" name="email" style="width: 25em;" 
+						value="${user.email}" required="required">
 					
 					</div>
 				
@@ -173,6 +189,9 @@
 	</div>
 	
 	<script type="text/javascript">
+
+	var msg = "<strong>registro salvo com sucesso!</strong>";
+	
 
 	function mostraDialogo(mensagem, tipo, tempo){
 	    
