@@ -22,10 +22,6 @@ public class Filter implements javax.servlet.Filter{
 		
 	}
 	
-	@Override
-	public void init(FilterConfig filterConfig) throws ServletException {
-		connection = SingleConnection.getConnection();
-	}
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -49,6 +45,11 @@ public class Filter implements javax.servlet.Filter{
 			}
 		}
 		
+	}
+	
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
+		connection = SingleConnection.getConnection();
 	}
 
 }

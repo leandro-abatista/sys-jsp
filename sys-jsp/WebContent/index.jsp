@@ -20,13 +20,13 @@ scope="page"/>
 	
 		<h1>Acesso ao Sistema</h1>
 		
-				<form action="loginServlet" method="post">
+				<form action="ServletLogin" method="post">
 				
 					<label>Usuário:</label>
-					<input type="text" name="usuario" placeholder="Informe o usuário" required="required"/>
+					<input type="text" id="usuario" name="usuario" placeholder="Informe o usuário" required="required"/>
 					
 					<label>Senha:</label>
-					<input type="password" name="senha" placeholder="Informe a senha" required="required"/>
+					<input type="password" id="senha" name="senha" placeholder="Informe a senha" required="required"/>
 					
 					<button type="submit" class="btn" value="logar">Logar</button>
 			

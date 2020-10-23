@@ -19,10 +19,8 @@ scope="page"/>
 </head>
 
 <body>
-
-	
-	
-    	
+		
+		<jsp:setProperty property="*" name="calcula"/>
 
 			<input type="checkbox" id="btn_menu">
 			<label for="btn_menu"><img alt="init" src="resources/img/init.png"></label>
@@ -45,7 +43,7 @@ scope="page"/>
 						
 						<ul>
 							
-							<li><a href="#">Cadastro Usuários</a></li>
+							<li><a href="ServletUsuario?acao=listartodos">Cadastro Usuários</a></li>
 							<li><a href="#">Cadastro Clientes</a></li>
 							<li><a href="#">Cadastro Produtos</a></li>
 						
@@ -86,7 +84,7 @@ scope="page"/>
 						
 						<ul>
 							
-							<li><a href="#">Logout</a></li>
+							<li><a href="index.jsp">Logout</a></li>
 						
 						</ul>
 					
