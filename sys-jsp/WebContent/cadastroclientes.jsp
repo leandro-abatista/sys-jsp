@@ -5,19 +5,23 @@
 
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" type="text/css" href="resources/css/estiloCadastro.css"/>
 <link rel="stylesheet" type="text/css" href="resources/css/table.css"/>
 
 
-<!-- ara a mascara funcionar tem que colocar estas bibliotecas abaixo -->
+
+<!-- mascara funcionar tem que colocar estas bibliotecas abaixo -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+    
+
 <title>Cadastro de Clientes</title>
 </head>
 
@@ -34,7 +38,7 @@
 			</div>
 			
 			<div class="div-dadosusuario">
-				<h2>Dados do Cliente</h2>
+				<h2>Dados Pessoais</h2>
 			</div>
 			
 			<!-- agrupa os campos do formulário -->
@@ -137,6 +141,74 @@
 				
 				</fieldset>
 				
+				<div class="div-dadosusuario">
+					<h2>Dados do Endereço</h2>
+				</div>
+				
+				<fieldset class="grupo">
+				
+					<div class="campo">
+						
+						<label for="cep">CEP:</label>
+						<input type="text" id="cep" name="cep" style="width: 10em;" 
+						onblur="consultaCep();">
+					
+					</div>
+					
+					<div class="campo">
+						
+						<label for="logradouro">Endereço:</label>
+						<input type="text" id="logradouro" name="logradouro" style="width: 30em;" 
+						>
+					
+					</div>
+					
+					<div class="campo">
+						
+						<label for="numero">Número:</label>
+						<input type="text" id="numero" name="numero" style="width: 8em;" 
+						>
+					
+					</div>
+				
+				</fieldset>
+				
+				<fieldset class="grupo">
+					
+					<div class="campo">
+						
+						<label for="bairro">Bairro:</label>
+						<input type="text" id="bairro" name="bairro" style="width: 20em;" 
+						>
+						
+					</div>
+					
+					<div class="campo">
+						
+						<label for="cidade">Cidade:</label>
+						<input type="text" id="cidade" name="ciddae" style="width: 20em;" 
+						>
+						
+					</div>
+					
+					<div class="campo">
+						
+						<label for="estado">UF:</label>
+						<input type="text" id="estado" name="estado" style="width: 5em;" 
+						>
+						
+					</div>
+					
+					<div class="campo">
+						
+						<label for="ibge">Cód. IBGE:</label>
+						<input type="text" id="ibge" name="ibge" style="width: 8em;" 
+						>
+						
+					</div>
+				
+				</fieldset>
+				
 				<button type="submit" class="botao submit" value="Salvar">Salvar</button>
 				<button type="submit" class="botao submit" value="Cancelar"
 				onclick="document.getElementById('formulario').action = 'ServletCliente?acao=reset'">Cancelar</button>
@@ -203,6 +275,46 @@
 		</div>
 		
 	</div>
+	
+	<script type="text/javascript">
+
+		function consultaCep() {
+			/*pegando cep digitado no input pelo usuário*/
+			var cep = $("#cep").val();
+
+			/*fazendo a requisição ajax*/
+			//Consulta o webservice viacep.com.br/
+            $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function(dados) {
+
+				/*se não houver erro na busca do dados*/
+                if (!("erro" in dados)) {
+
+                	//Atualiza os campos com os valores da consulta.
+                    $("#endereco").val(dados.logradouro);
+                    $("#numero").val(dados.numero);
+                    $("#bairro").val(dados.bairro);
+                    $("#cidade").val(dados.localidade);
+                    $("#estado").val(dados.uf);
+                    $("#ibge").val(dados.ibge);
+                    
+                } //end if.
+                else {
+
+                	//caso o cep não seja encontrado, limpa os campos.
+                	$("#cep").val('');
+                    $("#endereco").val('');
+                    $("#numero").val('');
+                    $("#bairro").val('');
+                    $("#cidade").val('');
+                    $("#estado").val('');
+                    $("#ibge").val('');
+                    //CEP pesquisado não foi encontrado.
+                    alert("CEP não encontrado.");
+                }
+            });
+        } 
+
+	</script>
 
 </body>
 
