@@ -21,8 +21,10 @@ public class ClienteDao {
 		try {
 			
 			String sql = "INSERT INTO tbl_cliente(" + 
-					"    nome, cpf, rg, orgaoexpeditor, datanascimento, telefonefixo, telefonecelular, email, observacao)" + 
-					"    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+					"            nome, cpf, rg, orgaoexpeditor, datanascimento, telefonefixo, " + 
+					"            telefonecelular, email, observacao, cep, endereco, numero, bairro, " + 
+					"            cidade, estado, ibge)" + 
+					"    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 			PreparedStatement insert = connection.prepareStatement(sql);
 			insert.setString(1, cliente.getNome());
 			insert.setString(2, cliente.getCpf());
@@ -33,6 +35,13 @@ public class ClienteDao {
 			insert.setString(7, cliente.getTelefonecelular());
 			insert.setString(8, cliente.getEmail());
 			insert.setString(9, cliente.getObservacao());
+			insert.setString(10, cliente.getCep());
+			insert.setString(11, cliente.getEndereco());
+			insert.setInt(12, cliente.getNumero());
+			insert.setString(13, cliente.getBairro());
+			insert.setString(14, cliente.getCidade());
+			insert.setString(15, cliente.getEstado());
+			insert.setInt(16, cliente.getIbge());
 			insert.execute();
 			connection.commit();
 			
@@ -69,6 +78,13 @@ public class ClienteDao {
 				cliente.setTelefonecelular(rs.getString("telefonecelular"));
 				cliente.setEmail(rs.getString("email"));
 				cliente.setObservacao(rs.getString("observacao"));
+				cliente.setCep(rs.getString("cep"));
+				cliente.setEndereco(rs.getString("endereco"));
+				cliente.setNumero(rs.getInt("numero"));
+				cliente.setBairro(rs.getString("bairro"));
+				cliente.setCidade(rs.getString("cidade"));
+				cliente.setEstado(rs.getString("estado"));
+				cliente.setIbge(rs.getInt("ibge"));
 				
 				clientes.add(cliente);
 			}
@@ -101,6 +117,13 @@ public class ClienteDao {
 				cliente.setTelefonecelular(rs.getString("telefonecelular"));
 				cliente.setEmail(rs.getString("email"));
 				cliente.setObservacao(rs.getString("observacao"));
+				cliente.setCep(rs.getString("cep"));
+				cliente.setEndereco(rs.getString("endereco"));
+				cliente.setNumero(rs.getInt("numero"));
+				cliente.setBairro(rs.getString("bairro"));
+				cliente.setCidade(rs.getString("cidade"));
+				cliente.setEstado(rs.getString("estado"));
+				cliente.setIbge(rs.getInt("ibge"));
 				
 				return cliente;
 			}
@@ -115,7 +138,9 @@ public class ClienteDao {
 		try {
 			
 			String sql = "UPDATE tbl_cliente" + 
-					" SET id=?, nome=?, cpf=?, rg=?, orgaoexpeditor=?, datanascimento=?, telefonefixo=?, telefonecelular=?, email=?, observacao=? " + 
+					"   SET id=?, nome=?, cpf=?, rg=?, orgaoexpeditor=?, datanascimento=?, " + 
+					"       telefonefixo=?, telefonecelular=?, email=?, observacao=?, cep=?, " + 
+					"       endereco=?, numero=?, bairro=?, cidade=?, estado=?, ibge=? " + 
 					" WHERE id = '" + cliente.getId() + "'";
 			PreparedStatement update = connection.prepareStatement(sql);
 			update.setLong(1, cliente.getId());
@@ -128,6 +153,13 @@ public class ClienteDao {
 			update.setString(8, cliente.getTelefonecelular());
 			update.setString(9, cliente.getEmail());
 			update.setString(10, cliente.getObservacao());
+			update.setString(11, cliente.getCep());
+			update.setString(12, cliente.getEndereco());
+			update.setInt(13, cliente.getNumero());
+			update.setString(14, cliente.getBairro());
+			update.setString(15, cliente.getCidade());
+			update.setString(16, cliente.getEstado());
+			update.setInt(17, cliente.getIbge());
 			update.executeUpdate();
 			connection.commit();
 			

@@ -86,6 +86,14 @@ public class ServletCliente extends HttpServlet {
 			String email = request.getParameter("email");
 			String observacao = request.getParameter("observacao");
 			
+			String cep = request.getParameter("cep");
+			String endereco = request.getParameter("endereco");
+			String numero = request.getParameter("numero");
+			String bairro = request.getParameter("bairro");
+			String cidade = request.getParameter("cidade");
+			String estado = request.getParameter("estado");
+			String ibge = request.getParameter("ibge");
+			
 			Cliente cliente = new Cliente();
 			cliente.setId(!id.isEmpty() ? Long.parseLong(id) : 0);
 			cliente.setNome(nome);
@@ -97,6 +105,14 @@ public class ServletCliente extends HttpServlet {
 			cliente.setTelefonecelular(telefonecelular);
 			cliente.setEmail(email);
 			cliente.setObservacao(observacao);
+			
+			cliente.setCep(cep);
+			cliente.setEndereco(endereco);
+			cliente.setNumero(Integer.valueOf(numero));
+			cliente.setBairro(bairro);
+			cliente.setCidade(cidade);
+			cliente.setEstado(estado);
+			cliente.setIbge(Integer.valueOf(ibge));
 			
 			String msg = null;
 			boolean podeInserir = true;

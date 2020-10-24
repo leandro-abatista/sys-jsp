@@ -151,15 +151,15 @@
 						
 						<label for="cep">CEP:</label>
 						<input type="text" id="cep" name="cep" style="width: 10em;" 
-						onblur="consultaCep();">
+						onblur="consultaCep();" value="${cli.cep}">
 					
 					</div>
 					
 					<div class="campo">
 						
-						<label for="logradouro">Endereço:</label>
-						<input type="text" id="logradouro" name="logradouro" style="width: 30em;" 
-						>
+						<label for="endereco">Endereço:</label>
+						<input type="text" id="endereco" name="endereco" style="width: 30em;" 
+						value="${cli.endereco}">
 					
 					</div>
 					
@@ -167,7 +167,7 @@
 						
 						<label for="numero">Número:</label>
 						<input type="text" id="numero" name="numero" style="width: 8em;" 
-						>
+						onkeypress="$(this).mask('000000')" value="${cli.numero}">
 					
 					</div>
 				
@@ -179,15 +179,15 @@
 						
 						<label for="bairro">Bairro:</label>
 						<input type="text" id="bairro" name="bairro" style="width: 20em;" 
-						>
+						value="${cli.bairro}">
 						
 					</div>
 					
 					<div class="campo">
 						
 						<label for="cidade">Cidade:</label>
-						<input type="text" id="cidade" name="ciddae" style="width: 20em;" 
-						>
+						<input type="text" id="cidade" name="cidade" style="width: 20em;" 
+						value="${cli.cidade}">
 						
 					</div>
 					
@@ -195,7 +195,7 @@
 						
 						<label for="estado">UF:</label>
 						<input type="text" id="estado" name="estado" style="width: 5em;" 
-						>
+						value="${cli.estado}">
 						
 					</div>
 					
@@ -203,7 +203,7 @@
 						
 						<label for="ibge">Cód. IBGE:</label>
 						<input type="text" id="ibge" name="ibge" style="width: 8em;" 
-						>
+						value="${cli.ibge}">
 						
 					</div>
 				
@@ -235,6 +235,7 @@
 						<th>Email</th>
 						<th>Atualizar</th>
 						<th>Excluir</th>
+						<th>Telefones</th>
 						
 					</tr>
 					
@@ -261,6 +262,11 @@
 										
 							<td><a href="ServletCliente?acao=delete&cli=${cli.id}">
 								<img alt="delete" src="resources/img/excluir.png" title="Excluir" 
+								style="width: 20px; height: 20px;">
+							</a></td>
+							
+							<td><a href="ServletTelefone?cli=${cli.id}">
+								<img alt="telefone" src="resources/img/telefone.png" title="Telefone" 
 								style="width: 20px; height: 20px;">
 							</a></td>				
 						
