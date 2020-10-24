@@ -3,8 +3,6 @@ package br.com.sysjsp.servlet;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.logging.SimpleFormatter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -32,6 +30,39 @@ public class ServletCliente extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String acao = request.getParameter("acao");
+		String cli = request.getParameter("cli");
+		String msg = null;
+		
+		
+		if (acao.equalsIgnoreCase("delete")) {
+			
+			clienteDao.deleteC(cli);
+			msg = "Registro excluído com sucesso!";
+			
+			RequestDispatcher view = request.getRequestDispatcher("/cadastroclientes.jsp");
+			request.setAttribute("clientes", clienteDao.listarTodos());
+			view.forward(request, response);
+			
+		} else
+			
+		if (acao.equalsIgnoreCase("editar")) {
+			
+			Cliente cliente = clienteDao.consultaC(cli);
+			
+			RequestDispatcher view = request.getRequestDispatcher("/cadastroclientes.jsp");
+			request.setAttribute("cli", cliente);
+			view.forward(request, response);
+			
+		} else
+			
+		if (acao.equalsIgnoreCase("listartodos")) {
+			
+			RequestDispatcher view = request.getRequestDispatcher("/cadastroclientes.jsp");
+			request.setAttribute("clientes", clienteDao.listarTodos());
+			view.forward(request, response);
+			
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
