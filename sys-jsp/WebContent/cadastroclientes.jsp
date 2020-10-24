@@ -27,7 +27,7 @@
 		
 		<form id="formulario" action="ServletCliente" method="post">
 		
-			<a class="div-a"><img alt="home" src="resources/img/home1.png"> Voltar para o menu</a>
+			<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Voltar para o menu</a>
 		
 			<div class="div-cadastrousuario">
 				<h1>Cadastro de Clientes</h1>
@@ -93,8 +93,8 @@
 					<div class="campo">
 					
 						<label for="datanascimento">Data Nasc.:</label>
-						<input type="text" id="datanascimento" name="datanascimento" style="width: 10em;" required="required"
-						onkeypress="$(this).mask('00/00/0000')" value="${cli.datanascimento}">
+						<input type="date" id="datanascimento" name="datanascimento" style="width: 11em;" required="required"
+						 value="${cli.datanascimento}">
 						
 					</div>
 					
@@ -110,7 +110,7 @@
 					
 						<label for="telefonecelular">Tel. Celular:</label>
 						<input type="text" id="telefonecelular" name="telefonecelular" style="width: 10em;" required="required"
-						onkeypress="$(this).mask('(00) 9.0000-0000')" value="${cli.telefonecelular}">
+						onkeypress="$(this).mask('(00) 0.0000-0000')" value="${cli.telefonecelular}">
 						
 					</div>
 					
@@ -181,13 +181,13 @@
 							<td><c:out value="${cli.telefonecelular}"></c:out></td>				
 							<td><c:out value="${cli.email}"></c:out></td>				
 							
-							<td><a href="ServletCliente?acao=update&cli=${user.id}">
+							<td><a href="ServletCliente?acao=update&cli=${cli.id}">
 								<img alt="update" src="resources/img/editar.png" title="Atualizar" 
 								style="width: 20px; height: 20px;">
 							</a></td>	
 							
 										
-							<td><a href="ServletCliente?acao=delete&cli=${user.id}">
+							<td><a href="ServletCliente?acao=delete&cli=${cli.id}">
 								<img alt="delete" src="resources/img/excluir.png" title="Excluir" 
 								style="width: 20px; height: 20px;">
 							</a></td>				

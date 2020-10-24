@@ -1,8 +1,6 @@
 package br.com.sysjsp.servlet;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -46,7 +44,7 @@ public class ServletCliente extends HttpServlet {
 			
 		} else
 			
-		if (acao.equalsIgnoreCase("editar")) {
+		if (acao.equalsIgnoreCase("update")) {
 			
 			Cliente cliente = clienteDao.consultaC(cli);
 			
@@ -84,9 +82,9 @@ public class ServletCliente extends HttpServlet {
 			String orgaoexpeditor = request.getParameter("orgaoexpeditor");
 			String datanascimento = request.getParameter("datanascimento");
 			String telefonefixo = request.getParameter("telefonefixo");
-			String telefonecelular = request.getParameter("telefoneceluar");
+			String telefonecelular = request.getParameter("telefonecelular");
 			String email = request.getParameter("email");
-			String observacao = request.getParameter("observaco");
+			String observacao = request.getParameter("observacao");
 			
 			Cliente cliente = new Cliente();
 			cliente.setId(!id.isEmpty() ? Long.parseLong(id) : 0);
@@ -94,11 +92,7 @@ public class ServletCliente extends HttpServlet {
 			cliente.setCpf(cpf);
 			cliente.setRg(rg);
 			cliente.setOrgaoexpeditor(orgaoexpeditor);
-			try {
-				cliente.setDatanascimento(SimpleDateFormat.getDateInstance().parse(datanascimento));
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
+			cliente.setDatanascimento(datanascimento);
 			cliente.setTelefonefixo(telefonefixo);
 			cliente.setTelefonecelular(telefonecelular);
 			cliente.setEmail(email);

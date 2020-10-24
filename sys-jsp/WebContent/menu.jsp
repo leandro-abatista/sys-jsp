@@ -44,7 +44,7 @@ scope="page"/>
 						<ul>
 							
 							<li><a href="ServletUsuario?acao=listartodos">Cadastro Usuários</a></li>
-							<li><a href="#">Cadastro Clientes</a></li>
+							<li><a href="ServletCliente?acao=listartodos">Cadastro Clientes</a></li>
 							<li><a href="#">Cadastro Produtos</a></li>
 						
 						</ul>

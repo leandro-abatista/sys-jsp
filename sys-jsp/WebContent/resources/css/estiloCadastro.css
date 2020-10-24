@@ -118,6 +118,7 @@ fieldset.grupo .campo {
 
 .campo input[type="text"],
 .campo input[type="password"],
+.campo input[type="date"],
 .campo select
 {
 	margin-left: 0.5em;

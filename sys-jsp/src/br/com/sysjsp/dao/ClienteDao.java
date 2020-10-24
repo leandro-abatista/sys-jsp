@@ -1,7 +1,6 @@
 package br.com.sysjsp.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -22,15 +21,14 @@ public class ClienteDao {
 		try {
 			
 			String sql = "INSERT INTO tbl_cliente(" + 
-					"            nome, cpf, rg, orgaoexpeditor, datanascimento, telefonefixo, " + 
-					"            telefonecelular, email, observacao)" + 
+					"    nome, cpf, rg, orgaoexpeditor, datanascimento, telefonefixo, telefonecelular, email, observacao)" + 
 					"    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 			PreparedStatement insert = connection.prepareStatement(sql);
 			insert.setString(1, cliente.getNome());
 			insert.setString(2, cliente.getCpf());
 			insert.setString(3, cliente.getRg());
 			insert.setString(4, cliente.getOrgaoexpeditor());
-			insert.setDate(5, (Date) cliente.getDatanascimento());
+			insert.setString(5, cliente.getDatanascimento());
 			insert.setString(6, cliente.getTelefonefixo());
 			insert.setString(7, cliente.getTelefonecelular());
 			insert.setString(8, cliente.getEmail());
@@ -66,7 +64,7 @@ public class ClienteDao {
 				cliente.setCpf(rs.getString("cpf"));
 				cliente.setRg(rs.getString("rg"));
 				cliente.setOrgaoexpeditor(rs.getString("orgaoexpeditor"));
-				cliente.setDatanascimento(rs.getDate("datanascimento"));
+				cliente.setDatanascimento(rs.getString("datanascimento"));
 				cliente.setTelefonefixo(rs.getString("telefonefixo"));
 				cliente.setTelefonecelular(rs.getString("telefonecelular"));
 				cliente.setEmail(rs.getString("email"));
@@ -86,7 +84,7 @@ public class ClienteDao {
 	public Cliente consultaC(String id) {
 		try {
 			
-			String sql = "SELECT * FROM tbl_cliente WHERE id = " + id;
+			String sql = "SELECT * FROM tbl_cliente WHERE id = '" + id + "'";
 			PreparedStatement consultar = connection.prepareStatement(sql);
 			ResultSet rs = consultar.executeQuery();
 			
@@ -98,7 +96,7 @@ public class ClienteDao {
 				cliente.setCpf(rs.getString("cpf"));
 				cliente.setRg(rs.getString("rg"));
 				cliente.setOrgaoexpeditor(rs.getString("orgaoexpeditor"));
-				cliente.setDatanascimento(rs.getDate("datanascimento"));
+				cliente.setDatanascimento(rs.getString("datanascimento"));
 				cliente.setTelefonefixo(rs.getString("telefonefixo"));
 				cliente.setTelefonecelular(rs.getString("telefonecelular"));
 				cliente.setEmail(rs.getString("email"));
@@ -117,19 +115,19 @@ public class ClienteDao {
 		try {
 			
 			String sql = "UPDATE tbl_cliente" + 
-					"   SET id=?, nome=?, cpf=?, rg=?, orgaoexpeditor=?, datanascimento=?, " + 
-					"       telefonefixo=?, telefonecelular=?, email=?, observacao=?\r\n" + 
-					" WHERE cliente = " + cliente.getId();
+					" SET id=?, nome=?, cpf=?, rg=?, orgaoexpeditor=?, datanascimento=?, telefonefixo=?, telefonecelular=?, email=?, observacao=? " + 
+					" WHERE id = '" + cliente.getId() + "'";
 			PreparedStatement update = connection.prepareStatement(sql);
-			update.setString(1, cliente.getNome());
-			update.setString(2, cliente.getCpf());
-			update.setString(3, cliente.getRg());
-			update.setString(4, cliente.getOrgaoexpeditor());
-			update.setDate(5, (Date) cliente.getDatanascimento());
-			update.setString(6, cliente.getTelefonefixo());
-			update.setString(7, cliente.getTelefonecelular());
-			update.setString(8, cliente.getEmail());
-			update.setString(9, cliente.getObservacao());
+			update.setLong(1, cliente.getId());
+			update.setString(2, cliente.getNome());
+			update.setString(3, cliente.getCpf());
+			update.setString(4, cliente.getRg());
+			update.setString(5, cliente.getOrgaoexpeditor());
+			update.setString(6, cliente.getDatanascimento());
+			update.setString(7, cliente.getTelefonefixo());
+			update.setString(8, cliente.getTelefonecelular());
+			update.setString(9, cliente.getEmail());
+			update.setString(10, cliente.getObservacao());
 			update.executeUpdate();
 			connection.commit();
 			
@@ -148,9 +146,9 @@ public class ClienteDao {
 	public void deleteC(String id) {
 		try {
 			
-			String sql = "DELETE FROM tbl_cliente WHERE id = " + id;
+			String sql = "DELETE FROM tbl_cliente WHERE id = '" + id + "'";
 			PreparedStatement delete = connection.prepareStatement(sql);
-			delete.executeQuery();
+			delete.execute();
 			connection.commit();
 			
 		} catch (Exception e) {
@@ -167,7 +165,7 @@ public class ClienteDao {
 	public boolean validarNomeCli(String nome) {
 		try {
 			
-			String sql = "SELECT COUNT(1) AS qtd FROM tbl_cliente WHERE nome = " + nome;
+			String sql = "SELECT COUNT(1) AS qtd FROM tbl_cliente WHERE nome = '" + nome + "'";
 			PreparedStatement validar = connection.prepareStatement(sql);
 			ResultSet rs = validar.executeQuery();
 			
@@ -185,7 +183,7 @@ public class ClienteDao {
 	public boolean validarCpfCli(String cpf) {
 		try {
 			
-			String sql = "SELECT COUNT(1) AS qtd FROM tbl_cliente WHERE cpf = " + cpf;
+			String sql = "SELECT COUNT(1) AS qtd FROM tbl_cliente WHERE cpf = '" + cpf + "'";
 			PreparedStatement validar = connection.prepareStatement(sql);
 			ResultSet rs = validar.executeQuery();
 			

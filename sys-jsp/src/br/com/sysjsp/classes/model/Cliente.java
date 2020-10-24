@@ -9,7 +9,7 @@ public class Cliente {
 	private String cpf;
 	private String rg;
 	private String orgaoexpeditor;
-	private Date datanascimento;
+	private String datanascimento;
 	private String telefonefixo;
 	private String telefonecelular;
 	private String email;
@@ -87,12 +87,14 @@ public class Cliente {
 		this.observacao = observacao;
 	}
 
-	public Date getDatanascimento() {
+	public String getDatanascimento() {
 		return datanascimento;
 	}
 
-	public void setDatanascimento(Date datanascimento) {
+	public void setDatanascimento(String datanascimento) {
 		this.datanascimento = datanascimento;
 	}
+
+	
 
 }
