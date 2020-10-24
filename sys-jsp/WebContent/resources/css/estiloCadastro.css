@@ -7,7 +7,6 @@
 
 body{
 	font-family: gotham, arial, helvetica, sans-serif;
-    font-size: 18px;
 }
 
 a{
@@ -28,18 +27,16 @@ a:hover{
 }
 
 .div-a{
+	cursor: pointer;
 	text-align: center;
     font-weight: bold;
 	text-decoration: none;
 	font-size: 1.3em;
 	background: #008B8B;
 	border: 1px;
-	margin-bottom: 2em;
-	margin-top: 1em;
-	margin-left: 45em;
-	margin-right: 0.1em;
+	margin-left: 5px;
 	color: #FFF;/*cor do texto*/
-	padding: 0.2em 0.6em;
+	padding: 0.5em 0.6em;
 	box-shadow: 2px 2px 2px rgba(0,0,0,0.3);/*muda a sobra do botão*/
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.5);/*muda a sobra do texto*/
 }
@@ -49,6 +46,7 @@ a:hover{
 	box-shadow: inset 2px 2px 2px rgba(0,0,0,0.3);
 	text-shadow: none;
 	color: black;
+	
 }
 
 
@@ -66,6 +64,7 @@ input, select, button{
 	width: 100%;
 	height: 40px;
 	background-color: #1E90FF;
+	margin-top: 15px;
 	margin-bottom: 10px;
 }
 
@@ -109,6 +108,7 @@ input, select, button{
 	margin-bottom: 0.2em;
 	color: #00008B;
 	display: block;
+	font-weight: bold;
 }
 
 fieldset.grupo .campo {
@@ -120,6 +120,14 @@ fieldset.grupo .campo {
 .campo input[type="password"],
 .campo select
 {
+	margin-left: 0.5em;
+	padding: 0.3em; /*tamanho dos campos*/
+	border: 1px solid #ccc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,0.3);/*mostra a sombra dos campos*/
+	display: block;
+}
+
+.campo textarea{
 	margin-left: 0.5em;
 	padding: 0.3em; /*tamanho dos campos*/
 	border: 1px solid #ccc;
@@ -190,49 +198,6 @@ estou colocando uma cor azul clara nela*/
 
 /*==========================================================================================================*/
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600);
 
-.div-tabela{
-  background: #012B39;
-  border-radius: 0.5em;
-  border-collapse: collapse;
-  margin: 1em; 
-  height: 500px;
-  overflow: scroll;
-}
-
-
-caption{
-	margin-top: 15px;
-	color: #E2B842;
-	text-align: center;
-	font-weight: bold;
-}
-
-th {
-  border-bottom: 3px solid #364043;
-  color: #E2B842;
-  font-size: 0.85em;
-  font-weight: 600;
-  padding: 0.5em 1em;
-  text-align: left;
-}
-
-td {
-  color: #fff;
-  font-weight: 400;
-  padding: 0.65em 1em;
-}
-
-.disabled td {
-  color: #4F5F64;
-}
-
-tbody tr {
-  transition: background 0.25s ease;
-}
-tbody tr:hover {
-  background: #014055;
-}
 
 

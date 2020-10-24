@@ -9,11 +9,10 @@
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" type="text/css" href="resources/css/estiloCadastro.css"/>
-
+<link rel="stylesheet" type="text/css" href="resources/css/table.css"/>
 
 <!-- ara a mascara funcionar tem que colocar estas bibliotecas abaixo -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -27,6 +26,8 @@
 	
 		<form id="formulario" action="ServletUsuario" method="post">
 		
+			<a class="div-a"><img alt="home" src="resources/img/home1.png"> Voltar para o menu</a>
+		
 			<div class="div-cadastrousuario">
 				<h1>Cadastro de Usuários</h1>
 			</div>
@@ -34,8 +35,6 @@
 			<div class="div-dadosusuario">
 				<h2>Dados do Usuário</h2>
 			</div>
-			
-			<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Voltar para o menu</a>
 			
 			<!-- agrupa os campos -->
 			<fieldset>
@@ -45,7 +44,8 @@
 					<div class="campo">
 						
 						<label for="id">Código:</label>
-						<input type="text" id="id" name="id" value="${user.id}" readonly="readonly">
+						<input type="text" id="id" name="id" style="width: 8em;" 
+						value="${user.id}" readonly="readonly">
 						
 					</div>
 						
@@ -133,12 +133,10 @@
 		
 		<br>
 		
-		<div class="div-tabela">
+		<div class="content">
 			
-			<table>
+			<table class="rTable">
 			
-				<caption>Usuários Cadastrados</caption>
-				
 					<thead>
 						<tr>
 							<th>Código</th>
