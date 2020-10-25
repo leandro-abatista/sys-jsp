@@ -61,7 +61,7 @@ public class ClienteDao {
 			
 			List<Cliente> clientes = new ArrayList<Cliente>();
 			
-			String sql = "SELECT * FROM tbl_cliente;";
+			String sql = "SELECT * FROM tbl_cliente order by id;";
 			PreparedStatement select = connection.prepareStatement(sql);
 			ResultSet rs = select.executeQuery();
 			

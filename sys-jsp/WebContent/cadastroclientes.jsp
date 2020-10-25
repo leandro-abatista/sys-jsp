@@ -151,7 +151,7 @@
 						
 						<label for="cep">CEP:</label>
 						<input type="text" id="cep" name="cep" style="width: 10em;" 
-						onblur="consultaCep();" value="${cli.cep}">
+						onblur="consultaCep();" value="${cli.cep}" placeholder="Informe cep válido">
 					
 					</div>
 					
@@ -265,8 +265,8 @@
 								style="width: 20px; height: 20px;">
 							</a></td>
 							
-							<td><a href="ServletTelefone?cli=${cli.id}">
-								<img alt="telefone" src="resources/img/telefone.png" title="Telefone" 
+							<td><a href="ServletTelefone?acao=addTelefone&cli=${cli.id}">
+								<img alt="telefone" src="resources/img/telefone.png" title="Adicionar Telefone" 
 								style="width: 20px; height: 20px;">
 							</a></td>				
 						

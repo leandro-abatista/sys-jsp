@@ -32,6 +32,8 @@
 		<form id="formulario" action="ServletTelefone" method="post">
 		
 			<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Voltar para o menu</a>
+			
+			<a class="div-a" href="cadastroclientes.jsp"><img alt="home" src="resources/img/seta-para-tras.png"> Voltar</a>
 		
 			<div class="div-cadastrousuario">
 				<h1>Cadastro de Telefones</h1>
@@ -44,33 +46,58 @@
 				
 					<div class="campo">
 					
-						<label for="id">Código:</label>
+						<label for="id">Cód. Cliente:</label>
 						<input type="text" id="id" name="id" style="width: 8em;" readonly="readonly"
-						value="${cliSelecionado}">
+						value="${clienteSelecionado.id}">
 						
 					</div>
 					
 					<div class="campo">
 					
-						<label for="telefonefixo">Tel. Residencial:</label>
-						<input type="text" id="telefonefixo" name="telefonefixo" style="width: 10em;" required="required"
-						onkeypress="$(this).mask('(00) 0000-0000')" value="${cli.telefonefixo}">
+						<label for="nome">Nome:</label>
+						<input type="text" id="nome" name="nome" style="width: 25em;" readonly="readonly"
+						value="${clienteSelecionado.nome}">
+						
+					</div>
+					
+				</fieldset>
+				
+				<fieldset class="grupo">
+				
+					<div class="campo">
+					
+						<label for="idT">Código:</label>
+						<input type="text" id="idT" name="idT" style="width: 8em;" readonly="readonly">
 						
 					</div>
 					
 					<div class="campo">
-					
-						<label for="telefonecelular">Tel. Celular:</label>
-						<input type="text" id="telefonecelular" name="telefonecelular" style="width: 10em;" required="required"
-						onkeypress="$(this).mask('(00) 0.0000-0000')" value="${cli.telefonecelular}">
 						
+						<label for="numero">Número:</label>
+						<input type="text" id="numero" name="numero" style="width: 10em;" required="required"
+						onkeypress="$(this).mask('(00) 0000-0000')" >
+					
+					</div>
+					
+					<div class="campo">
+						
+						<label for="numero">Tipo:</label>
+						<select id="tipo" name="tipo">
+							<option disabled="disabled" selected="selected">Selecione uma Opção</option>
+							<option>Residencial</option>
+							<option>Empresa</option>
+							<option>Celular</option>
+							<option>Recado</option>
+							<option>Outro</option>
+						</select>
+					
 					</div>
 				
 				</fieldset>
 				
 				<button type="submit" class="botao submit" value="Salvar">Salvar</button>
 				<button type="submit" class="botao submit" value="Cancelar"
-				onclick="document.getElementById('formulario').action = 'ServletCliente?acao=reset'">Cancelar</button>
+				onclick="document.getElementById('formulario').action = 'ServletTelefone?acao=reset'">Cancelar</button>
 			
 			</fieldset>
 		
@@ -97,16 +124,15 @@
 				
 				<tbody>
 					
-					<c:forEach items="${telefones}" var="fone">
+					<c:forEach items="${telefone}" var="fone">
 					
 						<tr>
 							
 							<td><c:out value="${fone.id}"></c:out></td>				
 							<td><c:out value="${fone.numero}"></c:out></td>				
-							<td><c:out value="${cfoneli.tipo}"></c:out></td>
-							
+							<td><c:out value="${fone.tipo}"></c:out></td>
 										
-							<td><a href="ServletCliente?acao=delete&cli=${fone.id}">
+							<td><a href="ServletTelefone?acao=delete&foneId=${fone.id}">
 								<img alt="delete" src="resources/img/excluir.png" title="Excluir" 
 								style="width: 20px; height: 20px;">
 							</a></td>
@@ -122,8 +148,6 @@
 		</div>
 		
 	</div>
-	
-	
 
 </body>
 
