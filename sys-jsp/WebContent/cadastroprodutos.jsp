@@ -50,7 +50,7 @@
 					
 						<label for="id">Código:</label>
 						<input type="text" id="id" name="id" style="width: 8em;" readonly="readonly"
-						>
+						value="${produto.id}">
 						
 					</div>
 				
@@ -58,6 +58,54 @@
 				
 				<fieldset class="grupo">
 					
+					<div class="campo">
+					
+						<label for="descricao">Descrição:</label>
+						<input type="text" id="descricao" name="descricao" style="width: 30em;"
+						value="${produto.descricao}">
+						
+					</div>
+					
+					<div class="campo">
+					
+						<label for="quantidade">Quantd.:</label>
+						<input type="number" id="quantidade" name="quantidade" style="width: 8em;"
+						min="1" max="2000" onkeypress="$(this).mask('0000')"
+						value="${produto.quantidade}">
+						
+					</div>
+					
+					<div class="campo">
+					
+						<label for="valorcompra">Valor Compra:</label>
+						<input type="text" id="valorcompra" name="valorcompra" style="width: 10em;"
+						onkeypress="$(this).mask('R$ 999.990,00', {reverse: true});"
+						value="${produto.valorcompra}">
+						
+					</div>
+					
+					<div class="campo">
+					
+						<label for="valoritem">Valor Item:</label>
+						<input type="text" id="valoritem" name="valoritem" style="width: 10em;"
+						onkeypress="$(this).mask('R$ 999.990,00', {reverse: true});"
+						value="${produto.valoritem}">
+						
+					</div>
+					
+					<div class="campo">
+					
+						<label for="valoritem">Categoria:</label>
+						<select id="categoria" name="categoria">
+							<option disabled="disabled" selected="selected">Selecione uma Opção</option>
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+						</select>
+						
+					</div>
 					
 				
 				</fieldset>
@@ -88,14 +136,12 @@
 					<tr>
 						
 						<th>Código</th>
-						<th>Nome</th>
-						<th>CPF</th>
-						<th>Tel. Residencial</th>
-						<th>Tel. Celular</th>
-						<th>Email</th>
+						<th>Descrição</th>
+						<th>Valor Compra</th>
+						<th>Valor Item</th>
+						<th>Categoria</th>
 						<th>Atualizar</th>
 						<th>Excluir</th>
-						<th>Telefones</th>
 						
 					</tr>
 					
@@ -103,24 +149,24 @@
 				
 				<tbody>
 					
-					<c:forEach items="${produutos}" var="produto">
+					<c:forEach items="${produtos}" var="produto">
 					
 						<tr>
 							
-							<td><c:out value="${cli.id}"></c:out></td>				
-							<td><c:out value="${cli.nome}"></c:out></td>				
-							<td><c:out value="${cli.cpf}"></c:out></td>
-							<td><c:out value="${cli.telefonefixo}"></c:out></td>					
-							<td><c:out value="${cli.telefonecelular}"></c:out></td>				
-							<td><c:out value="${cli.email}"></c:out></td>				
+							<td><c:out value="${produto.id}"></c:out></td>				
+							<td><c:out value="${produto.descricao}"></c:out></td>				
+							<td><c:out value="${produto.quantidade}"></c:out></td>
+							<td><c:out value="${produto.valorcompra}"></c:out></td>					
+							<td><c:out value="${produto.valoritem}"></c:out></td>				
+							<td><c:out value="${produto.categoria}"></c:out></td>				
 							
-							<td><a href="ServletProduto?acao=update&cli=${cli.id}">
+							<td><a href="ServletProduto?acao=update&produto=${produto.id}">
 								<img alt="update" src="resources/img/editar.png" title="Atualizar" 
 								style="width: 20px; height: 20px;">
 							</a></td>	
 							
 										
-							<td><a href="ServletProduto?acao=delete&cli=${cli.id}">
+							<td><a href="ServletProduto?acao=delete&produto=${produto.id}">
 								<img alt="delete" src="resources/img/excluir.png" title="Excluir" 
 								style="width: 20px; height: 20px;">
 							</a></td>
