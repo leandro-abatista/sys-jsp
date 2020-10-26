@@ -141,6 +141,18 @@
 				
 				</fieldset>
 				
+				<fieldset class="grupo">
+					
+					<div class="campo">
+					
+						<label for="file">Foto:</label>
+						<input type="file" id="file" name="file" style="width: 10em;" 
+						value="${cli.observacao}">
+					
+					</div>
+				
+				</fieldset>
+				
 				<div class="div-dadosusuario">
 					<h2>Dados do Endereço</h2>
 				</div>
