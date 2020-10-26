@@ -151,7 +151,8 @@
 						
 						<label for="cep">CEP:</label>
 						<input type="text" id="cep" name="cep" style="width: 10em;" 
-						onblur="consultaCep();" value="${cli.cep}" placeholder="Informe cep válido">
+						onblur="consultaCep();" value="${cli.cep}" placeholder="Informe cep válido"
+						onkeypress="$(this).mask('00000000')">
 					
 					</div>
 					
