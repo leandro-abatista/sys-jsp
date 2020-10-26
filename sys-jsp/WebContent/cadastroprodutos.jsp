@@ -22,7 +22,7 @@
     
     
 
-<title>Cadastro de Clientes</title>
+<title>Cadastro de Produtos</title>
 </head>
 
 <body>
@@ -79,7 +79,7 @@
 					
 						<label for="valorcompra">Valor Compra:</label>
 						<input type="text" id="valorcompra" name="valorcompra" style="width: 10em;"
-						onkeypress="$(this).mask('R$ 999.990,00', {reverse: true});"
+						onkeypress="$(this).mask('R$ 000000.00', {reverse: true});"
 						value="${produto.valorcompra}">
 						
 					</div>
@@ -88,7 +88,7 @@
 					
 						<label for="valoritem">Valor Item:</label>
 						<input type="text" id="valoritem" name="valoritem" style="width: 10em;"
-						onkeypress="$(this).mask('R$ 999.990,00', {reverse: true});"
+						onkeypress="$(this).mask('R$ 000000.00', {reverse: true});"
 						value="${produto.valoritem}">
 						
 					</div>
@@ -137,6 +137,7 @@
 						
 						<th>Código</th>
 						<th>Descrição</th>
+						<th>Quantd.</th>
 						<th>Valor Compra</th>
 						<th>Valor Item</th>
 						<th>Categoria</th>

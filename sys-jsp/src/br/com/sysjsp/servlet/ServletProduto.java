@@ -35,7 +35,7 @@ public class ServletProduto extends HttpServlet {
 			
 			produtoDao.deleteP(produto);
 			
-			RequestDispatcher view = request.getRequestDispatcher("/cadastroprodutos");
+			RequestDispatcher view = request.getRequestDispatcher("/cadastroprodutos.jsp");
 			request.setAttribute("produtos", produtoDao.listarTodosP());
 			view.forward(request, response);
 			
@@ -45,7 +45,7 @@ public class ServletProduto extends HttpServlet {
 			
 			Produto pro = produtoDao.consultarP(produto);
 			
-			RequestDispatcher view = request.getRequestDispatcher("/cadastroprodutos");
+			RequestDispatcher view = request.getRequestDispatcher("/cadastroprodutos.jsp");
 			request.setAttribute("produto", pro);
 			view.forward(request, response);
 			
@@ -53,7 +53,7 @@ public class ServletProduto extends HttpServlet {
 			
 		if (acao.equalsIgnoreCase("listartodos")) {
 			
-			RequestDispatcher view = request.getRequestDispatcher("/cadastroprodutos");
+			RequestDispatcher view = request.getRequestDispatcher("/cadastroprodutos.jsp");
 			request.setAttribute("produtos", produtoDao.listarTodosP());
 			view.forward(request, response);
 			
@@ -67,7 +67,7 @@ public class ServletProduto extends HttpServlet {
 		
 		if (acao != null && acao.equalsIgnoreCase("reset")) {
 			
-			RequestDispatcher view = request.getRequestDispatcher("/cadastroprodutos");
+			RequestDispatcher view = request.getRequestDispatcher("/cadastroprodutos.jsp");
 			request.setAttribute("produtos", produtoDao.listarTodosP());
 			view.forward(request, response);
 			
@@ -83,9 +83,9 @@ public class ServletProduto extends HttpServlet {
 			Produto produto = new Produto();
 			produto.setId(!id.isEmpty() ? Long.parseLong(id) : 0);
 			produto.setDescricao(descricao);
-			produto.setQuantidade(Integer.valueOf(quantidade));
-			produto.setValorCompra(Double.valueOf(valorcompra));
-			produto.setValorItem(Double.valueOf(valoritem));
+			produto.setQuantidade(Integer.parseInt(quantidade));
+			produto.setValorcompra(Double.parseDouble(valorcompra));
+			produto.setValoritem(Double.parseDouble(valoritem));
 			produto.setCategoria(categoria);
 			
 			String msg = null;
@@ -112,7 +112,7 @@ public class ServletProduto extends HttpServlet {
 				msg = "Registro atualizado com sucesso!";
 			}
 			
-			RequestDispatcher view = request.getRequestDispatcher("/cadastroprodutos");
+			RequestDispatcher view = request.getRequestDispatcher("/cadastroprodutos.jsp");
 			request.setAttribute("produtos", produtoDao.listarTodosP());
 			view.forward(request, response);
 			

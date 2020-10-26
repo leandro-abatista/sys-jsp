@@ -25,8 +25,8 @@ public class ProdutoDao {
 			PreparedStatement insert = connection.prepareStatement(sql);
 			insert.setString(1, produto.getDescricao());
 			insert.setInt(2, produto.getQuantidade());
-			insert.setDouble(3, produto.getValorCompra());
-			insert.setDouble(4, produto.getValorItem());
+			insert.setDouble(3, produto.getValorcompra());
+			insert.setDouble(4, produto.getValoritem());
 			insert.setString(5, produto.getCategoria());
 			insert.execute();
 			connection.commit();
@@ -57,8 +57,8 @@ public class ProdutoDao {
 				produto.setId(rs.getLong("id"));
 				produto.setDescricao(rs.getString("descricao"));
 				produto.setQuantidade(rs.getInt("quantidade"));
-				produto.setValorCompra(rs.getDouble("valorCompra"));
-				produto.setValorItem(rs.getDouble("valorItem"));
+				produto.setValorcompra(rs.getDouble("valorcompra"));
+				produto.setValoritem(rs.getDouble("valoritem"));
 				produto.setCategoria(rs.getString("categoria"));
 
 				produtos.add(produto);
@@ -85,8 +85,8 @@ public class ProdutoDao {
 				produto.setId(rs.getLong("id"));
 				produto.setDescricao(rs.getString("descricao"));
 				produto.setQuantidade(rs.getInt("quantidade"));
-				produto.setValorCompra(rs.getDouble("valorCompra"));
-				produto.setValorItem(rs.getDouble("valorItem"));
+				produto.setValorcompra(rs.getDouble("valorcompra"));
+				produto.setValoritem(rs.getDouble("valoritem"));
 				produto.setCategoria(rs.getString("categoria"));
 
 				return produto;
@@ -108,8 +108,8 @@ public class ProdutoDao {
 			update.setLong(1, produto.getId());
 			update.setString(2, produto.getDescricao());
 			update.setInt(3, produto.getQuantidade());
-			update.setDouble(4, produto.getValorCompra());
-			update.setDouble(5, produto.getValorItem());
+			update.setDouble(4, produto.getValorcompra());
+			update.setDouble(5, produto.getValoritem());
 			update.setString(6, produto.getCategoria());
 			update.executeUpdate();
 			connection.commit();
