@@ -29,7 +29,8 @@
 
 	<div class="form">
 		
-		<form id="formulario" action="ServletCliente" method="post">
+		<form id="formulario" action="ServletCliente" method="post"
+		enctype="multipart/form-data">
 		
 			<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Voltar para o menu</a>
 		
@@ -145,9 +146,9 @@
 					
 					<div class="campo">
 					
-						<label for="file">Foto:</label>
-						<input type="file" id="file" name="file" style="width: 10em;" 
-						value="${cli.observacao}">
+						<label for="foto">Foto:</label>
+						<input type="file" id="foto" name="foto" style="width: 10em; margin-left: 0.6em;" 
+						value="${cli.foto}">
 					
 					</div>
 				
