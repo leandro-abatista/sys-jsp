@@ -29,8 +29,7 @@
 
 	<div class="form">
 		
-		<form id="formulario" action="ServletCliente" method="post"
-		enctype="multipart/form-data">
+		<form id="formulario" action="ServletCliente" method="post" enctype="multipart/form-data">
 		
 			<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Voltar para o menu</a>
 		
@@ -148,7 +147,7 @@
 					
 						<label for="foto">Foto:</label>
 						<input type="file" id="foto" name="foto" style="width: 10em; margin-left: 0.6em;" 
-						value="${cli.foto}">
+						>
 					
 					</div>
 				
@@ -244,9 +243,8 @@
 						<th>Código</th>
 						<th>Nome</th>
 						<th>CPF</th>
-						<th>Tel. Residencial</th>
-						<th>Tel. Celular</th>
 						<th>Email</th>
+						<th>Foto</th>
 						<th>Atualizar</th>
 						<th>Excluir</th>
 						<th>Telefones</th>
@@ -264,16 +262,18 @@
 							<td><c:out value="${cli.id}"></c:out></td>				
 							<td><c:out value="${cli.nome}"></c:out></td>				
 							<td><c:out value="${cli.cpf}"></c:out></td>
-							<td><c:out value="${cli.telefonefixo}"></c:out></td>					
-							<td><c:out value="${cli.telefonecelular}"></c:out></td>				
-							<td><c:out value="${cli.email}"></c:out></td>				
+							<td><c:out value="${cli.email}"></c:out></td>
+							
+							<td><a href="ServletCliente?acao=download&cli=${cli.id}">
+								<img src="${cli.tempFotoCliente}" alt="Sem Imagem" 
+								title="Imagem" style="width: 24px; height: 24px;">
+							</a></td>
 							
 							<td><a href="ServletCliente?acao=update&cli=${cli.id}">
 								<img alt="update" src="resources/img/editar.png" title="Atualizar" 
 								style="width: 20px; height: 20px;">
 							</a></td>	
 							
-										
 							<td><a href="ServletCliente?acao=delete&cli=${cli.id}">
 								<img alt="delete" src="resources/img/excluir.png" title="Excluir" 
 								style="width: 20px; height: 20px;">

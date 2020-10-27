@@ -33,7 +33,7 @@
 		
 			<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Voltar para o menu</a>
 			
-			<a class="div-a" href="cadastroclientes.jsp"><img alt="home" src="resources/img/seta-para-tras.png"> Voltar</a>
+			<a class="div-a" href="ServletCliente?acao=listartodos"><img alt="home" src="resources/img/seta-para-tras.png"> Voltar</a>
 		
 			<div class="div-cadastrousuario">
 				<h1>Cadastro de Telefones</h1>

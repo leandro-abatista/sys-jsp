@@ -1,7 +1,5 @@
 package br.com.sysjsp.classes.model;
 
-import java.util.Date;
-
 public class Cliente {
 
 	private Long id;
@@ -22,6 +20,18 @@ public class Cliente {
 	private String cidade;
 	private String estado;
 	private Integer ibge;
+
+	private String fotoBase64;
+	private String contentType;
+	
+	private String tempFotoCliente;
+	
+	public String getTempFotoCliente() {
+		/*monta em tempo de execução*/
+		tempFotoCliente = "data:" + contentType + ";base64," + fotoBase64;
+		
+		return tempFotoCliente;
+	}
 
 	public Long getId() {
 		return id;
@@ -157,6 +167,22 @@ public class Cliente {
 
 	public void setIbge(Integer ibge) {
 		this.ibge = ibge;
+	}
+
+	public String getFotoBase64() {
+		return fotoBase64;
+	}
+
+	public void setFotoBase64(String fotoBase64) {
+		this.fotoBase64 = fotoBase64;
+	}
+
+	public String getContentType() {
+		return contentType;
+	}
+
+	public void setContentType(String contentType) {
+		this.contentType = contentType;
 	}
 
 }

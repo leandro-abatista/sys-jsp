@@ -59,7 +59,7 @@ public class ServletTelefone extends HttpServlet {
 			Cliente cliente = (Cliente) request.getSession().getAttribute("clienteSelecionado");
 			
 			RequestDispatcher view = request.getRequestDispatcher("/cadastrotelefones.jsp");
-			request.setAttribute("telefone", telefoneDao.listarTodos(Long.parseLong(foneId)));
+			request.setAttribute("telefone", telefoneDao.listarTodos(cliente.getId()));
 			view.forward(request, response);
 			
 		}
