@@ -23,8 +23,8 @@ public class ClienteDao {
 			String sql = "INSERT INTO tbl_cliente(" + 
 					"            nome, cpf, rg, orgaoexpeditor, datanascimento, telefonefixo, " + 
 					"            telefonecelular, email, observacao, cep, endereco, numero, bairro, " + 
-					"            cidade, estado, ibge, fotobase64, contenttype)" + 
-					"    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+					"            cidade, estado, ibge, fotobase64, contenttype, arquivobase64, contenttypearquivo)" + 
+					"    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 			PreparedStatement insert = connection.prepareStatement(sql);
 			insert.setString(1, cliente.getNome());
 			insert.setString(2, cliente.getCpf());
@@ -44,6 +44,8 @@ public class ClienteDao {
 			insert.setInt(16, cliente.getIbge());
 			insert.setString(17, cliente.getFotoBase64());
 			insert.setString(18, cliente.getContentType());
+			insert.setString(19, cliente.getArquivoBase64());
+			insert.setString(20, cliente.getContentTypeArquivo());
 			insert.execute();
 			connection.commit();
 			
@@ -89,6 +91,8 @@ public class ClienteDao {
 				cliente.setIbge(rs.getInt("ibge"));
 				cliente.setFotoBase64(rs.getString("fotobase64"));
 				cliente.setContentType(rs.getString("contenttype"));
+				cliente.setArquivoBase64(rs.getString("arquivobase64"));
+				cliente.setContentTypeArquivo(rs.getString("contenttypearquivo"));
 				
 				clientes.add(cliente);
 			}
@@ -130,6 +134,8 @@ public class ClienteDao {
 				cliente.setIbge(rs.getInt("ibge"));
 				cliente.setFotoBase64(rs.getString("fotobase64"));
 				cliente.setContentType(rs.getString("contenttype"));
+				cliente.setArquivoBase64(rs.getString("arquivobase64"));
+				cliente.setContentTypeArquivo(rs.getString("contenttypearquivo"));
 				
 				return cliente;
 			}

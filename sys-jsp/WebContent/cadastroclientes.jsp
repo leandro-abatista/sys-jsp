@@ -153,6 +153,18 @@
 				
 				</fieldset>
 				
+				<fieldset class="grupo">
+					
+					<div class="campo">
+					
+						<label for="arquivo">Currículo:</label>
+						<input type="file" id="arquivo" name="arquivo" style="width: 10em; margin-left: 0.6em;" 
+						>
+					
+					</div>
+				
+				</fieldset>
+				
 				<div class="div-dadosusuario">
 					<h2>Dados do Endereço</h2>
 				</div>

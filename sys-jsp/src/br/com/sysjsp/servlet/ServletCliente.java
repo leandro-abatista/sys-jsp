@@ -20,6 +20,7 @@ import org.apache.tomcat.util.codec.binary.Base64;
 
 import br.com.sysjsp.classes.model.Cliente;
 import br.com.sysjsp.dao.ClienteDao;
+import br.com.sysjsp.util.Converte;
 
 /**
  * Servlet implementation class ServletCliente
@@ -29,6 +30,8 @@ import br.com.sysjsp.dao.ClienteDao;
 public class ServletCliente extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	
+	private Converte converte;
 
 	private ClienteDao clienteDao = new ClienteDao();
 
@@ -158,10 +161,27 @@ public class ServletCliente extends HttpServlet {
 				if (ServletFileUpload.isMultipartContent(request)) {
 
 					Part imagemFoto = request.getPart("foto");
-					String fotoBase64 = new Base64().encodeBase64String(converteStreamParaByte(imagemFoto.getInputStream()));
-					cliente.setFotoBase64(fotoBase64);
-					cliente.setContentType(imagemFoto.getContentType());
 					
+					if (imagemFoto != null) {
+						
+						String fotoBase64 = new Base64().encodeBase64String(
+								converte.converteStreamParaByte((imagemFoto.getInputStream())));
+						cliente.setFotoBase64(fotoBase64);
+						cliente.setContentType(imagemFoto.getContentType());
+						
+					}
+					
+					
+					/*Processa PDF*/
+					Part arquivoPdf = request.getPart("arquivo");
+					
+					if (arquivoPdf != null) {
+						
+						String arquivoPdfBase64 = new Base64().encodeBase64String(
+								converte.converteStreamParaByte((arquivoPdf.getInputStream())));
+						cliente.setArquivoBase64(arquivoPdfBase64);
+						cliente.setContentTypeArquivo(arquivoPdf.getContentType());
+					}
 				}
 
 			} catch (Exception e) {
@@ -210,26 +230,6 @@ public class ServletCliente extends HttpServlet {
 		}
 	}
 
-	/*Converte a entrada de fluxo de dados da imagem para um array de byte[]*/
-	private byte[] converteStreamParaByte(InputStream imagem) {
-		try {
-			
-			ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-			int reads;
-			reads = imagem.read();
-
-			/* enquanto tiver dados */
-			while (reads != -1) {
-				byteArrayOutputStream.write(reads);
-				reads = imagem.read();
-			}
-
-			return byteArrayOutputStream.toByteArray();/* retorna um array de bytes */
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+	
 
 }

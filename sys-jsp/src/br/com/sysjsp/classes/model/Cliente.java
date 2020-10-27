@@ -24,14 +24,12 @@ public class Cliente {
 	private String fotoBase64;
 	private String contentType;
 	
+	/*pode ser um arquivo em pdf, html entre outros*/
+	private String arquivoBase64;
+	private String contentTypeArquivo;
+	
 	private String tempFotoCliente;
 	
-	public String getTempFotoCliente() {
-		/*monta em tempo de execução*/
-		tempFotoCliente = "data:" + contentType + ";base64," + fotoBase64;
-		
-		return tempFotoCliente;
-	}
 
 	public Long getId() {
 		return id;
@@ -183,6 +181,29 @@ public class Cliente {
 
 	public void setContentType(String contentType) {
 		this.contentType = contentType;
+	}
+	
+	public String getTempFotoCliente() {
+		/*monta em tempo de execução*/
+		tempFotoCliente = "data:" + contentType + ";base64," + fotoBase64;
+		
+		return tempFotoCliente;
+	}
+
+	public String getArquivoBase64() {
+		return arquivoBase64;
+	}
+
+	public void setArquivoBase64(String arquivoBase64) {
+		this.arquivoBase64 = arquivoBase64;
+	}
+
+	public String getContentTypeArquivo() {
+		return contentTypeArquivo;
+	}
+	
+	public void setContentTypeArquivo(String contentTypeArquivo) {
+		this.contentTypeArquivo = contentTypeArquivo;
 	}
 
 }
