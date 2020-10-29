@@ -1,15 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" type="text/css" href="resources/css/estiloCadastro.css"/>
-<link rel="stylesheet" type="text/css" href="resources/css/table.css"/>
+<link rel="stylesheet" type="text/css" href="resources/css/estiloTableProduto.css"/>
 
 
 
@@ -127,63 +127,63 @@
 		
 		<br>
 		
-		<div class="content">
+		<div class="caption">Produtos Cadastrados</div>
 		
-			<table class="rTable">
-				
-				<thead>
+			<div class="content">
+		
+				<table class="tabela">
 					
-					<tr>
+					<thead>
 						
-						<th>Código</th>
-						<th>Descrição</th>
-						<th>Quantd.</th>
-						<th>Valor Compra</th>
-						<th>Valor Item</th>
-						<th>Categoria</th>
-						<th>Atualizar</th>
-						<th>Excluir</th>
-						
-					</tr>
-					
-				</thead>
-				
-				<tbody>
-					
-					<c:forEach items="${produtos}" var="produto">
-					
 						<tr>
 							
-							<td><c:out value="${produto.id}"></c:out></td>				
-							<td><c:out value="${produto.descricao}"></c:out></td>				
-							<td><c:out value="${produto.quantidade}"></c:out></td>
-							<td><c:out value="${produto.valorcompra}"></c:out></td>					
-							<td><c:out value="${produto.valoritem}"></c:out></td>				
-							<td><c:out value="${produto.categoria}"></c:out></td>				
-							
-							<td><a href="ServletProduto?acao=update&produto=${produto.id}">
-								<img alt="update" src="resources/img/editar.png" title="Atualizar" 
-								style="width: 20px; height: 20px;">
-							</a></td>	
-							
-										
-							<td><a href="ServletProduto?acao=delete&produto=${produto.id}">
-								<img alt="delete" src="resources/img/excluir.png" title="Excluir" 
-								style="width: 20px; height: 20px;">
-							</a></td>
+							<th>Código</th>
+							<th>Descrição</th>
+							<th>Quantd.</th>
+							<th>Valor Compra</th>
+							<th>Valor Item</th>
+							<th>Categoria</th>
+							<th>Atualizar</th>
+							<th>Excluir</th>
 							
 						</tr>
-				
-					</c:forEach>
-				
-				</tbody>
-				
-			</table>
-		
-		</div>
-		
-	</div>
-	
+						
+					</thead>
+					
+					<tbody>
+						
+						<c:forEach items="${produtos}" var="produto">
+						
+							<tr>
+								
+								<td><c:out value="${produto.id}"></c:out></td>				
+								<td><c:out value="${produto.descricao}"></c:out></td>				
+								<td><c:out value="${produto.quantidade}"></c:out></td>
+								<td><c:out value="${produto.valorcompra}"></c:out></td>					
+								<td><c:out value="${produto.valoritem}"></c:out></td>				
+								<td><c:out value="${produto.categoria}"></c:out></td>				
+								
+								<td><a href="ServletProduto?acao=update&produto=${produto.id}">
+									<img alt="update" src="resources/img/editar.png" title="Atualizar" 
+									style="width: 20px; height: 20px;">
+								</a></td>	
+								
+											
+								<td><a href="ServletProduto?acao=delete&produto=${produto.id}">
+									<img alt="delete" src="resources/img/excluir.png" title="Excluir" 
+									style="width: 20px; height: 20px;">
+								</a></td>
+								
+							</tr>
+					
+						</c:forEach>
+					
+					</tbody>
+					
+				</table>
+			
+			</div>
+			
 	<script type="text/javascript">
 
 		

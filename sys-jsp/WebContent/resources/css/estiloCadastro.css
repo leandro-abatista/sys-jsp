@@ -60,34 +60,36 @@ input, select, button{
 	font-weight: bold;
 }
 
-.div-cadastrousuario{
-	width: 100%;
-	height: 40px;
-	background-color: #1E90FF;
-	margin-top: 15px;
-	margin-bottom: 10px;
-}
 
 .div-cadastrousuario h1{
 	color: black;
 	font-size: 25px;
 	font-weight: 900;
 	text-align: center;
-}
-
-.div-dadosusuario{
 	width: 100%;
-	height: 35px;
-	background-color: #00BFFF;
+	height: 50px;
+	line-height: 40px;
+	background-color: #1E90FF;
+	margin-top: 15px;
 	margin-bottom: 10px;
-	margin-top: 2px;
+	text-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+	box-sizing: border-box;
 }
 
+	
 .div-dadosusuario h2{
 	color: black;
 	font-size: 22px;
 	font-weight: 900;
 	text-align: center;
+	width: 100%;
+	height: 40px;
+	line-height: 30px;
+	background-color: #00BFFF;
+	margin-bottom: 10px;
+	margin-top: 2px;
+	text-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+	box-sizing: border-box;
 }
 
 .grupo:before, .grupo:after{

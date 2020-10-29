@@ -23,7 +23,7 @@ public class ClienteDao {
 			String sql = "INSERT INTO tbl_cliente(" + 
 					"            nome, cpf, rg, orgaoexpeditor, datanascimento, telefonefixo, " + 
 					"            telefonecelular, email, observacao, cep, endereco, numero, bairro, " + 
-					"            cidade, estado, ibge, fotobase64, contenttype, arquivobase64, contenttypearquivo)" + 
+					"            cidade, estado, ibge, fotobase64, contenttype, contenttypearquivo, arquivobase64)" + 
 					"    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 			PreparedStatement insert = connection.prepareStatement(sql);
 			insert.setString(1, cliente.getNome());
@@ -44,8 +44,9 @@ public class ClienteDao {
 			insert.setInt(16, cliente.getIbge());
 			insert.setString(17, cliente.getFotoBase64());
 			insert.setString(18, cliente.getContentType());
-			insert.setString(19, cliente.getArquivoBase64());
-			insert.setString(20, cliente.getContentTypeArquivo());
+			insert.setString(19, cliente.getContentTypeArquivo());
+			insert.setString(20, cliente.getArquivoBase64());
+			
 			insert.execute();
 			connection.commit();
 			
@@ -91,8 +92,8 @@ public class ClienteDao {
 				cliente.setIbge(rs.getInt("ibge"));
 				cliente.setFotoBase64(rs.getString("fotobase64"));
 				cliente.setContentType(rs.getString("contenttype"));
-				cliente.setArquivoBase64(rs.getString("arquivobase64"));
 				cliente.setContentTypeArquivo(rs.getString("contenttypearquivo"));
+				cliente.setArquivoBase64(rs.getString("arquivobase64"));
 				
 				clientes.add(cliente);
 			}
@@ -134,8 +135,8 @@ public class ClienteDao {
 				cliente.setIbge(rs.getInt("ibge"));
 				cliente.setFotoBase64(rs.getString("fotobase64"));
 				cliente.setContentType(rs.getString("contenttype"));
-				cliente.setArquivoBase64(rs.getString("arquivobase64"));
 				cliente.setContentTypeArquivo(rs.getString("contenttypearquivo"));
+				cliente.setArquivoBase64(rs.getString("arquivobase64"));
 				
 				return cliente;
 			}
@@ -152,8 +153,9 @@ public class ClienteDao {
 			String sql = "UPDATE tbl_cliente" + 
 					"   SET id=?, nome=?, cpf=?, rg=?, orgaoexpeditor=?, datanascimento=?, " + 
 					"       telefonefixo=?, telefonecelular=?, email=?, observacao=?, cep=?, " + 
-					"       endereco=?, numero=?, bairro=?, cidade=?, estado=?, ibge=? " + 
-					" WHERE id = '" + cliente.getId() + "'";
+					"       endereco=?, numero=?, bairro=?, cidade=?, estado=?, ibge=?, " +
+					"		fotobase64=?, contenttype=?, contenttypearquivo=?, arquivobase64=? " + 
+					" 	WHERE id = '" + cliente.getId() + "'";
 			PreparedStatement update = connection.prepareStatement(sql);
 			update.setLong(1, cliente.getId());
 			update.setString(2, cliente.getNome());
@@ -172,6 +174,11 @@ public class ClienteDao {
 			update.setString(15, cliente.getCidade());
 			update.setString(16, cliente.getEstado());
 			update.setInt(17, cliente.getIbge());
+			update.setString(18, cliente.getFotoBase64());
+			update.setString(19, cliente.getContentType());
+			update.setString(20, cliente.getContentTypeArquivo());
+			update.setString(21, cliente.getArquivoBase64());
+			
 			update.executeUpdate();
 			connection.commit();
 			

@@ -1,3 +1,5 @@
+@charset "ISO-8859-1";
+
 @charset "UTF-8";
 
 .content{
@@ -64,5 +66,8 @@ tbody tr {
 	.rTable tbody tr td:nth-child(3){width: 8%;}
 	.rTable tbody tr td:nth-child(4){width: 10%;}
 	.rTable tbody tr td:nth-child(5){width: 10%;}
-	.rTable tbody tr td:nth-child(6){width: 30%;}
+	.rTable tbody tr td:nth-child(6){width: 10%;}
+	.rTable tbody tr td:nth-child(7){width: 10%;}
+	.rTable tbody tr td:nth-child(8){width: 10%;}
+	.rTable tbody tr td:nth-child(9){width: 10%;}
 }

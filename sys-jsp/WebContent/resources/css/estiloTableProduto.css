@@ -1,0 +1,115 @@
+@charset "UTF-8";
+
+.caption{
+	display: block;
+	background: #00BFFF;
+	height: 50px;
+	padding: 10px 10px 10px;
+	color: black;
+	text-align: center;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-size: 20px;
+	font-weight: 900;
+	line-height: 30px;
+	text-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+	box-sizing: border-box;
+	margin: 1em;
+	border: 3px solid #DCDCDC;
+}
+
+.content {
+	display: flex;
+	background: #DCDCDC;
+	margin: 1em;
+	height: 400px;
+	border-radius: 5px;
+}
+
+.tabela {
+	width: 100%;
+}
+
+.tabela thead {
+	background: #D2691E;
+	font-weight: bold;
+	color: white;
+	text-align: center;
+	border: 3px solid #DCDCDC;
+}
+
+tbody tr:hover {
+	background: #48D1CC;
+}
+
+tbody tr {
+	transition: background 0.25s ease;
+}
+
+thead, tbody{
+	display: block;
+}
+
+
+.tabela tbody {
+	height: 340px;
+	overflow: scroll;
+	border: 3px solid #DCDCDC;
+}
+
+.tabela th, .tabela td {
+	padding: 20px 30px;
+	font-weight: 600;
+	border: 3px solid #DCDCDC;
+}
+
+
+@media screen and (max-width: 480px) {
+	.content {
+		width: 100%;
+	}
+	.tabela thead {
+		display: none;
+	}
+	.tabela tbody {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+@media only and (min-width: 1200px) {
+	.content {
+		width: 100%;
+	}
+	.tabela tbody tr td:nth-child(1) {
+		width: 10%;
+	}
+	.tabela tbody tr td:nth-child(2) {
+		width: 30%;
+	}
+	.tabela tbody tr td:nth-child(3) {
+		width: 8%;
+	}
+	.tabela tbody tr td:nth-child(4) {
+		width: 10%;
+	}
+	.tabela tbody tr td:nth-child(5) {
+		width: 10%;
+	}
+	.tabela tbody tr td:nth-child(6) {
+		width: 10%;
+	}
+	.tabela tbody tr td:nth-child(7) {
+		width: 10%;
+	}
+	.tabela tbody tr td:nth-child(8) {
+		width: 10%;
+	}
+}
+
+
+
+
+
+  
+  
+

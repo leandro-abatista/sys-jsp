@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" type="text/css" href="resources/css/estiloCadastro.css"/>
-<link rel="stylesheet" type="text/css" href="resources/css/table.css"/>
+<link rel="stylesheet" type="text/css" href="resources/css/estiloTableCliente.css"/>
 
 
 
@@ -146,9 +146,10 @@
 					<div class="campo">
 					
 						<label for="foto">Foto:</label>
-						<input type="file" id="foto" name="foto" style="width: 10em; margin-left: 0.6em;" 
-						>
-					
+						<input type="file" id="foto" name="foto" style="width: 10em; margin-left: 0.6em;">
+						<input type="hidden" name="fotoTemp" readonly="readonly" value="${cli.fotoBase64}">
+						<input type="hidden" name="contentTypeTemp" readonly="readonly" value="${cli.contentType}">
+						
 					</div>
 				
 				</fieldset>
@@ -157,9 +158,10 @@
 					
 					<div class="campo">
 					
-						<label for="arquivo">Currículo:</label>
-						<input type="file" id="arquivo" name="arquivo" style="width: 10em; margin-left: 0.6em;" 
-						>
+						<label for="arquivo">Arquivo PDF:</label>
+						<input type="file" id="arquivo" name="arquivo" style="width: 10em; margin-left: 0.6em;">
+						<input type="hidden" name="arquivoTemp" readonly="readonly" value="${cli.arquivoBase64}">
+						<input type="hidden" name="arquivoContentTypeTemp" readonly="readonly" value="${cli.contentTypeArquivo}">
 					
 					</div>
 				
@@ -192,7 +194,7 @@
 						
 						<label for="numero">Número:</label>
 						<input type="text" id="numero" name="numero" style="width: 8em;" 
-						onkeypress="$(this).mask('000000')" value="${cli.numero}">
+						onkeypress="$(this).mask('00000000')" value="${cli.numero}">
 					
 					</div>
 				
@@ -256,6 +258,7 @@
 						<th>Nome</th>
 						<th>CPF</th>
 						<th>Email</th>
+						<th>Arquivo PDF</th>
 						<th>Foto</th>
 						<th>Atualizar</th>
 						<th>Excluir</th>
@@ -276,25 +279,60 @@
 							<td><c:out value="${cli.cpf}"></c:out></td>
 							<td><c:out value="${cli.email}"></c:out></td>
 							
-							<td><a href="ServletCliente?acao=download&cli=${cli.id}">
-								<img src="${cli.tempFotoCliente}" alt="Sem Imagem" 
-								title="Imagem" style="width: 24px; height: 24px;">
-							</a></td>
+							<c:if test="${cli.arquivoBase64.isEmpty() == false}">
+								<td>
+									<a href="ServletCliente?acao=download&tipo=arquivoEmPdf&cli=${cli.id}">
+										<img src="resources/img/pdf.png" alt="ArquivoPDF" 
+										title="Baixar PDF" style="width: 24px; height: 24px;">
+									</a>
+								</td>
+							</c:if>
 							
-							<td><a href="ServletCliente?acao=update&cli=${cli.id}">
-								<img alt="update" src="resources/img/editar.png" title="Atualizar" 
-								style="width: 20px; height: 20px;">
-							</a></td>	
+							<c:if test="${cli.arquivoBase64.isEmpty() || cli.arquivoBase64 == null}">
+								<td>
+									<img src="resources/img/semPdf.png" alt="ArquivoPDF" 
+									title="Sem PDF" style="width: 24px; height: 24px;" 
+									onclick="alert('Não Possui PDF Cadastrado!');">
+								</td>
+							</c:if>
 							
-							<td><a href="ServletCliente?acao=delete&cli=${cli.id}">
-								<img alt="delete" src="resources/img/excluir.png" title="Excluir" 
-								style="width: 20px; height: 20px;">
-							</a></td>
+							<c:if test="${cli.fotoBase64.isEmpty() == false}"><!--  -->
+								<td>
+									<a href="ServletCliente?acao=download&tipo=imagem&cli=${cli.id}">
+										<img src='<c:out value="${cli.tempFotoCliente}"/>' alt="ImagemFoto" 
+										title="Baixar Imagem" style="width: 24px; height: 24px;">
+									</a>
+								</td>
+							</c:if>
 							
-							<td><a href="ServletTelefone?acao=addTelefone&cli=${cli.id}">
-								<img alt="telefone" src="resources/img/telefone.png" title="Adicionar Telefone" 
-								style="width: 20px; height: 20px;">
-							</a></td>				
+							<c:if test="${cli.fotoBase64.isEmpty() || cli.fotoBase64.isEmpty() == null}">
+								<td>
+									<img src="resources/img/semImagem.png" alt="ImagemFoto" 
+									title="Sem Imagem" style="width: 24px; height: 24px;" 
+									onclick="alert('Não Possui Imagem Cadastrada!');">
+								</td>
+							</c:if>
+							
+							<td>
+								<a href="ServletCliente?acao=update&cli=${cli.id}">
+									<img alt="update" src="resources/img/editar.png" title="Atualizar" 
+									style="width: 24px; height: 24px;">
+								</a>
+							</td>	
+							
+							<td>
+								<a href="ServletCliente?acao=delete&cli=${cli.id}">
+									<img alt="delete" src="resources/img/excluir.png" title="Excluir" 
+									style="width: 24px; height: 24px;">
+								</a>
+							</td>
+							
+							<td>
+								<a href="ServletTelefone?acao=addTelefone&cli=${cli.id}">
+									<img alt="telefone" src="resources/img/telefone.png" title="Adicionar Telefone" 
+									style="width: 24px; height: 24px;">
+								</a>
+							</td>				
 						
 						</tr>
 				

@@ -30,8 +30,6 @@ import br.com.sysjsp.util.Converte;
 public class ServletCliente extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	
-	private Converte converte;
 
 	private ClienteDao clienteDao = new ClienteDao();
 
@@ -71,31 +69,49 @@ public class ServletCliente extends HttpServlet {
 			request.setAttribute("clientes", clienteDao.listarTodos());
 			view.forward(request, response);
 
-		} else 
-			
+		} else
+
 		if (acao.equalsIgnoreCase("download")) {
-			
+
 			Cliente cliente = clienteDao.consultaC(cli);
-			
+
 			if (cliente != null) {
-				/*setando a resposta*/
-				response.setHeader("Content-Disposition", "attachment;filename=arquivo." + cliente.getContentType().split("\\/")[1]);
-				
-				/*converte a base64 da imagem do banco para byte[]*/
-				byte[] imagemFotoBytes = new Base64().decodeBase64(cliente.getFotoBase64());
-				
-				/*coloca os bytes em um objeto de entrada para processar*/
-				InputStream inputStream = new ByteArrayInputStream(imagemFotoBytes);
-				
-				/*início da resposta para o navegador*/
+
+				String contentType = "";
+				byte[] fileBytes = null;
+				String tipo = request.getParameter("tipo");
+
+				if (tipo.equalsIgnoreCase("imagem")) {
+
+					contentType = cliente.getContentType();
+					/* converte a base64 da imagem do banco para byte[] */
+					fileBytes = new Base64().decodeBase64(cliente.getFotoBase64());
+
+				} else
+
+				if (tipo.equalsIgnoreCase("arquivoEmPdf")) {
+
+					contentType = cliente.getContentTypeArquivo();
+					/* converte a base64 da imagem do banco para byte[] */
+					fileBytes = new Base64().decodeBase64(cliente.getArquivoBase64());
+
+				}
+
+				/* setando a resposta */
+				response.setHeader("Content-Disposition", "attachment;filename=arquivo." + contentType.split("\\/")[1]);
+
+				/* coloca os bytes em um objeto de entrada para processar */
+				InputStream inputStream = new ByteArrayInputStream(fileBytes);
+
+				/* início da resposta para o navegador */
 				int read = 0;
 				byte[] bytes = new byte[1024];
 				OutputStream outputStream = response.getOutputStream();
-				
+
 				while ((read = inputStream.read(bytes)) != -1) {
 					outputStream.write(bytes, 0, read);
 				}
-				
+
 				outputStream.flush();
 				outputStream.close();
 			}
@@ -159,28 +175,37 @@ public class ServletCliente extends HttpServlet {
 
 				/* primeiro temos que validar, se o formulário, é um form de upload */
 				if (ServletFileUpload.isMultipartContent(request)) {
-
+					/* Processa IMAGEM */
 					Part imagemFoto = request.getPart("foto");
-					
-					if (imagemFoto != null) {
-						
-						String fotoBase64 = new Base64().encodeBase64String(
-								converte.converteStreamParaByte((imagemFoto.getInputStream())));
+
+					if (imagemFoto != null && imagemFoto.getInputStream().available() > 0) {
+
+						String fotoBase64 = new Base64()
+								.encodeBase64String(converteStreamParaByte(imagemFoto.getInputStream()));
 						cliente.setFotoBase64(fotoBase64);
 						cliente.setContentType(imagemFoto.getContentType());
+
+					} else {
 						
+						cliente.setFotoBase64(request.getParameter("fotoTemp"));
+						cliente.setContentType(request.getParameter("contentTypeTemp"));
 					}
-					
-					
-					/*Processa PDF*/
+
+					/* Processa PDF */
 					Part arquivoPdf = request.getPart("arquivo");
-					
-					if (arquivoPdf != null) {
-						
-						String arquivoPdfBase64 = new Base64().encodeBase64String(
-								converte.converteStreamParaByte((arquivoPdf.getInputStream())));
-						cliente.setArquivoBase64(arquivoPdfBase64);
+
+					if (arquivoPdf != null && arquivoPdf.getInputStream().available() > 0) {
+
+						String arquivoBase64 = new Base64()
+								.encodeBase64String(converteStreamParaByte(arquivoPdf.getInputStream()));
+						cliente.setArquivoBase64(arquivoBase64);
 						cliente.setContentTypeArquivo(arquivoPdf.getContentType());
+
+					} else {
+						
+						cliente.setArquivoBase64(request.getParameter("arquivoTemp"));
+						cliente.setContentTypeArquivo(request.getParameter("arquivoContentTypeTemp"));
+						
 					}
 				}
 
@@ -230,6 +255,26 @@ public class ServletCliente extends HttpServlet {
 		}
 	}
 
-	
+	/* Converte a entrada de fluxo de dados da imagem para um array de byte[] */
+	public static byte[] converteStreamParaByte(InputStream imagem) {
+		try {
+
+			ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+			int reads;
+			reads = imagem.read();
+
+			/* enquanto tiver dados */
+			while (reads != -1) {
+				byteArrayOutputStream.write(reads);
+				reads = imagem.read();
+			}
+
+			return byteArrayOutputStream.toByteArray();/* retorna um array de bytes */
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 }

@@ -7,7 +7,7 @@ import java.io.InputStream;
 public class Converte {
 	
 	/*Converte a entrada de fluxo de dados da imagem para um array de byte[]*/
-	public byte[] converteStreamParaByte(InputStream imagem) {
+	public static byte[] converteStreamParaByte(InputStream imagem) {
 		try {
 			
 			ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();

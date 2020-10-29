@@ -47,15 +47,25 @@ public class ServletLogin extends HttpServlet {
 			String usuario = request.getParameter("usuario");
 			String senha = request.getParameter("senha");
 			
-			if (dao.validarLogin(usuario, senha)) {
+			if (usuario != null && !usuario.isEmpty() && senha != null && !senha.isEmpty()) {
 				
-				RequestDispatcher dispatcher = request.getRequestDispatcher("menu.jsp");
-				dispatcher.forward(request, response);
+				if (dao.validarLogin(usuario, senha)) {
+					
+					RequestDispatcher dispatcher = request.getRequestDispatcher("menu.jsp");
+					dispatcher.forward(request, response);
+				} else {
+					/*caso o usuario não tenha acesso ao sistema*/
+					RequestDispatcher dispatcher = request.getRequestDispatcher("acessonegado.jsp");
+					dispatcher.forward(request, response);
+				}
+				
 			} else {
-				/*caso o usuario não tenha acesso ao sistema*/
-				RequestDispatcher dispatcher = request.getRequestDispatcher("acessonegado.jsp");
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 				dispatcher.forward(request, response);
+				
 			}
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
