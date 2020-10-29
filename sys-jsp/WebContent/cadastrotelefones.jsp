@@ -27,7 +27,7 @@
 
 <body>
 
-	<div class="form">
+	<section>
 		
 		<form id="formulario" action="ServletTelefone" method="post">
 		
@@ -103,25 +103,37 @@
 		
 		</form>
 		
-		<br>
+	</section>
 		
-		<div class="content">
+	<section>
+	
+		<div class="caption">Telefones Cadastrados</div>
 		
-			<table class="rTable">
+		<div class="tbl-header">
+		
+			<table>
 				
 				<thead>
 					
 					<tr>
 						
-						<th>Código</th>
-						<th>Número</th>
-						<th>Tipo</th>
-						<th>Excluir</th>
+						<th style="width: 30%; text-align: center;">Código</th>
+						<th style="width: 30%; text-align: center;">Número</th>
+						<th style="width: 30%; text-align: center;">Tipo</th>
+						<th style="width: 30%; text-align: center;">Excluir</th>
 						
 					</tr>
 					
 				</thead>
 				
+			</table>
+			
+		</div>
+		
+		<div class="tbl-content">
+				
+			<table>
+			
 				<tbody>
 					
 					<c:forEach items="${telefone}" var="fone">
@@ -147,8 +159,8 @@
 		
 		</div>
 		
-	</div>
-
+	</section>
+		
 </body>
 
 </html>

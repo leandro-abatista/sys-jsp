@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" type="text/css" href="resources/css/estiloCadastro.css"/>
-<link rel="stylesheet" type="text/css" href="resources/css/estiloTableProduto.css"/>
+<link rel="stylesheet" type="text/css" href="resources/css/table.css"/>
 
 
 
@@ -26,129 +26,132 @@
 </head>
 
 <body>
+	
+	<section>
 
-	<div class="form">
-		
 		<form id="formulario" action="ServletProduto" method="post">
 		
 			<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Voltar para o menu</a>
 		
-			<div class="div-cadastrousuario">
-				<h1>Cadastro de Produtos</h1>
-			</div>
+				<div class="div-cadastrousuario">
+					<h1>Cadastro de Produtos</h1>
+				</div>
+				
+				<div class="div-dadosusuario">
+					<h2>Dados do Produto</h2>
+				</div>
 			
-			<div class="div-dadosusuario">
-				<h2>Dados do Produto</h2>
-			</div>
-			
-			<!-- agrupa os campos do formulário -->
-			<fieldset>
-				
-				<fieldset class="grupo">
-				
-					<div class="campo">
+				<!-- agrupa os campos do formulário -->
+				<fieldset>
 					
-						<label for="id">Código:</label>
-						<input type="text" id="id" name="id" style="width: 8em;" readonly="readonly"
-						value="${produto.id}">
+					<fieldset class="grupo">
+					
+						<div class="campo">
 						
-					</div>
-				
-				</fieldset>
-				
-				<fieldset class="grupo">
+							<label for="id">Código:</label>
+							<input type="text" id="id" name="id" style="width: 8em;" readonly="readonly"
+							value="${produto.id}">
+							
+						</div>
 					
-					<div class="campo">
+					</fieldset>
 					
-						<label for="descricao">Descrição:</label>
-						<input type="text" id="descricao" name="descricao" style="width: 30em;"
-						value="${produto.descricao}">
+					<fieldset class="grupo">
 						
-					</div>
-					
-					<div class="campo">
-					
-						<label for="quantidade">Quantd.:</label>
-						<input type="number" id="quantidade" name="quantidade" style="width: 8em;"
-						min="1" max="2000" onkeypress="$(this).mask('0000')"
-						value="${produto.quantidade}">
+						<div class="campo">
 						
-					</div>
-					
-					<div class="campo">
-					
-						<label for="valorcompra">Valor Compra:</label>
-						<input type="text" id="valorcompra" name="valorcompra" style="width: 10em;"
-						onkeypress="$(this).mask('R$ 000000.00', {reverse: true});"
-						value="${produto.valorcompra}">
+							<label for="descricao">Descrição:</label>
+							<input type="text" id="descricao" name="descricao" style="width: 30em;"
+							value="${produto.descricao}">
+							
+						</div>
 						
-					</div>
-					
-					<div class="campo">
-					
-						<label for="valoritem">Valor Item:</label>
-						<input type="text" id="valoritem" name="valoritem" style="width: 10em;"
-						onkeypress="$(this).mask('R$ 000000.00', {reverse: true});"
-						value="${produto.valoritem}">
+						<div class="campo">
 						
-					</div>
-					
-					<div class="campo">
-					
-						<label for="valoritem">Categoria:</label>
-						<select id="categoria" name="categoria">
-							<option disabled="disabled" selected="selected">Selecione uma Opção</option>
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
-						</select>
+							<label for="quantidade">Quantd.:</label>
+							<input type="number" id="quantidade" name="quantidade" style="width: 8em;"
+							min="1" max="2000" onkeypress="$(this).mask('0000')"
+							value="${produto.quantidade}">
+							
+						</div>
 						
-					</div>
+						<div class="campo">
+						
+							<label for="valorcompra">Valor Compra:</label>
+							<input type="text" id="valorcompra" name="valorcompra" style="width: 10em;"
+							onkeypress="$(this).mask('R$ 000000.00', {reverse: true});"
+							value="${produto.valorcompra}">
+							
+						</div>
+						
+						<div class="campo">
+						
+							<label for="valoritem">Valor Item:</label>
+							<input type="text" id="valoritem" name="valoritem" style="width: 10em;"
+							onkeypress="$(this).mask('R$ 000000.00', {reverse: true});"
+							value="${produto.valoritem}">
+							
+						</div>
+						
+						<div class="campo">
+						
+							<label for="valoritem">Categoria:</label>
+							<select id="categoria" name="categoria">
+								<option disabled="disabled" selected="selected">Selecione uma Opção</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+							</select>
+						
+						</div>
+							
+					</fieldset>
 					
-				
-				</fieldset>
-				
-				<fieldset class="grupo">
-				
-					
-				
-				
-				</fieldset>
-				
+									
 				<button type="submit" class="botao submit" value="Salvar">Salvar</button>
 				<button type="submit" class="botao submit" value="Cancelar"
 				onclick="document.getElementById('formulario').action = 'ServletProduto?acao=reset'">Cancelar</button>
 			
 			</fieldset>
-		
+			
 		</form>
 		
-		<br>
+	</section>
 		
-		<div class="caption">Produtos Cadastrados</div>
+		<section>
 		
-			<div class="content">
+			<div class="caption">Produtos Cadastrados</div>
 		
-				<table class="tabela">
+				<div class="tbl-header">
+		
+					<table>
+						
+						<thead>
+							
+							<tr>
+								
+								<th style="width: 8%; text-align: center;">Código</th>
+								<th style="width: 30%; text-align: center;">Descrição</th>
+								<th style="width: 10%; text-align: center;">Quantd.</th>
+								<th style="width: 10%; text-align: center;">Valor Compra</th>
+								<th style="width: 10%; text-align: center;">Valor Item</th>
+								<th style="width: 10%; text-align: center;">Categoria</th>
+								<th style="width: 8%; text-align: center;">Atualizar</th>
+								<th style="width: 8%; text-align: center;">Excluir</th>
+								
+							</tr>
+							
+						</thead>
+						
+					</table>
 					
-					<thead>
-						
-						<tr>
-							
-							<th>Código</th>
-							<th>Descrição</th>
-							<th>Quantd.</th>
-							<th>Valor Compra</th>
-							<th>Valor Item</th>
-							<th>Categoria</th>
-							<th>Atualizar</th>
-							<th>Excluir</th>
-							
-						</tr>
-						
-					</thead>
+				</div>
+				
+				<div class="tbl-content">
+				
+				<table>
 					
 					<tbody>
 						
@@ -156,20 +159,20 @@
 						
 							<tr>
 								
-								<td><c:out value="${produto.id}"></c:out></td>				
-								<td><c:out value="${produto.descricao}"></c:out></td>				
-								<td><c:out value="${produto.quantidade}"></c:out></td>
-								<td><c:out value="${produto.valorcompra}"></c:out></td>					
-								<td><c:out value="${produto.valoritem}"></c:out></td>				
-								<td><c:out value="${produto.categoria}"></c:out></td>				
+								<td style="width: 8%;"><c:out value="${produto.id}"></c:out></td>				
+								<td style="width: 30%;"><c:out value="${produto.descricao}"></c:out></td>				
+								<td style="width: 10%;"><c:out value="${produto.quantidade}"></c:out></td>
+								<td style="width: 10%;"><c:out value="${produto.valorcompra}"></c:out></td>					
+								<td style="width: 10%;"><c:out value="${produto.valoritem}"></c:out></td>				
+								<td style="width: 10%;"><c:out value="${produto.categoria}"></c:out></td>				
 								
-								<td><a href="ServletProduto?acao=update&produto=${produto.id}">
+								<td style="width: 8%;"><a href="ServletProduto?acao=update&produto=${produto.id}">
 									<img alt="update" src="resources/img/editar.png" title="Atualizar" 
 									style="width: 20px; height: 20px;">
 								</a></td>	
 								
 											
-								<td><a href="ServletProduto?acao=delete&produto=${produto.id}">
+								<td style="width: 8%;"><a href="ServletProduto?acao=delete&produto=${produto.id}">
 									<img alt="delete" src="resources/img/excluir.png" title="Excluir" 
 									style="width: 20px; height: 20px;">
 								</a></td>
@@ -181,9 +184,11 @@
 					</tbody>
 					
 				</table>
-			
+				
 			</div>
-			
+		
+		</section>
+		
 	<script type="text/javascript">
 
 		
