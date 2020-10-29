@@ -19,6 +19,7 @@ table {
 
 .tbl-header{
 	background-color: #4682B4;
+	border-top: solid 3px rgba(255,255,255,0.3);
 }
 
 .tbl-content{
@@ -32,18 +33,18 @@ th{
   padding: 20px 15px;
   text-align: center;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 15px;
   color: #fff;
   text-transform: uppercase;
   border-bottom: solid 2px rgba(255,255,255,0.1);
 }
 
 td{
-  padding: 15px;
+  padding: 18px;
   text-align: center;
   vertical-align:middle;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 14px;
   color: black;
   border: solid 2px rgba(255,255,255,0.1);
 }

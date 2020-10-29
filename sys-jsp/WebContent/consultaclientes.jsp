@@ -40,12 +40,12 @@
 					<thead>
 
 						<tr>
-							<th style="width: 8%;">Código</th>
-							<th style="width: 30%;">Nome</th>
-							<th style="width: 10%;">CPF</th>
-							<th style="width: 30%;">Email</th>
-							<th style="width: 10%;">Arquivo PDF</th>
-							<th style="width: 10%;">Foto</th>
+							<th style="width: 8%; text-align: center;">Código</th>
+							<th style="width: 30%; text-align: center;">Nome</th>
+							<th style="width: 10%; text-align: center;">CPF</th>
+							<th style="width: 30%; text-align: center;">Email</th>
+							<th style="width: 10%; text-align: center;">Arquivo PDF</th>
+							<th style="width: 10%; text-align: center;">Foto</th>
 						</tr>
 
 					</thead>

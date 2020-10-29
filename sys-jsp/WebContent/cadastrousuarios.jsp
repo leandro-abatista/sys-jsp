@@ -22,7 +22,7 @@
 
 <body>
 	
-	<div class="form">
+	<section>
 	
 		<form id="formulario" action="ServletUsuario" method="post">
 		
@@ -131,45 +131,59 @@
 		
 		</form>
 		
-		<br>
+	</section>
 		
-		<div class="content">
+	<section>
+	
+		<div class="caption">Usuários Cadastrados</div>
+	
+		<div class="tbl-header">
 			
-			<table class="rTable">
+			<table>
 			
 					<thead>
+					
 						<tr>
-							<th>Código</th>
-							<th>Nome</th>
-							<th>Usuário</th>
-							<th>Senha</th>
-							<th>Telefone</th>
-							<th>E-mail</th>
-							<th>Atualizar</th>
-							<th>Excluir</th>
+							<th style="width: 8%; text-align: center;">Código</th>
+							<th style="width: 30%; text-align: center;">Nome</th>
+							<th style="width: 20%; text-align: center;">Usuário</th>
+							<th style="width: 20%; text-align: center;">Senha</th>
+							<th style="width: 15%; text-align: center;">Telefone</th>
+							<th style="width: 25%; text-align: center;">E-mail</th>
+							<th style="width: 8%; text-align: center;">Atualizar</th>
+							<th style="width: 8%; text-align: center;">Excluir</th>
 						</tr>
+						
 					</thead>
-				
+					
+			</table>
+			
+		</div>
+		
+		<div class="tbl-content">
+		
+			<table>
+			
 				<tbody>
 				
 					<c:forEach items="${usuarios}" var="user">
 					
 						<tr>
 							
-							<td><c:out value="${user.id}"></c:out></td>				
-							<td><c:out value="${user.primeironome} ${user.sobrenome} ${user.ultimonome}"></c:out></td>				
-							<td><c:out value="${user.usuario}"></c:out></td>				
-							<td><c:out value="${user.senha}"></c:out></td>				
-							<td><c:out value="${user.telefone}"></c:out></td>				
-							<td><c:out value="${user.email}"></c:out></td>				
+							<td style="width: 8%;"><c:out value="${user.id}"></c:out></td>				
+							<td style="width: 30%;"><c:out value="${user.primeironome} ${user.sobrenome} ${user.ultimonome}"></c:out></td>				
+							<td style="width: 20%;"><c:out value="${user.usuario}"></c:out></td>				
+							<td style="width: 20%;"><c:out value="${user.senha}"></c:out></td>				
+							<td style="width: 15%;"><c:out value="${user.telefone}"></c:out></td>				
+							<td style="width: 25%;"><c:out value="${user.email}"></c:out></td>				
 							
-							<td><a href="ServletUsuario?acao=update&user=${user.id}">
+							<td style="width: 8%;"><a href="ServletUsuario?acao=update&user=${user.id}">
 								<img alt="update" src="resources/img/editar.png" title="Atualizar" 
 								style="width: 20px; height: 20px;">
 							</a></td>	
 							
 										
-							<td><a href="ServletUsuario?acao=delete&user=${user.id}">
+							<td style="width: 8%;"><a href="ServletUsuario?acao=delete&user=${user.id}">
 								<img alt="delete" src="resources/img/excluir.png" title="Excluir" 
 								style="width: 20px; height: 20px;">
 							</a></td>				
@@ -184,7 +198,7 @@
 		
 		</div>
 		
-	</div>
+	</section>	
 	
 	<script type="text/javascript">
 

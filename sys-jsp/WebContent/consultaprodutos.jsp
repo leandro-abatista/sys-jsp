@@ -40,12 +40,12 @@
 					<thead>
 
 						<tr>
-							<th style="width: 8%;">Código</th>
-							<th style="width: 30%;">Descrição</th>
-							<th style="width: 10%;">Quantd.</th>
-							<th style="width: 15%;">Valor Compra</th>
-							<th style="width: 15%;">Valor Item</th>
-							<th style="width: 10%;">Categoria</th>
+							<th style="width: 8%; text-align: center;">Código</th>
+							<th style="width: 30%; text-align: center;">Descrição</th>
+							<th style="width: 10%; text-align: center;">Quantd.</th>
+							<th style="width: 15%; text-align: center;">Valor Compra</th>
+							<th style="width: 15%; text-align: center;">Valor Item</th>
+							<th style="width: 10%; text-align: center;">Categoria</th>
 						</tr>
 
 					</thead>

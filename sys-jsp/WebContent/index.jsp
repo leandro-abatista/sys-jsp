@@ -28,7 +28,7 @@ scope="page"/>
 					<label>Senha:</label>
 					<input type="password" id="senha" name="senha" placeholder="Informe a senha" required="required"/>
 					
-					<button type="submit" class="btn" value="logar">Logar</button>
+					<button type="submit" class="btn" value="logar">Acessar</button>
 			
 				</form>
 	

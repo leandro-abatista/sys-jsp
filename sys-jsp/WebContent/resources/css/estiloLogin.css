@@ -43,19 +43,19 @@ body {
 	  width: 100%;
 	  border: solid 2px #DCDCDC;
 	  margin: 0 0 20px;
-	  padding: 15px;
+	  padding: 12px;
 	  box-sizing: border-box;
 	  font-size: 15px;
-	  font-weight: 700;
+	  font-weight: 600;
 }
 
 
 label {
 	text-align: left;
-	margin-left: 0px;
+	margin-left: 0;
 	display: inline-block;
 	margin-top: 15px;
-	margin-bottom: 0;
+	margin-bottom: 2px;
 	position: relative;
 	font-weight: 700;
 	font-family: "Arial" sans-serif;
@@ -65,7 +65,7 @@ label {
 
 button {
 	position: relative;
-	width: 70%;
+	width: 80%;
 	height: 50px;
 	margin-top: 50px;
 	margin-bottom: 30px;
@@ -78,7 +78,7 @@ button {
 	border: none;
 	padding: 15px;
 	font-size: 1.3em;
-	font-weight: 400;
+	font-weight: 600;
 	border-radius: 5px;
 	box-shadow: 0px 0px 10px rgba(#333, 0.4);
 	cursor: pointer;

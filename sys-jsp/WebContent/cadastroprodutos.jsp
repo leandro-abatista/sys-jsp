@@ -12,14 +12,12 @@
 <link rel="stylesheet" type="text/css" href="resources/css/table.css"/>
 
 
-
 <!-- mascara funcionar tem que colocar estas bibliotecas abaixo -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    
     
 
 <title>Cadastro de Produtos</title>
@@ -79,7 +77,7 @@
 						
 							<label for="valorcompra">Valor Compra:</label>
 							<input type="text" id="valorcompra" name="valorcompra" style="width: 10em;"
-							onkeypress="$(this).mask('R$ 000000.00', {reverse: true});"
+							onkeypress="$(this).mask('000.000.000,00', {reverse: true});"
 							value="${produto.valorcompra}">
 							
 						</div>
@@ -88,7 +86,7 @@
 						
 							<label for="valoritem">Valor Item:</label>
 							<input type="text" id="valoritem" name="valoritem" style="width: 10em;"
-							onkeypress="$(this).mask('R$ 000000.00', {reverse: true});"
+							onkeypress="$(this).mask('000.000.000,00', {reverse: true});"
 							value="${produto.valoritem}">
 							
 						</div>

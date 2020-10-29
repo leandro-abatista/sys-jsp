@@ -84,8 +84,17 @@ public class ServletProduto extends HttpServlet {
 			produto.setId(!id.isEmpty() ? Long.parseLong(id) : 0);
 			produto.setDescricao(descricao);
 			produto.setQuantidade(Integer.parseInt(quantidade));
-			produto.setValorcompra(Double.parseDouble(valorcompra));
-			produto.setValoritem(Double.parseDouble(valoritem));
+			
+			if (valorcompra != null && !valorcompra.isEmpty()) {
+				String valorParseVC = valorcompra.replaceAll("\\.", "").replaceAll("\\,", ".");
+				produto.setValorcompra(Double.valueOf(valorParseVC));
+			}
+			
+			if (valoritem != null && !valoritem.isEmpty()) {
+				String valorParseVI = valoritem.replaceAll("\\.", "").replaceAll("\\,", ".");
+				produto.setValoritem(Double.valueOf(valorParseVI));
+			}
+			
 			produto.setCategoria(categoria);
 			
 			String msg = null;

@@ -280,7 +280,7 @@
 
 	<section>
 
-		<div class="caption">Produtos Cadastrados</div>
+		<div class="caption">Clientes Cadastrados</div>
 
 		<div class="tbl-header">
 
