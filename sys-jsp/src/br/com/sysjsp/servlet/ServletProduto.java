@@ -112,13 +112,15 @@ public class ServletProduto extends HttpServlet {
 			if (id == null || id.isEmpty() && produtoDao.validarDescricaoP(descricao) && podeInserir) {
 				
 				produtoDao.saveP(produto);
-				msg = "Registro salvo com sucesso!";
+				request.setAttribute("msg", "Registro salvo com sucesso!");
+				
 			} else 
 				
 			if (id != null && !id.isEmpty() && podeInserir) {
 				
 				produtoDao.updateP(produto);
-				msg = "Registro atualizado com sucesso!";
+				request.setAttribute("msg", "Registro atualizado com sucesso!");
+				
 			}
 			
 			RequestDispatcher view = request.getRequestDispatcher("/cadastroprodutos.jsp");

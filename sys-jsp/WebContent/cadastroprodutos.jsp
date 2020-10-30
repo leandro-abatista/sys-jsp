@@ -11,7 +11,6 @@
 <link rel="stylesheet" type="text/css" href="resources/css/estiloCadastro.css"/>
 <link rel="stylesheet" type="text/css" href="resources/css/table.css"/>
 
-
 <!-- mascara funcionar tem que colocar estas bibliotecas abaixo -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -60,7 +59,7 @@
 						
 							<label for="descricao">Descrição:</label>
 							<input type="text" id="descricao" name="descricao" style="width: 30em;"
-							value="${produto.descricao}">
+							value="${produto.descricao}" required="required">
 							
 						</div>
 						
@@ -69,7 +68,7 @@
 							<label for="quantidade">Quantd.:</label>
 							<input type="number" id="quantidade" name="quantidade" style="width: 8em;"
 							min="1" max="2000" onkeypress="$(this).mask('0000')"
-							value="${produto.quantidade}">
+							value="${produto.quantidade}" required="required">
 							
 						</div>
 						
@@ -77,8 +76,8 @@
 						
 							<label for="valorcompra">Valor Compra:</label>
 							<input type="text" id="valorcompra" name="valorcompra" style="width: 10em;"
-							onkeypress="$(this).mask('000.000.000,00', {reverse: true});"
-							value="${produto.valorcompra}">
+							onkeypress="$(this).mask('R$ 000.000.000,00', {reverse: true});"
+							value="${produto.valorcompra}" required="required" data-pre="R$">
 							
 						</div>
 						
@@ -86,8 +85,8 @@
 						
 							<label for="valoritem">Valor Item:</label>
 							<input type="text" id="valoritem" name="valoritem" style="width: 10em;"
-							onkeypress="$(this).mask('000.000.000,00', {reverse: true});"
-							value="${produto.valoritem}">
+							onkeypress="$(this).mask('R$ 000.000.000,00', {reverse: true});"
+							value="${produto.valoritem}" required="required" data-pre="R$">
 							
 						</div>
 						
@@ -187,9 +186,15 @@
 		
 		</section>
 		
+		
+		
 	<script type="text/javascript">
 
-		
+		$().ready(function() {
+			setTimeout(function () {
+				$('#mensagem').hide(); // "foo" é o id do elemento que seja manipular.
+			}, 4000); // O valor é representado em milisegundos.
+		});
 
 	</script>
 
