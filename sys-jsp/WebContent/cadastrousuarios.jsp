@@ -1,3 +1,4 @@
+<%@page import="br.com.sysjsp.classes.model.AcessoJsp"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -122,6 +123,30 @@
 				
 				</fieldset>
 				
+				<fieldset class="grupo">
+					
+					<div class="campo">
+						
+						<label for="ativo">Ativo:</label>
+						<input type="checkbox" id="ativo" name="ativo"
+							<%
+								if(request.getAttribute("user") != null){
+									
+									AcessoJsp usuario = (AcessoJsp) request.getAttribute("user");
+									
+									if(usuario.isAtivo()){
+										out.print(" ");
+										out.print("checked=\"checked\"");
+										out.print(" ");
+									}
+								}
+							%>
+						>
+						
+					</div>
+				
+				</fieldset>
+				
 					
 				<button type="submit" class="botao submit" value="Salvar">Salvar</button>
 				
@@ -185,10 +210,13 @@
 							</a></td>	
 							
 										
-							<td style="width: 8%;"><a href="ServletUsuario?acao=delete&user=${user.id}">
+							<td style="width: 8%;">
+								<a href="ServletUsuario?acao=delete&user=${user.id}">
 								<img alt="delete" src="resources/img/excluir.png" title="Excluir" 
-								style="width: 20px; height: 20px;">
-							</a></td>				
+								style="width: 20px; height: 20px;" 
+								onclick="return confirm('Confirma a exclusão do registro?');">
+								</a>
+							</td>				
 						
 						</tr>
 				

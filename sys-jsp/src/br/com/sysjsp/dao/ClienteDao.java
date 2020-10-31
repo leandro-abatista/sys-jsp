@@ -23,8 +23,8 @@ public class ClienteDao {
 			String sql = "INSERT INTO tbl_cliente(" + 
 					"            nome, cpf, rg, orgaoexpeditor, datanascimento, telefonefixo, " + 
 					"            telefonecelular, email, observacao, cep, endereco, numero, bairro, " + 
-					"            cidade, estado, ibge, fotobase64, contenttype, contenttypearquivo, arquivobase64)" + 
-					"    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+					"            cidade, estado, ibge, fotobase64, contenttype, contenttypearquivo, arquivobase64, genero)" + 
+					"    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 			PreparedStatement insert = connection.prepareStatement(sql);
 			insert.setString(1, cliente.getNome());
 			insert.setString(2, cliente.getCpf());
@@ -46,6 +46,7 @@ public class ClienteDao {
 			insert.setString(18, cliente.getContentType());
 			insert.setString(19, cliente.getContentTypeArquivo());
 			insert.setString(20, cliente.getArquivoBase64());
+			insert.setString(21, cliente.getGenero());
 			
 			insert.execute();
 			connection.commit();
@@ -94,6 +95,7 @@ public class ClienteDao {
 				cliente.setContentType(rs.getString("contenttype"));
 				cliente.setContentTypeArquivo(rs.getString("contenttypearquivo"));
 				cliente.setArquivoBase64(rs.getString("arquivobase64"));
+				cliente.setGenero(rs.getString("genero"));
 				
 				clientes.add(cliente);
 			}
@@ -137,6 +139,7 @@ public class ClienteDao {
 				cliente.setContentType(rs.getString("contenttype"));
 				cliente.setContentTypeArquivo(rs.getString("contenttypearquivo"));
 				cliente.setArquivoBase64(rs.getString("arquivobase64"));
+				cliente.setGenero(rs.getString("genero"));
 				
 				return cliente;
 			}
@@ -154,7 +157,7 @@ public class ClienteDao {
 					"   SET id=?, nome=?, cpf=?, rg=?, orgaoexpeditor=?, datanascimento=?, " + 
 					"       telefonefixo=?, telefonecelular=?, email=?, observacao=?, cep=?, " + 
 					"       endereco=?, numero=?, bairro=?, cidade=?, estado=?, ibge=?, " +
-					"		fotobase64=?, contenttype=?, contenttypearquivo=?, arquivobase64=? " + 
+					"		fotobase64=?, contenttype=?, contenttypearquivo=?, arquivobase64=?, genero=? " + 
 					" 	WHERE id = '" + cliente.getId() + "'";
 			PreparedStatement update = connection.prepareStatement(sql);
 			update.setLong(1, cliente.getId());
@@ -178,6 +181,7 @@ public class ClienteDao {
 			update.setString(19, cliente.getContentType());
 			update.setString(20, cliente.getContentTypeArquivo());
 			update.setString(21, cliente.getArquivoBase64());
+			update.setString(22, cliente.getGenero());
 			
 			update.executeUpdate();
 			connection.commit();

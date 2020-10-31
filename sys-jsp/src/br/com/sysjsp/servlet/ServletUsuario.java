@@ -87,6 +87,13 @@ public class ServletUsuario extends HttpServlet {
 			acesso.setTelefone(telefone);
 			acesso.setEmail(email);
 			
+			if (request.getParameter("ativo") != null && request.getParameter("ativo").equalsIgnoreCase("on")) {
+				acesso.setAtivo(true);
+			} else {
+				acesso.setAtivo(false);
+			}
+			
+			
 			String msg = null;
 			boolean podeInserir = true;
 			

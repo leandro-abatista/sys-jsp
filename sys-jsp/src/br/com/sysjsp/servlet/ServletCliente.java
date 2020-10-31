@@ -22,9 +22,6 @@ import br.com.sysjsp.classes.model.Cliente;
 import br.com.sysjsp.dao.ClienteDao;
 import br.com.sysjsp.util.Converte;
 
-/**
- * Servlet implementation class ServletCliente
- */
 @WebServlet("/ServletCliente")
 @MultipartConfig
 public class ServletCliente extends HttpServlet {
@@ -149,6 +146,7 @@ public class ServletCliente extends HttpServlet {
 			String cidade = request.getParameter("cidade");
 			String estado = request.getParameter("estado");
 			String ibge = request.getParameter("ibge");
+			String genero = request.getParameter("genero");
 
 			Cliente cliente = new Cliente();
 			cliente.setId(!id.isEmpty() ? Long.parseLong(id) : 0);
@@ -169,6 +167,7 @@ public class ServletCliente extends HttpServlet {
 			cliente.setCidade(cidade);
 			cliente.setEstado(estado);
 			cliente.setIbge(Integer.valueOf(ibge));
+			cliente.setGenero(genero);
 
 			try {
 				/* Início do código - File upload de imagens e pdf */
@@ -214,6 +213,7 @@ public class ServletCliente extends HttpServlet {
 			}
 
 			/* Fim do código - - File upload de imagens e pdf */
+			
 
 			String msg = null;
 			boolean podeInserir = true;

@@ -20,8 +20,8 @@ public class UsuarioDao {
 	public void salvarU(AcessoJsp acesso) {
 		try {
 
-			String sql = "INSERT INTO tbl_usuario (primeironome, sobrenome, ultimonome, usuario, senha, telefone, email)"
-					+ " VALUES (?, ?, ?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO tbl_usuario (primeironome, sobrenome, ultimonome, usuario, senha, telefone, email, ativo)"
+					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
 			PreparedStatement insert = connection.prepareStatement(sql);
 			insert.setString(1, acesso.getPrimeironome());
 			insert.setString(2, acesso.getSobrenome());
@@ -30,6 +30,8 @@ public class UsuarioDao {
 			insert.setString(5, acesso.getSenha());
 			insert.setString(6, acesso.getTelefone());
 			insert.setString(7, acesso.getEmail());
+			insert.setBoolean(8, acesso.isAtivo());
+			
 			insert.execute();
 			connection.commit();
 
@@ -64,6 +66,7 @@ public class UsuarioDao {
 				acesso.setSenha(rs.getString("senha"));
 				acesso.setTelefone(rs.getString("telefone"));
 				acesso.setEmail(rs.getString("email"));
+				acesso.setAtivo(rs.getBoolean("ativo"));
 
 				listar.add(acesso);
 
@@ -96,6 +99,8 @@ public class UsuarioDao {
 				acesso.setSenha(rs.getString("senha"));
 				acesso.setTelefone(rs.getString("telefone"));
 				acesso.setEmail(rs.getString("email"));
+				acesso.setAtivo(rs.getBoolean("ativo"));
+				
 				return acesso;
 			}
 
@@ -109,7 +114,7 @@ public class UsuarioDao {
 		try {
 
 			String sql = "UPDATE tbl_usuario "
-					+ "SET primeironome=?, sobrenome=?, ultimonome=?, usuario=?, senha=?, telefone=?, email=?"
+					+ "SET primeironome=?, sobrenome=?, ultimonome=?, usuario=?, senha=?, telefone=?, email=?, ativo=? "
 					+ "WHERE id = '" + acessoJsp.getId() + "'";
 			PreparedStatement update = connection.prepareStatement(sql);
 			update.setString(1, acessoJsp.getPrimeironome());
@@ -119,6 +124,8 @@ public class UsuarioDao {
 			update.setString(5, acessoJsp.getSenha());
 			update.setString(6, acessoJsp.getTelefone());
 			update.setString(7, acessoJsp.getEmail());
+			update.setBoolean(8, acessoJsp.isAtivo());
+			
 			update.executeUpdate();
 			connection.commit();
 

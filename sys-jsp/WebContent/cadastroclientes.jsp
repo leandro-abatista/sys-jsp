@@ -1,3 +1,6 @@
+<%@page import="br.com.sysjsp.classes.model.Cliente"%>
+<%@page import="com.sun.deploy.util.SessionState.Client"%>
+<%@page import="br.com.sysjsp.classes.model.AcessoJsp"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -117,6 +120,52 @@
 					</div>
 	
 					<div class="campo">
+					
+						<label for="genero">Gênero</label>
+						
+						<input type="radio" id="genero" name="genero" value="masculino"
+							
+							<%
+								if(request.getAttribute("cli") != null){
+									Cliente cliente = (Cliente) request.getAttribute("cli");
+									if(cliente.getGenero().equalsIgnoreCase("masculino")){
+										out.print(" ");
+										out.print("checked=\"checked\"");
+										out.print(" ");
+									}
+								}
+							%>
+						
+						>Masculino
+						
+						<input type="radio" id="genero" name="genero" value="feminino"
+							
+							<%
+								if(request.getAttribute("cli") != null){
+									Cliente cliente = (Cliente) request.getAttribute("cli");
+									if(cliente.getGenero().equalsIgnoreCase("feminino")){
+										out.print(" ");
+										out.print("checked=\"checked\"");
+										out.print(" ");
+									}
+								}
+							%>
+						
+						>Feminino
+						
+					</div>
+					
+					<div class="campo">
+					
+						
+						
+					</div>
+	
+				</fieldset>
+				
+				<fieldset class="grupo">
+					
+					<div class="campo">
 	
 						<label for="telefonefixo">Tel. Residencial:</label> 
 						<input
@@ -146,8 +195,7 @@
 							value="${cli.email}">
 	
 					</div>
-	
-	
+				
 				</fieldset>
 	
 				<fieldset class="grupo">

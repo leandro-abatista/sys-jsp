@@ -25,7 +25,7 @@
 
 	<section>
 
-		<form id="formulario" action="ServletEspecialidade" method="post"	enctype="multipart/form-data">
+		<form id="formulario" action="ServletEspecialidade" method="post">
 	
 			<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Voltar para o menu</a>
 	
@@ -65,6 +65,18 @@
 					onclick="document.getElementById('formulario').action = 'ServletEspecialidade?acao=reset'">Cancelar</button>
 	
 			</fieldset>
+			
+			<fieldset class="grupo">
+				
+				<div class="campo">
+					
+					<label for="pesquisar">Pesquisar:</label>
+					<input type="search" id="pesquisar" name="pesquisar" style="width: 30em;" 
+					value="${especialidade.descricao}">
+					
+				</div>
+			
+			</fieldset>
 	
 		</form>
 	
@@ -83,7 +95,7 @@
 					<tr>
 
 						<th style="width: 8%; text-align: center;">Código</th>
-						<th style="width: 30%; text-align: center;">Nome</th>
+						<th style="width: 30%; text-align: center;">Descrição</th>
 						<th style="width: 8%; text-align: center;">Atualizar</th>
 						<th style="width: 8%; text-align: center;">Excluir</th>
 
@@ -106,15 +118,15 @@
 						<tr>
 
 							<td style="width: 8%;"><c:out value="${especialidade.id}"></c:out></td>
-							<td style="width: 30%;"><c:out value="${especialidade.nome}"></c:out></td>
+							<td style="width: 30%;"><c:out value="${especialidade.descricao}"></c:out></td>
 
 
-							<td style="width: 8%;"><a href="ServletEspecialidade?acao=update&cli=${especialidade.id}">
+							<td style="width: 8%;"><a href="ServletEspecialidade?acao=update&especialidade=${especialidade.id}">
 									<img alt="update" src="resources/img/editar.png"
 									title="Atualizar" style="width: 24px; height: 24px;">
 							</a></td>
 
-							<td style="width: 8%;"><a href="ServletEspecialidade?acao=delete&cli=${especialidade.id}">
+							<td style="width: 8%;"><a href="ServletEspecialidade?acao=delete&especialidade=${especialidade.id}">
 									<img alt="delete" src="resources/img/excluir.png"
 									title="Excluir" style="width: 24px; height: 24px;">
 							</a></td>

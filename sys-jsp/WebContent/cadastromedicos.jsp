@@ -99,14 +99,7 @@
 					<div class="campo">
 	
 						<label for="especialidade">Especialidade:</label>
-							<select id="especialidade" name="especialidade">
-								<option disabled="disabled" selected="selected">Selecione uma Opção</option>
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-							</select>
+							
 	
 					</div>
 	
@@ -140,7 +133,7 @@
 						<label for="cep">CEP:</label> 
 						<input type="text" id="cep"
 							name="cep" style="width: 10em;" onblur="consultaCep();"
-							value="${cli.cep}" placeholder="Informe cep válido"
+							value="${medico.cep}" placeholder="Informe cep válido"
 							onkeypress="$(this).mask('00000000')">
 	
 					</div>
@@ -149,7 +142,7 @@
 	
 						<label for="endereco">Endereço:</label> 
 						<input type="text" id="endereco" name="endereco" style="width: 30em;"
-							value="${cli.endereco}">
+							value="${medico.endereco}">
 	
 					</div>
 	
@@ -157,7 +150,7 @@
 	
 						<label for="numero">Número:</label> 
 						<input type="text" id="numero" name="numero" style="width: 8em;"
-							onkeypress="$(this).mask('00000000')" value="${cli.numero}">
+							onkeypress="$(this).mask('00000000')" value="${medico.numero}">
 	
 					</div>
 	
@@ -168,28 +161,28 @@
 					<div class="campo">
 	
 						<label for="bairro">Bairro:</label> 
-						<input type="text" id="bairro" name="bairro" style="width: 20em;" value="${cli.bairro}">
+						<input type="text" id="bairro" name="bairro" style="width: 20em;" value="${medico.bairro}">
 	
 					</div>
 	
 					<div class="campo">
 	
 						<label for="cidade">Cidade:</label> 
-						<input type="text" id="cidade" name="cidade" style="width: 20em;" value="${cli.cidade}">
+						<input type="text" id="cidade" name="cidade" style="width: 20em;" value="${medico.cidade}">
 	
 					</div>
 	
 					<div class="campo">
 	
 						<label for="estado">UF:</label> 
-						<input type="text" id="estado" name="estado" style="width: 5em;" value="${cli.estado}">
+						<input type="text" id="estado" name="estado" style="width: 5em;" value="${medico.estado}">
 	
 					</div>
 	
 					<div class="campo">
 	
 						<label for="ibge">Cód. IBGE:</label> 
-						<input type="text" id="ibge" name="ibge" style="width: 8em;" value="${cli.ibge}">
+						<input type="text" id="ibge" name="ibge" style="width: 8em;" value="${medico.ibge}">
 	
 					</div>
 	
@@ -251,17 +244,17 @@
 							<td style="width: 30%;"><c:out value="${medico.email}"></c:out></td>
 
 
-							<td style="width: 8%;"><a href="ServletMedico?acao=update&cli=${medico.id}">
+							<td style="width: 8%;"><a href="ServletMedico?acao=update&medico=${medico.id}">
 									<img alt="update" src="resources/img/editar.png"
 									title="Atualizar" style="width: 24px; height: 24px;">
 							</a></td>
 
-							<td style="width: 8%;"><a href="ServletMedico?acao=delete&cli=${medico.id}">
+							<td style="width: 8%;"><a href="ServletMedico?acao=delete&medico=${medico.id}">
 									<img alt="delete" src="resources/img/excluir.png"
 									title="Excluir" style="width: 24px; height: 24px;">
 							</a></td>
 
-							<td style="width: 10%;"><a href="ServletTelefone?acao=addTelefone&cli=${medico.id}">
+							<td style="width: 10%;"><a href="ServletTelefoneMedico?acao=addTelefone&medico=${medico.id}">
 									<img alt="telefone" src="resources/img/telefone.png"
 									title="Adicionar Telefone" style="width: 24px; height: 24px;">
 							</a></td>

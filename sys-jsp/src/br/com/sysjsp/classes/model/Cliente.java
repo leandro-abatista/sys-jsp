@@ -28,6 +28,8 @@ public class Cliente {
 	private String arquivoBase64;
 	private String contentTypeArquivo;
 	
+	private String genero;
+	
 	private String tempFotoCliente;
 	
 
@@ -205,5 +207,15 @@ public class Cliente {
 	public void setContentTypeArquivo(String contentTypeArquivo) {
 		this.contentTypeArquivo = contentTypeArquivo;
 	}
+
+	public String getGenero() {
+		return genero;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+	
+	
 
 }

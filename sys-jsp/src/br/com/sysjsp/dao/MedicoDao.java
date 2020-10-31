@@ -1,6 +1,7 @@
 package br.com.sysjsp.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class MedicoDao {
 			insert.setString(4, medico.getUf());
 			insert.setString(5, medico.getEspecialidade());
 			insert.setString(6, medico.getEmail());
-			insert.setDate(7, medico.getDataCadastro());
+			insert.setDate(7, new java.sql.Date(medico.getDataCadastro().getTime()));
 			insert.setString(8, medico.getCep());
 			insert.setString(9, medico.getEndereco());
 			insert.setInt(10, medico.getNumero());
@@ -73,7 +74,7 @@ public class MedicoDao {
 				medico.setUf(rs.getString("uf"));
 				medico.setEspecialidade(rs.getString("especialidade"));
 				medico.setEmail(rs.getString("email"));
-				medico.setDataCadastro(rs.getDate("datacadastro"));
+				medico.setDataCadastro(new java.sql.Date(rs.getDate("datacadastro").getTime()));
 				medico.setCep(rs.getString("cep"));
 				medico.setEndereco(rs.getString("endereco"));
 				medico.setNumero(rs.getInt("numero"));
@@ -110,7 +111,7 @@ public class MedicoDao {
 				medico.setUf(rs.getString("uf"));
 				medico.setEspecialidade(rs.getString("especialidade"));
 				medico.setEmail(rs.getString("email"));
-				medico.setDataCadastro(rs.getDate("datacadastro"));
+				medico.setDataCadastro(new java.sql.Date(rs.getDate("datacadastro").getTime()));
 				medico.setCep(rs.getString("cep"));
 				medico.setEndereco(rs.getString("endereco"));
 				medico.setNumero(rs.getInt("numero"));
@@ -144,7 +145,7 @@ try {
 			update.setString(5, medico.getUf());
 			update.setString(6, medico.getEspecialidade());
 			update.setString(7, medico.getEmail());
-			update.setDate(8, medico.getDataCadastro());
+			update.setDate(8, new java.sql.Date(medico.getDataCadastro().getTime()));
 			update.setString(9, medico.getCep());
 			update.setString(10, medico.getEndereco());
 			update.setInt(11, medico.getNumero());

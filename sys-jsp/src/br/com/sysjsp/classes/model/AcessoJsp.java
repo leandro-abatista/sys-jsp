@@ -10,7 +10,7 @@ public class AcessoJsp {
 	private String telefone;
 	private String usuario;
 	private String senha;
-	
+	private boolean ativo;
 
 	public Long getId() {
 		return id;
@@ -76,5 +76,14 @@ public class AcessoJsp {
 		this.senha = senha;
 	}
 
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+
+	
 
 }

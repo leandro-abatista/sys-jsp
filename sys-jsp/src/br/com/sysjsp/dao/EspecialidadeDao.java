@@ -67,11 +67,11 @@ public class EspecialidadeDao {
 	public Especialidade consultarEsp(String id) {
 		try {
 			
-			String sql = "SELECT * FROM tbl_especialidade order by id = '" + id + "'";
+			String sql = "SELECT * FROM tbl_especialidade WHERE id = '" + id + "'";
 			PreparedStatement consultar = connection.prepareStatement(sql);
 			ResultSet rs = consultar.executeQuery();
 			
-			while (rs.next()) {
+			if (rs.next()) {
 				
 				Especialidade especialidade = new Especialidade();
 				especialidade.setId(rs.getLong("id"));
@@ -142,6 +142,28 @@ public class EspecialidadeDao {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public Especialidade pesquisarPorDescricao(String descricao) {
+		try {
+			
+			String sql = "SELECT * FROM tbl_especialidade WHERE descricao like = '%" + descricao + "%'";
+			PreparedStatement pesquisar = connection.prepareStatement(sql);
+			ResultSet rs = pesquisar.executeQuery();
+			
+			while (rs.next()) {
+				
+				Especialidade especialidade = new Especialidade();
+				especialidade.setId(rs.getLong("id"));
+				especialidade.setDescricao(rs.getString("descricao"));
+				
+				return especialidade;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	
