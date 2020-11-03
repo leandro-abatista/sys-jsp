@@ -76,6 +76,7 @@ public class ServletUsuario extends HttpServlet {
 			String senha = request.getParameter("senha");
 			String telefone = request.getParameter("telefone");
 			String email = request.getParameter("email");
+			String perfil = request.getParameter("perfil");
 			
 			AcessoJsp acesso = new AcessoJsp();
 			acesso.setId(!id.isEmpty() ? Long.parseLong(id) : 0);
@@ -92,6 +93,8 @@ public class ServletUsuario extends HttpServlet {
 			} else {
 				acesso.setAtivo(false);
 			}
+			
+			acesso.setPerfil(perfil);
 			
 			
 			String msg = null;

@@ -92,14 +92,25 @@
 						
 						<div class="campo">
 						
-							<label for="valoritem">Categoria:</label>
-							<select id="categoria" name="categoria">
+							<label for="categorias">Categoria:</label>
+							<select id="categorias" name="id_categoria">
+							
 								<option disabled="disabled" selected="selected">Selecione uma Opção</option>
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
+								
+								<c:forEach items="${categorias}" var="cate">
+									<option  id="${cate.id}" value="${cate.id}"
+									
+										<c:if test="${cate.id == produto.categoria}">
+		        							<c:out value="selected=\"selected\""/>
+		    							</c:if>>
+									
+									>
+										
+										${cate.descricao}
+									</option>
+									
+								</c:forEach>
+								
 							</select>
 						
 						</div>
@@ -131,12 +142,12 @@
 								
 								<th style="width: 8%; text-align: center;">Código</th>
 								<th style="width: 30%; text-align: center;">Descrição</th>
-								<th style="width: 10%; text-align: center;">Quantd.</th>
+								<th style="width: 8%; text-align: center;">Quantd.</th>
 								<th style="width: 10%; text-align: center;">Valor Compra</th>
 								<th style="width: 10%; text-align: center;">Valor Item</th>
 								<th style="width: 10%; text-align: center;">Categoria</th>
-								<th style="width: 8%; text-align: center;">Atualizar</th>
-								<th style="width: 8%; text-align: center;">Excluir</th>
+								<th style="width: 8%; text-align: center;">#</th>
+								<th style="width: 8%; text-align: center;">#</th>
 								
 							</tr>
 							
@@ -158,7 +169,7 @@
 								
 								<td style="width: 8%;"><c:out value="${produto.id}"></c:out></td>				
 								<td style="width: 30%;"><c:out value="${produto.descricao}"></c:out></td>				
-								<td style="width: 10%;"><c:out value="${produto.quantidade}"></c:out></td>
+								<td style="width: 8%;"><c:out value="${produto.quantidade}"></c:out></td>
 								<td style="width: 10%;"><c:out value="${produto.valorcompra}"></c:out></td>					
 								<td style="width: 10%;"><c:out value="${produto.valoritem}"></c:out></td>				
 								<td style="width: 10%;"><c:out value="${produto.categoria}"></c:out></td>				

@@ -11,6 +11,7 @@ public class AcessoJsp {
 	private String usuario;
 	private String senha;
 	private boolean ativo;
+	private String perfil;
 
 	public Long getId() {
 		return id;
@@ -84,6 +85,12 @@ public class AcessoJsp {
 		this.ativo = ativo;
 	}
 
-	
+	public String getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(String perfil) {
+		this.perfil = perfil;
+	}
 
 }

@@ -47,6 +47,7 @@
 					<li><a href="ServletCliente?acao=listartodos">Cadastro Clientes</a></li>
 					<li><a href="ServletProduto?acao=listartodos">Cadastro Produtos</a></li>
 					<li><a href="ServletEspecialidade?acao=listartodos">Cadastro Especialidades</a></li>
+					<li><a href="servletCategoria?acao=listartodos">Cadastro Categorias</a></li>
 					<li><a href="ServletMedico?acao=listartodos">Cadastro Médicos</a></li>
 
 				</ul>

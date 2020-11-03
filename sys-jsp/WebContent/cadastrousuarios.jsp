@@ -144,6 +144,85 @@
 						>
 						
 					</div>
+					
+					<div class="campo">
+						
+						<label>Perfil:</label>
+						<select id="perfil" name="perfil">
+						
+							<option disabled="disabled" selected="selected">Selecine uma Opção</option>
+							
+							<option value="administrador"
+								
+								<%
+									if(request.getAttribute("user") != null){
+										
+										AcessoJsp usuario = (AcessoJsp) request.getAttribute("user");
+										
+										if(usuario.getPerfil().equalsIgnoreCase("administrador")){
+											out.print(" ");
+											out.print("selected=\"selected\"");
+											out.print(" ");
+										}
+									}
+								%>
+							
+							>Administrador</option>
+							
+							<option value="usuario"
+								
+								<%
+									if(request.getAttribute("user") != null){
+										
+										AcessoJsp usuario = (AcessoJsp) request.getAttribute("user");
+										
+										if(usuario.getPerfil().equalsIgnoreCase("usuario")){
+											out.print(" ");
+											out.print("selected=\"selected\"");
+											out.print(" ");
+										}
+									}
+								%>
+							
+							>Usuário</option>
+							
+							<option value="secretario"
+								
+								<%
+									if(request.getAttribute("user") != null){
+										
+										AcessoJsp usuario = (AcessoJsp) request.getAttribute("user");
+										
+										if(usuario.getPerfil().equalsIgnoreCase("secretario")){
+											out.print(" ");
+											out.print("selected=\"selected\"");
+											out.print(" ");
+										}
+									}
+								%>
+							
+							>Secretario(a)</option>
+							
+							<option value="gerente"
+								
+								<%
+									if(request.getAttribute("user") != null){
+										
+										AcessoJsp usuario = (AcessoJsp) request.getAttribute("user");
+										
+										if(usuario.getPerfil().equalsIgnoreCase("gerente")){
+											out.print(" ");
+											out.print("selected=\"selected\"");
+											out.print(" ");
+										}
+									}
+								%>
+							
+							>Gerente</option>
+							
+						</select>
+					
+					</div>
 				
 				</fieldset>
 				
@@ -159,7 +238,28 @@
 		</form>
 		
 	</section>
+	<!-- Inicio do campo de pesquisa -->
+	<section>
 		
+		<form action="servletPesquisa" method="post">
+			
+			<fieldset class="grupo">
+			
+				<div class="campoPesquisar">
+				
+					<label for="descricaoconsulta">Pesquisar:</label>
+					<input type="text" id="descricaoconsulta" name="descricaoconsulta">
+					
+				</div>
+				
+				<button type="submit" class="botaoPesquisar" value="Pesquisar">Buscar</button>
+			
+			</fieldset>
+		
+		</form>
+	
+	</section>
+	<!-- Fim do campo de pesquisa -->	
 	<section>
 	
 		<div class="caption">Usuários Cadastrados</div>
@@ -177,8 +277,8 @@
 							<th style="width: 20%; text-align: center;">Senha</th>
 							<th style="width: 15%; text-align: center;">Telefone</th>
 							<th style="width: 25%; text-align: center;">E-mail</th>
-							<th style="width: 8%; text-align: center;">Atualizar</th>
-							<th style="width: 8%; text-align: center;">Excluir</th>
+							<th style="width: 8%; text-align: center;">#</th>
+							<th style="width: 8%; text-align: center;">#</th>
 						</tr>
 						
 					</thead>

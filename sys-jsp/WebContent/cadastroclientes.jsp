@@ -1,5 +1,4 @@
 <%@page import="br.com.sysjsp.classes.model.Cliente"%>
-<%@page import="com.sun.deploy.util.SessionState.Client"%>
 <%@page import="br.com.sysjsp.classes.model.AcessoJsp"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="UTF-8"%>
@@ -344,9 +343,9 @@
 						<th style="width: 30%; text-align: center;">Email</th>
 						<th style="width: 8%; text-align: center;">PDF</th>
 						<th style="width: 8%; text-align: center;">Foto</th>
-						<th style="width: 8%; text-align: center;">Atualizar</th>
-						<th style="width: 8%; text-align: center;">Excluir</th>
-						<th style="width: 10%; text-align: center;">Telefones</th>
+						<th style="width: 8%; text-align: center;">#</th>
+						<th style="width: 8%; text-align: center;">#</th>
+						<th style="width: 8%; text-align: center;">#</th>
 
 					</tr>
 
@@ -420,7 +419,7 @@
 									title="Excluir" style="width: 24px; height: 24px;">
 							</a></td>
 
-							<td style="width: 10%;"><a href="ServletTelefone?acao=addTelefone&cli=${cli.id}">
+							<td style="width: 8%;"><a href="ServletTelefone?acao=addTelefone&cli=${cli.id}">
 									<img alt="telefone" src="resources/img/telefone.png"
 									title="Adicionar Telefone" style="width: 24px; height: 24px;">
 							</a></td>

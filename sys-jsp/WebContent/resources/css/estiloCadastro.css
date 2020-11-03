@@ -22,8 +22,8 @@ a{
 	line-height: 5px;
 	padding: 8px 5px;
 	border-radius: 5px;
-	box-shadow: 2px 2px 2px rgba(0,0,0,0.3);/*muda a sobra do botão*/
-	text-shadow: 1px 1px 1px rgba(0,0,0,0.5);/*muda a sobra do texto*/
+	box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.3);/*muda a sobra do botão*/
+	text-shadow: 1px 1px 1px 1px rgba(0,0,0,0.5);/*muda a sobra do texto*/
 }
 
 a:hover{
@@ -144,7 +144,6 @@ fieldset.grupo .campo {
 	margin-left: 0.5em;
 	padding: 0.3em; /*tamanho dos campos*/
 	border: 1px solid #ccc;
-	box-shadow: 2px 2px 2px rgba(0,0,0,0.3);/*mostra a sombra dos campos*/
 	display: block;
 	-moz-transform: scale(1.7); /* FF */
   	-webkit-transform: scale(1.7); /* Safari and Chrome */
@@ -233,6 +232,52 @@ estou colocando uma cor azul clara nela*/
 
 /*==========================================================================================================*/
 
+.campoPesquisar label {
+	margin-left: 0.5em;
+	margin-bottom: 0.2em;
+	color: #00008B;
+	display: block;
+	font-weight: bold;
+}
 
+fieldset.grupo .campoPesquisar {
+	float: left;
+	margin-right: 1em;
+}
+
+.campoPesquisar input[type="text"]{
+	width: 30em;
+	margin-left: 0.5em;
+	padding: 0.3em; /*tamanho dos campos*/
+	border: 1px solid #ccc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,0.3);/*mostra a sombra dos campos*/
+	display: block;
+}
+
+.botaoPesquisar{
+	border-radius: 5px;
+	font-size: 1.3em;
+	background: #F90;
+	border: 1px;
+	margin-top: 1.1em;
+	/*
+	margin-bottom: 2em;
+	margin-left: 0.5em;
+	margin-right: 0.1em;*/
+	color: #FFF;/*cor do texto*/
+	padding: 0.2em 0.6em;
+	box-shadow: 2px 2px 2px rgba(0,0,0,0.3);/*muda a sobra do botão*/
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.5);/*muda a sobra do texto*/
+} 
+
+.botaoPesquisar:hover{
+	background: #FB0;
+	box-shadow: inset 2px 2px 2px rgba(0,0,0,0.3);
+	text-shadow: none;
+}
+
+.botaoPesquisar{
+	cursor: pointer;
+}
 
 

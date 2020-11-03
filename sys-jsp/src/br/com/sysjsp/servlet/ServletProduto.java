@@ -12,9 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.sysjsp.classes.model.Produto;
 import br.com.sysjsp.dao.ProdutoDao;
 
-/**
- * Servlet implementation class ServletProduto
- */
 @WebServlet("/ServletProduto")
 public class ServletProduto extends HttpServlet {
 	
@@ -31,33 +28,25 @@ public class ServletProduto extends HttpServlet {
 		String acao = request.getParameter("acao");
 		String produto = request.getParameter("produto");
 		
+		/*linha que redireciona para a página*/
+		RequestDispatcher view = request.getRequestDispatcher("/cadastroprodutos.jsp");
+		
 		if (acao.equalsIgnoreCase("delete")) {
-			
 			produtoDao.deleteP(produto);
-			
-			RequestDispatcher view = request.getRequestDispatcher("/cadastroprodutos.jsp");
 			request.setAttribute("produtos", produtoDao.listarTodosP());
-			view.forward(request, response);
-			
 		} else
 			
 		if (acao.equalsIgnoreCase("update")) {
-			
 			Produto pro = produtoDao.consultarP(produto);
-			
-			RequestDispatcher view = request.getRequestDispatcher("/cadastroprodutos.jsp");
 			request.setAttribute("produto", pro);
-			view.forward(request, response);
-			
 		} else
 			
 		if (acao.equalsIgnoreCase("listartodos")) {
-			
-			RequestDispatcher view = request.getRequestDispatcher("/cadastroprodutos.jsp");
 			request.setAttribute("produtos", produtoDao.listarTodosP());
-			view.forward(request, response);
-			
 		}
+		
+		request.setAttribute("categorias", produtoDao.listarTodasCategorias());
+		view.forward(request, response);
 		
 	}
 
@@ -78,7 +67,7 @@ public class ServletProduto extends HttpServlet {
 			String quantidade = request.getParameter("quantidade");
 			String valorcompra = request.getParameter("valorcompra");
 			String valoritem = request.getParameter("valoritem");
-			String categoria = request.getParameter("categoria");
+			String categoria = request.getParameter("id_categoria");
 			
 			Produto produto = new Produto();
 			produto.setId(!id.isEmpty() ? Long.parseLong(id) : 0);
@@ -95,7 +84,7 @@ public class ServletProduto extends HttpServlet {
 				produto.setValoritem(Double.valueOf(valorParseVI));
 			}
 			
-			produto.setCategoria(categoria);
+			produto.setCategoria(Long.parseLong(categoria));
 			
 			String msg = null;
 			boolean podeInserir = true;
@@ -112,19 +101,20 @@ public class ServletProduto extends HttpServlet {
 			if (id == null || id.isEmpty() && produtoDao.validarDescricaoP(descricao) && podeInserir) {
 				
 				produtoDao.saveP(produto);
-				request.setAttribute("msg", "Registro salvo com sucesso!");
+				//request.setAttribute("msg", "Registro salvo com sucesso!");
 				
 			} else 
 				
 			if (id != null && !id.isEmpty() && podeInserir) {
 				
 				produtoDao.updateP(produto);
-				request.setAttribute("msg", "Registro atualizado com sucesso!");
+				//request.setAttribute("msg", "Registro atualizado com sucesso!");
 				
 			}
 			
 			RequestDispatcher view = request.getRequestDispatcher("/cadastroprodutos.jsp");
 			request.setAttribute("produtos", produtoDao.listarTodosP());
+			request.setAttribute("categorias", produtoDao.listarTodasCategorias());/*lista de categorias cadastradas no banco de dados*/
 			view.forward(request, response);
 			
 		}

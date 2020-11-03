@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.sysjsp.classes.model.Categoria;
 import br.com.sysjsp.classes.model.Produto;
 import br.com.sysjsp.connect.SingleConnection;
 
@@ -20,14 +21,15 @@ public class ProdutoDao {
 	public void saveP(Produto produto) {
 		try {
 
-			String sql = "INSERT INTO public.tbl_produto(descricao, quantidade, valorcompra, valoritem, categoria)"
+			String sql = "INSERT INTO tbl_produto (descricao, quantidade, valorcompra, valoritem, id_categoria) "
 					+ "    VALUES (?, ?, ?, ?, ?);";
 			PreparedStatement insert = connection.prepareStatement(sql);
 			insert.setString(1, produto.getDescricao());
 			insert.setInt(2, produto.getQuantidade());
 			insert.setDouble(3, produto.getValorcompra());
 			insert.setDouble(4, produto.getValoritem());
-			insert.setString(5, produto.getCategoria());
+			insert.setLong(5, produto.getCategoria());
+			
 			insert.execute();
 			connection.commit();
 
@@ -59,13 +61,39 @@ public class ProdutoDao {
 				produto.setQuantidade(rs.getInt("quantidade"));
 				produto.setValorcompra(rs.getDouble("valorcompra"));
 				produto.setValoritem(rs.getDouble("valoritem"));
-				produto.setCategoria(rs.getString("categoria"));
+				produto.setCategoria(rs.getLong("id_categoria"));
 
 				produtos.add(produto);
 			}
 
 			return produtos;
 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public List<Categoria> listarTodasCategorias(){
+		try {
+			
+			List<Categoria> categorias = new ArrayList<Categoria>();
+			
+			String sql = "SELECT * FROM tbl_categoria order by id;";
+			PreparedStatement select = connection.prepareStatement(sql);
+			ResultSet rs = select.executeQuery();
+			
+			while (rs.next()) {/*enquanto tiver dados, processa cada linha, ou seja, cada linha é um objeto diferente*/
+				
+				Categoria categoria = new Categoria();
+				categoria.setId(rs.getLong("id"));
+				categoria.setDescricao(rs.getString("descricao"));
+				
+				categorias.add(categoria);
+			}
+			
+			return categorias;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -87,7 +115,7 @@ public class ProdutoDao {
 				produto.setQuantidade(rs.getInt("quantidade"));
 				produto.setValorcompra(rs.getDouble("valorcompra"));
 				produto.setValoritem(rs.getDouble("valoritem"));
-				produto.setCategoria(rs.getString("categoria"));
+				produto.setCategoria(rs.getLong("id_categoria"));
 
 				return produto;
 			}
@@ -102,7 +130,7 @@ public class ProdutoDao {
 		try {
 
 			String sql = "UPDATE tbl_produto"
-					+ " SET id=?, descricao=?, quantidade=?, valorcompra=?, valoritem=?, categoria=?"
+					+ " SET id=?, descricao=?, quantidade=?, valorcompra=?, valoritem=?, id_categoria=?"
 					+ " WHERE id = '" + produto.getId() + "'";
 			PreparedStatement update = connection.prepareStatement(sql);
 			update.setLong(1, produto.getId());
@@ -110,7 +138,8 @@ public class ProdutoDao {
 			update.setInt(3, produto.getQuantidade());
 			update.setDouble(4, produto.getValorcompra());
 			update.setDouble(5, produto.getValoritem());
-			update.setString(6, produto.getCategoria());
+			update.setLong(6, produto.getCategoria());
+			
 			update.executeUpdate();
 			connection.commit();
 
@@ -130,6 +159,7 @@ public class ProdutoDao {
 			
 			String sql = "DELETE FROM tbl_produto WHERE id = '" + id + "'";
 			PreparedStatement delete = connection.prepareStatement(sql);
+			
 			delete.execute();
 			connection.commit();
 			

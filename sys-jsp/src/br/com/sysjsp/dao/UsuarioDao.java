@@ -20,8 +20,8 @@ public class UsuarioDao {
 	public void salvarU(AcessoJsp acesso) {
 		try {
 
-			String sql = "INSERT INTO tbl_usuario (primeironome, sobrenome, ultimonome, usuario, senha, telefone, email, ativo)"
-					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO tbl_usuario (primeironome, sobrenome, ultimonome, usuario, senha, telefone, email, ativo, perfil)"
+					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 			PreparedStatement insert = connection.prepareStatement(sql);
 			insert.setString(1, acesso.getPrimeironome());
 			insert.setString(2, acesso.getSobrenome());
@@ -31,6 +31,7 @@ public class UsuarioDao {
 			insert.setString(6, acesso.getTelefone());
 			insert.setString(7, acesso.getEmail());
 			insert.setBoolean(8, acesso.isAtivo());
+			insert.setString(9, acesso.getPerfil());
 			
 			insert.execute();
 			connection.commit();
@@ -67,6 +68,42 @@ public class UsuarioDao {
 				acesso.setTelefone(rs.getString("telefone"));
 				acesso.setEmail(rs.getString("email"));
 				acesso.setAtivo(rs.getBoolean("ativo"));
+				acesso.setPerfil(rs.getString("perfil"));
+
+				listar.add(acesso);
+
+			}
+
+			return listar;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public List<AcessoJsp> pesquisarUsuarios(String descricaoConsulta) {
+		try {
+
+			List<AcessoJsp> listar = new ArrayList<AcessoJsp>();
+
+			String sql = "SELECT * FROM tbl_usuario WHERE usuario <> 'admin' AND primeironome like '%" + descricaoConsulta + "%'";
+			PreparedStatement statement = connection.prepareStatement(sql);
+			ResultSet rs = statement.executeQuery();
+
+			while (rs.next()) {
+
+				AcessoJsp acesso = new AcessoJsp();
+				acesso.setId(rs.getLong("id"));
+				acesso.setPrimeironome(rs.getString("primeironome"));
+				acesso.setSobrenome(rs.getString("sobrenome"));
+				acesso.setUltimonome(rs.getString("ultimonome"));
+				acesso.setUsuario(rs.getString("usuario"));
+				acesso.setSenha(rs.getString("senha"));
+				acesso.setTelefone(rs.getString("telefone"));
+				acesso.setEmail(rs.getString("email"));
+				acesso.setAtivo(rs.getBoolean("ativo"));
+				acesso.setPerfil(rs.getString("perfil"));
 
 				listar.add(acesso);
 
@@ -100,6 +137,7 @@ public class UsuarioDao {
 				acesso.setTelefone(rs.getString("telefone"));
 				acesso.setEmail(rs.getString("email"));
 				acesso.setAtivo(rs.getBoolean("ativo"));
+				acesso.setPerfil(rs.getString("perfil"));
 				
 				return acesso;
 			}
@@ -114,17 +152,19 @@ public class UsuarioDao {
 		try {
 
 			String sql = "UPDATE tbl_usuario "
-					+ "SET primeironome=?, sobrenome=?, ultimonome=?, usuario=?, senha=?, telefone=?, email=?, ativo=? "
+					+ "SET id=?, primeironome=?, sobrenome=?, ultimonome=?, usuario=?, senha=?, telefone=?, email=?, ativo=?, perfil=? "
 					+ "WHERE id = '" + acessoJsp.getId() + "'";
 			PreparedStatement update = connection.prepareStatement(sql);
-			update.setString(1, acessoJsp.getPrimeironome());
-			update.setString(2, acessoJsp.getSobrenome());
-			update.setString(3, acessoJsp.getUltimonome());
-			update.setString(4, acessoJsp.getUsuario());
-			update.setString(5, acessoJsp.getSenha());
-			update.setString(6, acessoJsp.getTelefone());
-			update.setString(7, acessoJsp.getEmail());
-			update.setBoolean(8, acessoJsp.isAtivo());
+			update.setLong(1, acessoJsp.getId());
+			update.setString(2, acessoJsp.getPrimeironome());
+			update.setString(3, acessoJsp.getSobrenome());
+			update.setString(4, acessoJsp.getUltimonome());
+			update.setString(5, acessoJsp.getUsuario());
+			update.setString(6, acessoJsp.getSenha());
+			update.setString(7, acessoJsp.getTelefone());
+			update.setString(8, acessoJsp.getEmail());
+			update.setBoolean(9, acessoJsp.isAtivo());
+			update.setString(10, acessoJsp.getPerfil());
 			
 			update.executeUpdate();
 			connection.commit();

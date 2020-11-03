@@ -83,11 +83,33 @@
 						<label for="uf">UF:</label>
 							<select id="uf" name="uf">
 								<option disabled="disabled" selected="selected">Selecione uma Opção</option>
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
+								<option>AC</option>
+								<option>AL</option>
+								<option>AP</option>
+								<option>AM</option>
+								<option>BA</option>
+								<option>CE</option>
+								<option>DF</option>
+								<option>ES</option>
+								<option>GO</option>
+								<option>MA</option>
+								<option>MT</option>
+								<option>MS</option>
+								<option>MG</option>
+								<option>PA</option>
+								<option>PB</option>
+								<option>PR</option>
+								<option>PE</option>
+								<option>PI</option>
+								<option>RJ</option>
+								<option>RN</option>
+								<option>RS</option>
+								<option>RO</option>
+								<option>RR</option>
+								<option>SC</option>
+								<option>SP</option>
+								<option>SE</option>
+								<option>TO</option>
 							</select>
 	
 					</div>
@@ -215,9 +237,9 @@
 						<th style="width: 12%; text-align: center;">CPF</th>
 						<th style="width: 12%; text-align: center;">CRM</th>
 						<th style="width: 30%; text-align: center;">Email</th>
-						<th style="width: 8%; text-align: center;">Atualizar</th>
-						<th style="width: 8%; text-align: center;">Excluir</th>
-						<th style="width: 10%; text-align: center;">Telefones</th>
+						<th style="width: 8%; text-align: center;">#</th>
+						<th style="width: 8%; text-align: center;">#</th>
+						<th style="width: 8%; text-align: center;">#</th>
 
 					</tr>
 
@@ -254,7 +276,7 @@
 									title="Excluir" style="width: 24px; height: 24px;">
 							</a></td>
 
-							<td style="width: 10%;"><a href="ServletTelefoneMedico?acao=addTelefone&medico=${medico.id}">
+							<td style="width: 8%;"><a href="ServletTelefoneMedico?acao=addTelefone&medico=${medico.id}">
 									<img alt="telefone" src="resources/img/telefone.png"
 									title="Adicionar Telefone" style="width: 24px; height: 24px;">
 							</a></td>
