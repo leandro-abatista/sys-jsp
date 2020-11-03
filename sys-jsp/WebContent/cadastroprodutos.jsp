@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt"%>
 
 <!DOCTYPE html>
 
@@ -76,8 +77,8 @@
 						
 							<label for="valorcompra">Valor Compra:</label>
 							<input type="text" id="valorcompra" name="valorcompra" style="width: 10em;"
-							onkeypress="$(this).mask('R$ 000.000.000,00', {reverse: true});"
-							value="${produto.valorcompra}" required="required" data-pre="R$">
+							onkeypress="$(this).mask('###.###.##0,00', {reverse: true});"
+							value="${produto.valorCompraEmTexto}" required="required">
 							
 						</div>
 						
@@ -85,8 +86,8 @@
 						
 							<label for="valoritem">Valor Item:</label>
 							<input type="text" id="valoritem" name="valoritem" style="width: 10em;"
-							onkeypress="$(this).mask('R$ 000.000.000,00', {reverse: true});"
-							value="${produto.valoritem}" required="required" data-pre="R$">
+							onkeypress="$(this).mask('###.###.##0,00', {reverse: true});"
+							value="${produto.valorItemEmTexto}" required="required">
 							
 						</div>
 						
@@ -170,8 +171,8 @@
 								<td style="width: 8%;"><c:out value="${produto.id}"></c:out></td>				
 								<td style="width: 30%;"><c:out value="${produto.descricao}"></c:out></td>				
 								<td style="width: 8%;"><c:out value="${produto.quantidade}"></c:out></td>
-								<td style="width: 10%;"><c:out value="${produto.valorcompra}"></c:out></td>					
-								<td style="width: 10%;"><c:out value="${produto.valoritem}"></c:out></td>				
+								<td style="width: 10%;"><fmt:formatNumber type="currency" maxFractionDigits="2" value="${produto.valorcompra}"/></td>					
+								<td style="width: 10%;"><fmt:formatNumber type="currency" maxFractionDigits="2" value="${produto.valoritem}"/></td>					
 								<td style="width: 10%;"><c:out value="${produto.categoria}"></c:out></td>				
 								
 								<td style="width: 8%;"><a href="ServletProduto?acao=update&produto=${produto.id}">

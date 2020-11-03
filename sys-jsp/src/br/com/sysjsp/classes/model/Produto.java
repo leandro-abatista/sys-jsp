@@ -56,5 +56,13 @@ public class Produto {
 	public void setCategoria(Long categoria) {
 		this.categoria = categoria;
 	}
+	
+	public String getValorCompraEmTexto() {
+		return Double.toString(valorcompra).replace('.',',');
+	}
+	
+	public String getValorItemEmTexto() {
+		return Double.toString(valoritem).replace('.',',');
+	}
 
 }

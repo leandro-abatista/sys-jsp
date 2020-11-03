@@ -1,11 +1,14 @@
 package br.com.sysjsp.servlet;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import javax.imageio.ImageIO;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -14,13 +17,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import javax.xml.bind.DatatypeConverter;
 
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.tomcat.util.codec.binary.Base64;
 
 import br.com.sysjsp.classes.model.Cliente;
 import br.com.sysjsp.dao.ClienteDao;
-import br.com.sysjsp.util.Converte;
 
 @WebServlet("/ServletCliente")
 @MultipartConfig
@@ -178,11 +181,39 @@ public class ServletCliente extends HttpServlet {
 					Part imagemFoto = request.getPart("foto");
 
 					if (imagemFoto != null && imagemFoto.getInputStream().available() > 0) {
+						
 
-						String fotoBase64 = new Base64()
-								.encodeBase64String(converteStreamParaByte(imagemFoto.getInputStream()));
+						String fotoBase64 = new Base64().encodeBase64String(converteStreamParaByte(imagemFoto.getInputStream()));
 						cliente.setFotoBase64(fotoBase64);
 						cliente.setContentType(imagemFoto.getContentType());
+						
+						/*Início do código miniatura Imagem - compactando a imagem após salvar*/
+						
+						//->decodificando a imagem da base64
+						byte[] decodeImagemByte = new Base64().decodeBase64(fotoBase64);
+ 							
+						//->Transformar em um bufferedImage
+						BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(decodeImagemByte));
+						
+						//->captura o tipo da imagem
+						int type = bufferedImage.getType() == 0 ? BufferedImage.TYPE_INT_ARGB : bufferedImage.getType();
+						
+						//->cria a imagem em miniatura, define largura e altura
+						BufferedImage resizedImage = new BufferedImage(100, 100, type);
+						//->aqui inicia o processo de criar a imagem em miniatura
+						Graphics2D g = resizedImage.createGraphics();
+						g.drawImage(resizedImage, 0, 0, 100, 100, null);
+						g.dispose();
+						
+						//->escrever a imagem novamente
+						ByteArrayOutputStream baos = new ByteArrayOutputStream();
+						ImageIO.write(bufferedImage, "png", baos);
+						
+						String miniaturaBase64 = "data:image/png;base64," + DatatypeConverter.printBase64Binary(baos.toByteArray());
+						
+						cliente.setFotoBase64Miniatura(miniaturaBase64);
+						
+						/*Fim do código miniatura Imagem*/
 
 					} else {
 						
@@ -195,10 +226,15 @@ public class ServletCliente extends HttpServlet {
 
 					if (arquivoPdf != null && arquivoPdf.getInputStream().available() > 0) {
 
-						String arquivoBase64 = new Base64()
-								.encodeBase64String(converteStreamParaByte(arquivoPdf.getInputStream()));
+						String arquivoBase64 = new Base64().encodeBase64String(converteStreamParaByte(arquivoPdf.getInputStream()));
 						cliente.setArquivoBase64(arquivoBase64);
 						cliente.setContentTypeArquivo(arquivoPdf.getContentType());
+						
+						/*Início do código miniatura PDF - compactando o pdf após salvar*/
+							
+						
+						
+						/*Fim do código miniatura PDF*/
 
 					} else {
 						

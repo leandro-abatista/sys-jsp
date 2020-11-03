@@ -22,16 +22,16 @@ public class Cliente {
 	private Integer ibge;
 
 	private String fotoBase64;
+	private String fotoBase64Miniatura;
 	private String contentType;
-	
-	/*pode ser um arquivo em pdf, html entre outros*/
+
+	/* pode ser um arquivo em pdf, html entre outros */
 	private String arquivoBase64;
 	private String contentTypeArquivo;
-	
+
 	private String genero;
-	
+
 	private String tempFotoCliente;
-	
 
 	public Long getId() {
 		return id;
@@ -184,11 +184,11 @@ public class Cliente {
 	public void setContentType(String contentType) {
 		this.contentType = contentType;
 	}
-	
+
 	public String getTempFotoCliente() {
-		/*monta em tempo de execução*/
+		/* monta em tempo de execução */
 		tempFotoCliente = "data:" + contentType + ";base64," + fotoBase64;
-		
+
 		return tempFotoCliente;
 	}
 
@@ -203,7 +203,7 @@ public class Cliente {
 	public String getContentTypeArquivo() {
 		return contentTypeArquivo;
 	}
-	
+
 	public void setContentTypeArquivo(String contentTypeArquivo) {
 		this.contentTypeArquivo = contentTypeArquivo;
 	}
@@ -215,7 +215,13 @@ public class Cliente {
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
-	
-	
+
+	public String getFotoBase64Miniatura() {
+		return fotoBase64Miniatura;
+	}
+
+	public void setFotoBase64Miniatura(String fotoBase64Miniatura) {
+		this.fotoBase64Miniatura = fotoBase64Miniatura;
+	}
 
 }

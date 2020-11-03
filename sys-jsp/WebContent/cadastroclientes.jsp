@@ -389,16 +389,16 @@
 								
 							</c:if>
 
-							<c:if test="${cli.fotoBase64.isEmpty() == false}">
+							<c:if test="${cli.fotoBase64Miniatura.isEmpty() == false}">
 								
 								<td style="width: 8%;"><a href="ServletCliente?acao=download&tipo=imagem&cli=${cli.id}">
-										<img src='<c:out value="${cli.tempFotoCliente}"/>'
+										<img src='<c:out value="${cli.fotoBase64Miniatura}"/>'
 										alt="ImagemFoto" title="Baixar Imagem"
 										style="width: 24px; height: 24px;">
 								</a></td>
 							</c:if>
 
-							<c:if test="${cli.fotoBase64.isEmpty() || cli.fotoBase64.isEmpty() == null}">
+							<c:if test="${cli.fotoBase64Miniatura.isEmpty() || cli.fotoBase64Miniatura.isEmpty() == null}">
 							
 								<td style="width: 8%;">
 									<img src="resources/img/semImagem.png" alt="ImagemFoto"
