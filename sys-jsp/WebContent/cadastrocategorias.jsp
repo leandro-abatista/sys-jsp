@@ -30,7 +30,7 @@
 			<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Voltar para o menu</a>
 	
 			<div class="div-cadastrousuario">
-				<h1>Cadastro de Categorias</h1>
+				<h1>[ - Cadastro de Categorias - ]</h1>
 			</div>
 	
 			<!-- agrupa os campos do formulário -->

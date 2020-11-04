@@ -46,7 +46,7 @@ td{
   font-weight: 600;
   font-size: 14px;
   color: black;
-  border: solid 2px rgba(255,255,255,0.1);
+  border: solid 3px rgba(28,28,28,0.3);
 }
 
 td:hover {

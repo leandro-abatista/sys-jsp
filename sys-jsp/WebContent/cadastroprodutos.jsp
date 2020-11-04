@@ -32,11 +32,11 @@
 			<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Voltar para o menu</a>
 		
 				<div class="div-cadastrousuario">
-					<h1>Cadastro de Produtos</h1>
+					<h1>[ - Cadastro de Produtos - ]</h1>
 				</div>
 				
 				<div class="div-dadosusuario">
-					<h2>Dados do Produto</h2>
+					<h2>[ - Dados do Produto - ]</h2>
 				</div>
 			
 				<!-- agrupa os campos do formulário -->

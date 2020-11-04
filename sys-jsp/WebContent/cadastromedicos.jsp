@@ -30,11 +30,11 @@
 			<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Voltar para o menu</a>
 	
 			<div class="div-cadastrousuario">
-				<h1>Cadastro de Médicos</h1>
+				<h1>[ - Cadastro de Médicos - ]</h1>
 			</div>
 	
 			<div class="div-dadosusuario">
-				<h2>Dados Pessoais</h2>
+				<h2>[ - Dados Pessoais - ]</h2>
 			</div>
 	
 			<!-- agrupa os campos do formulário -->
@@ -145,7 +145,7 @@
 				</fieldset>
 	
 				<div class="div-dadosusuario">
-					<h2>Dados do Endereço</h2>
+					<h2>[ - Dados do Endereço - ]</h2>
 				</div>
 	
 				<fieldset class="grupo">

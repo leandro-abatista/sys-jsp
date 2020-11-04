@@ -202,12 +202,12 @@ public class ServletCliente extends HttpServlet {
 						BufferedImage resizedImage = new BufferedImage(100, 100, type);
 						//->aqui inicia o processo de criar a imagem em miniatura
 						Graphics2D g = resizedImage.createGraphics();
-						g.drawImage(resizedImage, 0, 0, 100, 100, null);
+						g.drawImage(bufferedImage, 0, 0, 100, 100, null);
 						g.dispose();
 						
 						//->escrever a imagem novamente
 						ByteArrayOutputStream baos = new ByteArrayOutputStream();
-						ImageIO.write(bufferedImage, "png", baos);
+						ImageIO.write(resizedImage, "png", baos);
 						
 						String miniaturaBase64 = "data:image/png;base64," + DatatypeConverter.printBase64Binary(baos.toByteArray());
 						

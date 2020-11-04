@@ -36,7 +36,7 @@
 			<a class="div-a" href="ServletMedico?acao=listartodos"><img alt="home" src="resources/img/seta-para-tras.png"> Voltar</a>
 		
 			<div class="div-cadastrousuario">
-				<h1>Cadastro de Telefones</h1>
+				<h1>[ - Cadastro de Telefones - ]</h1>
 			</div>
 			
 			<!-- agrupa os campos do formulário -->

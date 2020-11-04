@@ -70,34 +70,38 @@ input, select, button{
 .div-cadastrousuario h1{
 	text-transform: uppercase;
 	color: #FFF;
-	font-size: 25px;
+	font-size: 23px;
 	font-weight: 600;
 	text-align: center;
 	width: 100%;
-	height: 50px;
+	height: 40px;
 	line-height: 40px;
 	background-color: #4682B4;
 	margin-top: 15px;
 	margin-bottom: 10px;
+	/*
 	text-shadow: 2px 2px 2px rgba(0,0,0,0.3);
 	box-sizing: border-box;
+	*/
 }
 
 	
 .div-dadosusuario h2{
 	text-transform: uppercase;
 	color: #FFF;
-	font-size: 22px;
+	font-size: 21px;
 	font-weight: 600;
 	text-align: center;
 	width: 100%;
 	height: 40px;
-	line-height: 30px;
+	line-height: 40px;
 	background-color: #4682B4;
-	margin-bottom: 10px;
-	margin-top: 2px;
+	margin-bottom: 15px;
+	padding: 0;
+	/*
 	text-shadow: 2px 2px 2px rgba(0,0,0,0.3);
 	box-sizing: border-box;
+	*/
 }
 
 .grupo:before, .grupo:after{
@@ -151,7 +155,6 @@ fieldset.grupo .campo {
 }
 
 .campo input[type=radio]{
-	margin-top: 0.8em;
 	margin-left: 0.5em;
 	padding: 0.3em; /*tamanho dos campos*/
 	border: 1px solid #ccc;
@@ -160,6 +163,7 @@ fieldset.grupo .campo {
   	-webkit-transform: scale(1.7); /* Safari and Chrome */
   	transform: scale(1.7);
 }
+
 
 .campo textarea{
 	margin-left: 0.5em;
@@ -182,7 +186,7 @@ fieldset.grupo .campo {
 .botao{
 	border-radius: 5px;
 	font-size: 1.3em;
-	background: #F90;
+	background: #008B8B;
 	border: 1px;
 	margin-bottom: 2em;
 	margin-top: 1em;

@@ -43,11 +43,11 @@
 			<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Voltar para o menu</a>
 	
 			<div class="div-cadastrousuario">
-				<h1>Cadastro de Clientes</h1>
+				<h1>[ - Cadastro de Clientes - ]</h1>
 			</div>
 	
 			<div class="div-dadosusuario">
-				<h2>Dados Pessoais</h2>
+				<h2>[ - Dados Pessoais - ]</h2>
 			</div>
 	
 			<!-- agrupa os campos do formulário -->
@@ -122,7 +122,8 @@
 					
 						<label for="genero">Gênero</label>
 						
-						<input type="radio" id="genero" name="genero" value="masculino"
+						<label for="generoM">Masculino
+						<input type="radio" id="generoM" name="genero" value="masculino"
 							
 							<%
 								if(request.getAttribute("cli") != null){
@@ -135,9 +136,10 @@
 								}
 							%>
 						
-						>Masculino
+						></label>
 						
-						<input type="radio" id="genero" name="genero" value="feminino"
+						<label for="generoF">Feminino
+						<input type="radio" id="generoF" name="genero" value="feminino"
 							
 							<%
 								if(request.getAttribute("cli") != null){
@@ -150,7 +152,7 @@
 								}
 							%>
 						
-						>Feminino
+						></label>
 						
 					</div>
 					
@@ -244,7 +246,7 @@
 				</fieldset>
 	
 				<div class="div-dadosusuario">
-					<h2>Dados do Endereço</h2>
+					<h2>[ - Dados do Endereço - ]</h2>
 				</div>
 	
 				<fieldset class="grupo">
