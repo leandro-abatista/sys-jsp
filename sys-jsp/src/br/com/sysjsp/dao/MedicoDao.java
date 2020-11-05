@@ -1,12 +1,12 @@
 package br.com.sysjsp.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.sysjsp.classes.model.Especialidade;
 import br.com.sysjsp.classes.model.Medico;
 import br.com.sysjsp.connect.SingleConnection;
 
@@ -22,24 +22,24 @@ public class MedicoDao {
 		try {
 			
 			String sql = "INSERT INTO tbl_medico(" + 
-					"            nome, cpf, crm, uf, especialidade, email, datacadastro, cep, " + 
-					"            endereco, numero, bairro, cidade, estado, ibge) " + 
+					"            nome, cpf, crm, uf, email, datacadastro, cep, " + 
+					"            endereco, numero, bairro, cidade, estado, ibge, id_especialidade) " + 
 					"    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 			PreparedStatement insert = connection.prepareStatement(sql);
 			insert.setString(1, medico.getNome());
 			insert.setString(2, medico.getCpf());
 			insert.setString(3, medico.getCrm());
 			insert.setString(4, medico.getUf());
-			insert.setString(5, medico.getEspecialidade());
-			insert.setString(6, medico.getEmail());
-			insert.setDate(7, new java.sql.Date(medico.getDataCadastro().getTime()));
-			insert.setString(8, medico.getCep());
-			insert.setString(9, medico.getEndereco());
-			insert.setInt(10, medico.getNumero());
-			insert.setString(11, medico.getBairro());
-			insert.setString(12, medico.getCidade());
-			insert.setString(13, medico.getEstado());
-			insert.setInt(14, medico.getIbge());
+			insert.setString(5, medico.getEmail());
+			insert.setString(6, 	medico.getDataCadastro());
+			insert.setString(7, medico.getCep());
+			insert.setString(8, medico.getEndereco());
+			insert.setInt(9, medico.getNumero());
+			insert.setString(10, medico.getBairro());
+			insert.setString(11, medico.getCidade());
+			insert.setString(12, medico.getEstado());
+			insert.setInt(13, medico.getIbge());
+			insert.setLong(14, medico.getEspecialidade());
 			
 			insert.execute();
 			connection.commit();
@@ -72,9 +72,8 @@ public class MedicoDao {
 				medico.setCpf(rs.getString("cpf"));
 				medico.setCrm(rs.getString("crm"));
 				medico.setUf(rs.getString("uf"));
-				medico.setEspecialidade(rs.getString("especialidade"));
 				medico.setEmail(rs.getString("email"));
-				medico.setDataCadastro(new java.sql.Date(rs.getDate("datacadastro").getTime()));
+				medico.setDataCadastro(rs.getString("datacadastro"));
 				medico.setCep(rs.getString("cep"));
 				medico.setEndereco(rs.getString("endereco"));
 				medico.setNumero(rs.getInt("numero"));
@@ -82,6 +81,7 @@ public class MedicoDao {
 				medico.setCidade(rs.getString("cidade"));
 				medico.setEstado(rs.getString("estado"));
 				medico.setIbge(rs.getInt("ibge"));
+				medico.setEspecialidade(rs.getLong("id_especialidade"));
 				
 				medicos.add(medico);
 			}
@@ -94,10 +94,36 @@ public class MedicoDao {
 		return null;
 	}
 	
+	public List<Especialidade> listarTodasEspecialidades(){
+		try {
+			
+			List<Especialidade> especialidades = new ArrayList<Especialidade>();
+			
+			String sql = "SELECT * FROM tbl_especialidade order by id;";
+			PreparedStatement statement = connection.prepareStatement(sql);
+			ResultSet rs = statement.executeQuery();
+			
+			while (rs.next()) {
+				
+				Especialidade especialidade = new Especialidade();
+				especialidade.setId(rs.getLong("id"));
+				especialidade.setDescricao(rs.getString("descricao"));
+				
+				especialidades.add(especialidade);
+			}
+			
+			return especialidades;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public Medico consultarM(String id) {
 		try {
 			
-			String sql = "SELECT * FROM tbl_medico order by id = '" + id + "'";
+			String sql = "SELECT * FROM tbl_medico WHERE id = '" + id + "'";
 			PreparedStatement select = connection.prepareStatement(sql);
 			ResultSet rs = select.executeQuery();
 			
@@ -109,9 +135,8 @@ public class MedicoDao {
 				medico.setCpf(rs.getString("cpf"));
 				medico.setCrm(rs.getString("crm"));
 				medico.setUf(rs.getString("uf"));
-				medico.setEspecialidade(rs.getString("especialidade"));
 				medico.setEmail(rs.getString("email"));
-				medico.setDataCadastro(new java.sql.Date(rs.getDate("datacadastro").getTime()));
+				medico.setDataCadastro(rs.getString("datacadastro"));
 				medico.setCep(rs.getString("cep"));
 				medico.setEndereco(rs.getString("endereco"));
 				medico.setNumero(rs.getInt("numero"));
@@ -119,6 +144,7 @@ public class MedicoDao {
 				medico.setCidade(rs.getString("cidade"));
 				medico.setEstado(rs.getString("estado"));
 				medico.setIbge(rs.getInt("ibge"));
+				medico.setEspecialidade(rs.getLong("id_especialidade"));
 				
 				return medico;
 			}
@@ -131,11 +157,11 @@ public class MedicoDao {
 	}
 	
 	public void updateM(Medico medico) {
-try {
+		try {
 			
 			String sql = "UPDATE tbl_medico " + 
-					"   SET id=?, nome=?, cpf=?, crm=?, uf=?, especialidade=?, email=?, datacadastro=?, " + 
-					"       cep=?, endereco=?, numero=?, bairro=?, cidade=?, estado=?, ibge=? " + 
+					"   SET id=?, nome=?, cpf=?, crm=?, uf=?, email=?, datacadastro=?, " + 
+					"       cep=?, endereco=?, numero=?, bairro=?, cidade=?, estado=?, ibge=? , id_especialidade=? " + 
 					" WHERE id = '" + medico.getId() + "'";
 			PreparedStatement update = connection.prepareStatement(sql);
 			update.setLong(1, medico.getId());
@@ -143,16 +169,16 @@ try {
 			update.setString(3, medico.getCpf());
 			update.setString(4, medico.getCrm());
 			update.setString(5, medico.getUf());
-			update.setString(6, medico.getEspecialidade());
-			update.setString(7, medico.getEmail());
-			update.setDate(8, new java.sql.Date(medico.getDataCadastro().getTime()));
-			update.setString(9, medico.getCep());
-			update.setString(10, medico.getEndereco());
-			update.setInt(11, medico.getNumero());
-			update.setString(12, medico.getBairro());
-			update.setString(13, medico.getCidade());
-			update.setString(14, medico.getEstado());
-			update.setInt(15, medico.getIbge());
+			update.setString(6, medico.getEmail());
+			update.setString(7, medico.getDataCadastro());
+			update.setString(8, medico.getCep());
+			update.setString(9, medico.getEndereco());
+			update.setInt(10, medico.getNumero());
+			update.setString(11, medico.getBairro());
+			update.setString(12, medico.getCidade());
+			update.setString(13, medico.getEstado());
+			update.setInt(14, medico.getIbge());
+			update.setLong(15, medico.getEspecialidade());
 			
 			update.executeUpdate();
 			connection.commit();
@@ -237,7 +263,4 @@ try {
 		}
 		return false;
 	}
-	
-	
-
 }

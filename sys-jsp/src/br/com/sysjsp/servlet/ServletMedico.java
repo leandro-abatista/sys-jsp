@@ -1,8 +1,6 @@
 package br.com.sysjsp.servlet;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,35 +26,32 @@ public class ServletMedico extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String acao = request.getParameter("acao");
-		String medico = request.getParameter("medico");
+		String med = request.getParameter("med");
 		
-		if (acao.equalsIgnoreCase("delete")) {
+		/*linha que redireciona para a página*/
+		RequestDispatcher view = request.getRequestDispatcher("/cadastromedicos.jsp");
+		
+		if (acao != null && acao.equalsIgnoreCase("delete") && med != null) {
 			
-			dao.deleteM(medico);
-			
-			RequestDispatcher view = request.getRequestDispatcher("/cadastrosmedicos.jsp");
+			dao.deleteM(med);
 			request.setAttribute("medicos", dao.listarTodosM());
-			view.forward(request, response);
 			
 		} else
 			
-		if (acao.equalsIgnoreCase("update")) {
+		if (acao != null && acao.equalsIgnoreCase("update")) {
 			
-			Medico med = dao.consultarM(medico);
-			
-			RequestDispatcher view = request.getRequestDispatcher("/cadastrosmedicos.jsp");
-			request.setAttribute("medico", med);
-			view.forward(request, response);
+			Medico medico = dao.consultarM(med);
+			request.setAttribute("med", medico);
 			
 		} else
 			
-		if (acao.equalsIgnoreCase("listartodos")) {
+		if (acao != null && acao.equalsIgnoreCase("listartodos")) {
 			
-			RequestDispatcher view = request.getRequestDispatcher("/cadastrosmedicos.jsp");
 			request.setAttribute("medicos", dao.listarTodosM());
-			view.forward(request, response);
-			
 		}
+		
+		request.setAttribute("especialidades", dao.listarTodasEspecialidades());
+		view.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -65,7 +60,7 @@ public class ServletMedico extends HttpServlet {
 		
 		if (acao != null && acao.equalsIgnoreCase("reset")) {
 			
-			RequestDispatcher view = request.getRequestDispatcher("/cadastrosmedicos.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("/cadastromedicos.jsp");
 			request.setAttribute("medicos", dao.listarTodosM());
 			view.forward(request, response);
 			
@@ -76,7 +71,6 @@ public class ServletMedico extends HttpServlet {
 			String cpf = request.getParameter("cpf");
 			String crm = request.getParameter("crm");
 			String uf = request.getParameter("uf");
-			String especialidade = request.getParameter("especialidade");
 			String email = request.getParameter("email");
 			String datacadastro = request.getParameter("datacadastro");
 
@@ -87,6 +81,7 @@ public class ServletMedico extends HttpServlet {
 			String cidade = request.getParameter("cidade");
 			String estado = request.getParameter("estado");
 			String ibge = request.getParameter("ibge");
+			String especialidade = request.getParameter("id_especialidade");
 
 			Medico medico = new Medico();
 			medico.setId(!id.isEmpty() ? Long.parseLong(id) : 0);
@@ -94,19 +89,9 @@ public class ServletMedico extends HttpServlet {
 			medico.setCpf(cpf);
 			medico.setCrm(crm);
 			medico.setUf(uf);
-			medico.setEspecialidade(especialidade);
 			medico.setEmail(email);
+			medico.setDataCadastro(datacadastro);
 			
-			try {
-				
-				SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-				Date dataFormatada = formato.parse(datacadastro);
-				medico.setDataCadastro((java.sql.Date) dataFormatada);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-
 			medico.setCep(cep);
 			medico.setEndereco(endereco);
 			medico.setNumero(Integer.parseInt(numero));
@@ -114,6 +99,7 @@ public class ServletMedico extends HttpServlet {
 			medico.setCidade(cidade);
 			medico.setEstado(estado);
 			medico.setIbge(Integer.parseInt(ibge));
+			medico.setEspecialidade(Long.parseLong(especialidade));
 			
 			String msg = null;
 			boolean adicionar = true;
@@ -144,11 +130,12 @@ public class ServletMedico extends HttpServlet {
 			} else
 				
 			if (id != null || !id.isEmpty() && dao.validarPeloNomeMed(nome) && adicionar) {
-					dao.updateM(medico);
+				dao.updateM(medico);
 			}
 			
-			RequestDispatcher view = request.getRequestDispatcher("/cadastrosmedicos.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("/cadastromedicos.jsp");
 			request.setAttribute("medicos", dao.listarTodosM());
+			request.setAttribute("especialidades", dao.listarTodasEspecialidades());
 			view.forward(request, response);
 		}
 	}

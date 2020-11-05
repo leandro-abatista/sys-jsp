@@ -165,11 +165,11 @@ public class ServletCliente extends HttpServlet {
 
 			cliente.setCep(cep);
 			cliente.setEndereco(endereco);
-			cliente.setNumero(Integer.valueOf(numero));
+			cliente.setNumero(Integer.parseInt(numero));
 			cliente.setBairro(bairro);
 			cliente.setCidade(cidade);
 			cliente.setEstado(estado);
-			cliente.setIbge(Integer.valueOf(ibge));
+			cliente.setIbge(Integer.parseInt(ibge));
 			cliente.setGenero(genero);
 
 			try {

@@ -31,21 +31,21 @@ public class ServletTelefoneMedico extends HttpServlet {
 		
 		String acao = request.getParameter("acao");
 		
-		if (acao.equalsIgnoreCase("addTelefone")) {
+		if (acao != null && acao.equalsIgnoreCase("addTelefone")) {
 			
-			String medico = request.getParameter("medico");
-			Medico med = daoMedico.consultarM(medico);
+			String med = request.getParameter("med");
+			Medico medico = daoMedico.consultarM(med);
 			
-			request.getSession().setAttribute("medicoSelecionado", med);
-			request.setAttribute("medicoSelecionado", med);
+			request.getSession().setAttribute("medicoSelecionado", medico);
+			request.setAttribute("medicoSelecionado", medico);
 			
 			RequestDispatcher view = request.getRequestDispatcher("/cadastrotelefonesmedicos.jsp");
-			request.setAttribute("telefone", dao.listarTodosTM(med.getId()));
+			request.setAttribute("telefone", dao.listarTodosTM(medico.getId()));
 			view.forward(request, response);
 			
 		} else 
 			
-		if (acao.equalsIgnoreCase("delete")) {
+		if (acao != null && acao.equalsIgnoreCase("delete")) {
 			
 			
 			String foneId = request.getParameter("foneId");
@@ -86,7 +86,6 @@ public class ServletTelefoneMedico extends HttpServlet {
 			telefoneMedico.setMedico(medico.getId());
 			
 			if (id == null || id.isEmpty()) {
-				
 				
 				dao.saveTM(telefoneMedico);
 				

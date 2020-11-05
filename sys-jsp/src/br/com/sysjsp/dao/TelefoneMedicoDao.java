@@ -20,10 +20,10 @@ public class TelefoneMedicoDao {
 	public void saveTM(TelefoneMedico tm) {
 		try {
 			
-			String sql = "INSERT INTO tbl_telefone_medico(numero, tipo, id_medico) VALUES (?, ?, ?);";
+			String sql = "INSERT INTO tbl_telefone_medico (numero, tipo, id_medico) VALUES (?, ?, ?);";
 			PreparedStatement statement = connection.prepareStatement(sql);
 			statement.setString(1, tm.getNumero());
-			statement.setString(2, tm.getNumero());
+			statement.setString(2, tm.getTipo());
 			statement.setLong(3, tm.getMedico());
 			
 			statement.execute();
@@ -44,7 +44,8 @@ public class TelefoneMedicoDao {
 		try {
 			
 			List<TelefoneMedico> telefoneMedicos = new ArrayList<TelefoneMedico>();
-			String sql = "SELECT * FROM tbl_telefone_medico WHERE id_medico = '" + idMedico + "' order by id;";
+			
+			String sql = "SELECT * FROM tbl_telefone_medico WHERE id_medico = '" + idMedico + "' order by id_medico;";
 			PreparedStatement statement = connection.prepareStatement(sql);
 			ResultSet rs = statement.executeQuery();
 			
@@ -58,6 +59,8 @@ public class TelefoneMedicoDao {
 				
 				telefoneMedicos.add(telefoneMedico);
 			}
+			
+			return telefoneMedicos;
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -96,7 +99,7 @@ public class TelefoneMedicoDao {
 			PreparedStatement statement = connection.prepareStatement(sql);
 			statement.setLong(1, tm.getId());
 			statement.setString(2, tm.getNumero());
-			statement.setString(3, tm.getNumero());
+			statement.setString(3, tm.getTipo());
 			statement.setLong(4, tm.getMedico());
 			
 			statement.executeUpdate();

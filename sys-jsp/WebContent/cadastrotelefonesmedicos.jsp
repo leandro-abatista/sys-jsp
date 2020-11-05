@@ -46,7 +46,7 @@
 				
 					<div class="campo">
 					
-						<label for="id">Cód. Cliente:</label>
+						<label for="id">Cód. Médico:</label>
 						<input type="text" id="id" name="id" style="width: 8em;" readonly="readonly"
 						value="${medicoSelecionado.id}">
 						
@@ -81,7 +81,7 @@
 					
 					<div class="campo">
 						
-						<label for="numero">Tipo:</label>
+						<label for="tipo">Tipo:</label>
 						<select id="tipo" name="tipo">
 							<option disabled="disabled" selected="selected">Selecione uma Opção</option>
 							<option>Residencial</option>
@@ -97,7 +97,7 @@
 				
 				<button type="submit" class="botao submit" value="Salvar">Salvar</button>
 				<button type="submit" class="botao submit" value="Cancelar"
-				onclick="document.getElementById('formulario').action = 'ServletTelefone?acao=reset'">Cancelar</button>
+				onclick="document.getElementById('formulario').action = 'ServletTelefoneMedico?acao=reset'">Cancelar</button>
 			
 			</fieldset>
 		
@@ -120,7 +120,7 @@
 						<th style="width: 30%; text-align: center;">Código</th>
 						<th style="width: 30%; text-align: center;">Número</th>
 						<th style="width: 30%; text-align: center;">Tipo</th>
-						<th style="width: 30%; text-align: center;">Excluir</th>
+						<th style="width: 30%; text-align: center;">#</th>
 						
 					</tr>
 					

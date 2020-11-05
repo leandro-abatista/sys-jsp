@@ -25,6 +25,7 @@ public class TelefoneDao {
 			insert.setString(1, telefone.getNumero());
 			insert.setString(2, telefone.getTipo());
 			insert.setLong(3, telefone.getCliente());
+			
 			insert.execute();
 			connection.commit();
 
@@ -55,6 +56,7 @@ public class TelefoneDao {
 				telefone.setNumero(rs.getString("numero"));
 				telefone.setTipo(rs.getString("tipo"));
 				telefone.setCliente(rs.getLong("id_cliente"));
+				
 				telefones.add(telefone);
 			}
 			
@@ -98,6 +100,7 @@ public class TelefoneDao {
 			update.setString(1, telefone.getNumero());
 			update.setString(2, telefone.getTipo());
 			update.setLong(3, telefone.getCliente());
+			
 			update.executeUpdate();
 			connection.commit();
 
@@ -117,6 +120,7 @@ public class TelefoneDao {
 			
 			String sql = "DELETE FROM tbl_telefone WHERE id = '" + id + "'";
 			PreparedStatement delete = connection.prepareStatement(sql);
+			
 			delete.execute();
 			connection.commit();
 
@@ -137,8 +141,8 @@ public class TelefoneDao {
 			String sql = "SELECT COUNT(1) AS qtd FROM tbl_telefone WHERE numero = '" + numero + "'";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			ResultSet resultSet = preparedStatement.executeQuery();
+			
 			if (resultSet.next()) {
-				
 				return resultSet.getInt("qtd") <= 0;/*Return true*/
 			}
 

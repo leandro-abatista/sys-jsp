@@ -42,7 +42,7 @@ a:hover{
 	border: 1px;
 	margin-left: 5px;
 	color: #FFF;/*cor do texto*/
-	padding: 0.5em 0.6em;
+	padding: 0.3em 0.6em;
 	box-shadow: 2px 2px 2px rgba(0,0,0,0.3);/*muda a sobra do botão*/
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.5);/*muda a sobra do texto*/
 }

@@ -122,8 +122,7 @@
 					
 						<label for="genero">Gênero</label>
 						
-						<label for="generoM">Masculino
-						<input type="radio" id="generoM" name="genero" value="masculino"
+						<input type="radio" id="genero" name="genero" value="masculino"
 							
 							<%
 								if(request.getAttribute("cli") != null){
@@ -136,10 +135,9 @@
 								}
 							%>
 						
-						></label>
+						>Masculino
 						
-						<label for="generoF">Feminino
-						<input type="radio" id="generoF" name="genero" value="feminino"
+						<input type="radio" id="genero" name="genero" value="feminino"
 							
 							<%
 								if(request.getAttribute("cli") != null){
@@ -152,16 +150,10 @@
 								}
 							%>
 						
-						></label>
+						>Feminino
 						
 					</div>
 					
-					<div class="campo">
-					
-						
-						
-					</div>
-	
 				</fieldset>
 				
 				<fieldset class="grupo">

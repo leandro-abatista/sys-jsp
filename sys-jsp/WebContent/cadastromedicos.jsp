@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt"%>
 
 <!DOCTYPE html>
 
@@ -25,7 +26,7 @@
 
 	<section>
 
-		<form id="formulario" action="ServletMedico" method="post"	enctype="multipart/form-data">
+		<form id="formulario" action="ServletMedico" method="post">
 	
 			<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Voltar para o menu</a>
 	
@@ -46,7 +47,7 @@
 	
 						<label for="id">Código:</label> 
 						<input type="text" id="id" name="id" style="width: 8em;" readonly="readonly"
-							value="${medico.id}">
+							value="${med.id}">
 	
 					</div>
 	
@@ -58,7 +59,7 @@
 	
 						<label for="nome">Nome:</label> 
 						<input type="text" id="nome" name="nome" style="width: 30em;" required="required"
-							value="${medico.nome}">
+							value="${med.nome}" autofocus="autofocus">
 	
 					</div>
 	
@@ -66,7 +67,7 @@
 	
 						<label for="cpf">CPF:</label> 
 						<input type="text" id="cpf"	name="cpf" style="width: 10em;" required="required"
-							onkeypress="$(this).mask('000.000.000-00')" value="${medico.cpf}">
+							onkeypress="$(this).mask('000.000.000-00')" value="${med.cpf}">
 	
 					</div>
 	
@@ -74,7 +75,7 @@
 	
 						<label for="crm">CRM:</label> 
 						<input type="text" id="crm" name="crm" style="width: 8em;" required="required"
-							onkeypress="$(this).mask('0000000000')" value="${medico.crm}">
+							onkeypress="$(this).mask('0000000000')" value="${med.crm}">
 	
 					</div>
 	
@@ -82,7 +83,7 @@
 	
 						<label for="uf">UF:</label>
 							<select id="uf" name="uf">
-								<option disabled="disabled" selected="selected">Selecione uma Opção</option>
+								<option disabled="disabled" selected="selected">Selecione um UF</option>
 								<option>AC</option>
 								<option>AL</option>
 								<option>AP</option>
@@ -121,7 +122,26 @@
 					<div class="campo">
 	
 						<label for="especialidade">Especialidade:</label>
+						<select id="especialidade" name="id_especialidade">
+						
+							<option disabled="disabled" selected="selected">Selecione uma Opção</option>
 							
+							<c:forEach items="${especialidades}" var="espec">
+							
+									<option  id="${espec.id}" value="${espec.id}"
+									
+										<c:if test="${espec.id == med.especialidade}">
+		        							<c:out value="selected=\"selected\""/>
+		    							</c:if>>
+									
+									>
+										
+									${espec.descricao}	
+									</option>
+									
+								</c:forEach>
+						
+						</select>	
 	
 					</div>
 	
@@ -129,7 +149,7 @@
 	
 						<label for="datacadastro">Data Cadastro:</label> 
 						<input type="date" id="datacadastro" name="datacadastro" style="width: 11em;"
-							required="required" value="${medico.datacadastro}">
+							required="required" value="${med.dataCadastro}" pattern="dd/MM/yyyy">
 	
 					</div>
 	
@@ -137,7 +157,7 @@
 	
 						<label for="email">E-mail:</label> 
 						<input type="text" id="email" name="email" style="width: 25em;" required="required"
-							value="${medico.email}">
+							value="${med.email}">
 	
 					</div>
 	
@@ -155,7 +175,7 @@
 						<label for="cep">CEP:</label> 
 						<input type="text" id="cep"
 							name="cep" style="width: 10em;" onblur="consultaCep();"
-							value="${medico.cep}" placeholder="Informe cep válido"
+							value="${med.cep}" placeholder="Informe cep válido"
 							onkeypress="$(this).mask('00000000')">
 	
 					</div>
@@ -164,7 +184,7 @@
 	
 						<label for="endereco">Endereço:</label> 
 						<input type="text" id="endereco" name="endereco" style="width: 30em;"
-							value="${medico.endereco}">
+							value="${med.endereco}">
 	
 					</div>
 	
@@ -172,7 +192,7 @@
 	
 						<label for="numero">Número:</label> 
 						<input type="text" id="numero" name="numero" style="width: 8em;"
-							onkeypress="$(this).mask('00000000')" value="${medico.numero}">
+							onkeypress="$(this).mask('00000000')" value="${med.numero}">
 	
 					</div>
 	
@@ -183,28 +203,28 @@
 					<div class="campo">
 	
 						<label for="bairro">Bairro:</label> 
-						<input type="text" id="bairro" name="bairro" style="width: 20em;" value="${medico.bairro}">
+						<input type="text" id="bairro" name="bairro" style="width: 20em;" value="${med.bairro}">
 	
 					</div>
 	
 					<div class="campo">
 	
 						<label for="cidade">Cidade:</label> 
-						<input type="text" id="cidade" name="cidade" style="width: 20em;" value="${medico.cidade}">
+						<input type="text" id="cidade" name="cidade" style="width: 20em;" value="${med.cidade}">
 	
 					</div>
 	
 					<div class="campo">
 	
 						<label for="estado">UF:</label> 
-						<input type="text" id="estado" name="estado" style="width: 5em;" value="${medico.estado}">
+						<input type="text" id="estado" name="estado" style="width: 5em;" value="${med.estado}">
 	
 					</div>
 	
 					<div class="campo">
 	
 						<label for="ibge">Cód. IBGE:</label> 
-						<input type="text" id="ibge" name="ibge" style="width: 8em;" value="${medico.ibge}">
+						<input type="text" id="ibge" name="ibge" style="width: 8em;" value="${med.ibge}">
 	
 					</div>
 	
@@ -235,7 +255,7 @@
 						<th style="width: 8%; text-align: center;">Código</th>
 						<th style="width: 30%; text-align: center;">Nome</th>
 						<th style="width: 12%; text-align: center;">CPF</th>
-						<th style="width: 12%; text-align: center;">CRM</th>
+						<th style="width: 12%; text-align: center;">CRM/UF</th>
 						<th style="width: 30%; text-align: center;">Email</th>
 						<th style="width: 8%; text-align: center;">#</th>
 						<th style="width: 8%; text-align: center;">#</th>
@@ -255,28 +275,28 @@
 
 				<tbody>
 
-					<c:forEach items="${medicos}" var="medico">
+					<c:forEach items="${medicos}" var="med">
 
 						<tr>
 
-							<td style="width: 8%;"><c:out value="${medico.id}"></c:out></td>
-							<td style="width: 30%;"><c:out value="${medico.nome}"></c:out></td>
-							<td style="width: 12%;"><c:out value="${medico.cpf}"></c:out></td>
-							<td style="width: 12%;"><c:out value="${medico.crm}/${medico.uf}"></c:out></td>
-							<td style="width: 30%;"><c:out value="${medico.email}"></c:out></td>
+							<td style="width: 8%;"><c:out value="${med.id}"></c:out></td>
+							<td style="width: 30%;"><c:out value="${med.nome}"></c:out></td>
+							<td style="width: 12%;"><c:out value="${med.cpf}"></c:out></td>
+							<td style="width: 12%;"><c:out value="${med.crm}/${med.uf}"></c:out></td>
+							<td style="width: 30%;"><c:out value="${med.email}"></c:out></td>
 
 
-							<td style="width: 8%;"><a href="ServletMedico?acao=update&medico=${medico.id}">
+							<td style="width: 8%;"><a href="ServletMedico?acao=update&med=${med.id}">
 									<img alt="update" src="resources/img/editar.png"
 									title="Atualizar" style="width: 24px; height: 24px;">
 							</a></td>
 
-							<td style="width: 8%;"><a href="ServletMedico?acao=delete&medico=${medico.id}">
+							<td style="width: 8%;"><a href="ServletMedico?acao=delete&med=${med.id}">
 									<img alt="delete" src="resources/img/excluir.png"
 									title="Excluir" style="width: 24px; height: 24px;">
 							</a></td>
 
-							<td style="width: 8%;"><a href="ServletTelefoneMedico?acao=addTelefone&medico=${medico.id}">
+							<td style="width: 8%;"><a href="ServletTelefoneMedico?acao=addTelefone&med=${med.id}">
 									<img alt="telefone" src="resources/img/telefone.png"
 									title="Adicionar Telefone" style="width: 24px; height: 24px;">
 							</a></td>

@@ -1,6 +1,6 @@
 package br.com.sysjsp.classes.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Medico {
 
@@ -9,9 +9,9 @@ public class Medico {
 	private String cpf;
 	private String crm;
 	private String uf;
-	private String especialidade;
+	private Long especialidade;
 	private String email;
-	private Date dataCadastro;
+	private String dataCadastro;
 	/* dados do endereço do médico */
 	private String cep;
 	private String endereco;
@@ -53,11 +53,11 @@ public class Medico {
 		this.crm = crm;
 	}
 
-	public String getEspecialidade() {
+	public Long getEspecialidade() {
 		return especialidade;
 	}
 
-	public void setEspecialidade(String especialidade) {
+	public void setEspecialidade(Long especialidade) {
 		this.especialidade = especialidade;
 	}
 
@@ -69,11 +69,11 @@ public class Medico {
 		this.email = email;
 	}
 
-	public Date getDataCadastro() {
+	public String getDataCadastro() {
 		return dataCadastro;
 	}
 
-	public void setDataCadastro(Date dataCadastro) {
+	public void setDataCadastro(String dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
 
