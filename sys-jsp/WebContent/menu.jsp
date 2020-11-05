@@ -22,9 +22,6 @@
 
 	<jsp:setProperty property="*" name="calcula" />
 
-	<input type="checkbox" id="btn_menu">
-	<label for="btn_menu"><img alt="init" src="resources/img/init.png"></label>
-
 	<nav class="menu">
 
 		<ul>
