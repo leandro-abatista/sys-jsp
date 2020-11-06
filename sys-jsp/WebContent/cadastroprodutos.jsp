@@ -103,7 +103,7 @@
 									
 										<c:if test="${cate.id == produto.categoria}">
 		        							<c:out value="selected=\"selected\""/>
-		    							</c:if>>
+		    							</c:if>
 									
 									>
 										

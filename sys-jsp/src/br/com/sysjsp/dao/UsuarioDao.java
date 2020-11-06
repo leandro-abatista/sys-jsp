@@ -46,13 +46,14 @@ public class UsuarioDao {
 			}
 		}
 	}
-
+	
 	public List<AcessoJsp> listarTodos() {
 		try {
 
 			List<AcessoJsp> listar = new ArrayList<AcessoJsp>();
-
-			String sql = "SELECT * FROM tbl_usuario order by id";
+			/*esse simbolo '<>' -> quer dizer diferente*/
+			/*esse trecho do código -> WHERE usuario <> 'admin' ele esconde o usuário admin na tela*/
+			String sql = "SELECT * FROM tbl_usuario WHERE usuario <> 'admin' order by id";
 			PreparedStatement statement = connection.prepareStatement(sql);
 			ResultSet rs = statement.executeQuery();
 
@@ -120,8 +121,7 @@ public class UsuarioDao {
 	public AcessoJsp consultarU(String id) {
 		try {
 
-			String sql = "SELECT * FROM tbl_usuario WHERE id = '" + id + "'";
-
+			String sql = "SELECT * FROM tbl_usuario WHERE id = '" + id + "' AND usuario <> 'admin'";
 			PreparedStatement consulta = connection.prepareStatement(sql);
 			ResultSet rs = consulta.executeQuery();
 
@@ -183,7 +183,7 @@ public class UsuarioDao {
 	public void deleteU(String id) {
 		try {
 
-			String sql = "DELETE FROM tbl_usuario" + " WHERE id = '" + id + "'";
+			String sql = "DELETE FROM tbl_usuario" + " WHERE id = '" + id + "' AND usuario <> 'admin'";
 			PreparedStatement delete = connection.prepareStatement(sql);
 			delete.execute();
 			connection.commit();

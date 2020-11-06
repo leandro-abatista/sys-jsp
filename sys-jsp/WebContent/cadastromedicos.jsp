@@ -1,3 +1,4 @@
+<%@page import="br.com.sysjsp.classes.model.Medico"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt"%>
@@ -74,7 +75,7 @@
 					<div class="campo">
 	
 						<label for="crm">CRM:</label> 
-						<input type="text" id="crm" name="crm" style="width: 8em;" required="required"
+						<input type="text" id="crm" name="crm" style="width: 7em;" required="required"
 							onkeypress="$(this).mask('0000000000')" value="${med.crm}">
 	
 					</div>
@@ -84,33 +85,438 @@
 						<label for="uf">UF:</label>
 							<select id="uf" name="uf">
 								<option disabled="disabled" selected="selected">Selecione um UF</option>
-								<option>AC</option>
-								<option>AL</option>
-								<option>AP</option>
-								<option>AM</option>
-								<option>BA</option>
-								<option>CE</option>
-								<option>DF</option>
-								<option>ES</option>
-								<option>GO</option>
-								<option>MA</option>
-								<option>MT</option>
-								<option>MS</option>
-								<option>MG</option>
-								<option>PA</option>
-								<option>PB</option>
-								<option>PR</option>
-								<option>PE</option>
-								<option>PI</option>
-								<option>RJ</option>
-								<option>RN</option>
-								<option>RS</option>
-								<option>RO</option>
-								<option>RR</option>
-								<option>SC</option>
-								<option>SP</option>
-								<option>SE</option>
-								<option>TO</option>
+								<option value="AC"
+								
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("AC")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>AC</option>
+								<option value="AL"
+								
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("AL")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>AL</option>
+								<option value="AP"
+								
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("AP")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>AP</option>
+								<option value="AM"
+								
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("AM")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>AM</option>
+								<option value="BA"
+								
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("BA")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>BA</option>
+								<option value="CE"
+								
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("CE")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>CE</option>
+								<option value="DF"
+								
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("DF")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>DF</option>
+								<option value="ES"
+									
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("ES")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>ES</option>
+								<option value="GO"
+								
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("GO")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>GO</option>
+								<option value="MA"
+								
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("MA")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>MA</option>
+								<option value="MT"
+								
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("MT")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>MT</option>
+								<option value="MS"
+								
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("MS")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>MS</option>
+								<option value="MG"
+								
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("MG")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>MG</option>
+								<option value="PA"
+								
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("PA")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>PA</option>
+								<option value="PB"
+								
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("PB")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>PB</option>
+								<option value="PR"
+								
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("PR")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>PR</option>
+								<option value="PE"
+								
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("PE")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>PE</option>
+								<option value="PI"
+								
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("PI")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>PI</option>
+								<option value="RJ"
+								
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("RJ")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>RJ</option>
+								<option value="RN"
+								
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("RN")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>RN</option>
+								<option value="RS"
+								
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("RS")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>RS</option>
+								<option value="RO"
+								
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("RO")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>RO</option>
+								<option value="RR"
+								
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("RR")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>RR</option>
+								<option value="SC"
+								
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("SC")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>SC</option>
+								<option value="SP"
+								
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("SP")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>SP</option>
+								<option value="SE"
+								
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("SE")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>SE</option>
+								<option value="TO"
+								
+									<%
+										if(request.getAttribute("med") != null){
+											
+											Medico medic = (Medico) request.getAttribute("med");
+											
+											if(medic.getUf().equalsIgnoreCase("TO")){
+												out.print(" ");
+												out.print("selected=\"selected\"");
+												out.print(" ");
+											}
+										}
+									%>
+								
+								>TO</option>
 							</select>
 	
 					</div>
@@ -132,7 +538,7 @@
 									
 										<c:if test="${espec.id == med.especialidade}">
 		        							<c:out value="selected=\"selected\""/>
-		    							</c:if>>
+		    							</c:if>
 									
 									>
 										
@@ -147,21 +553,101 @@
 	
 					<div class="campo">
 	
-						<label for="datacadastro">Data Cadastro:</label> 
+						<label for="datacadastro">Data do Cadastro:</label> 
 						<input type="date" id="datacadastro" name="datacadastro" style="width: 11em;"
 							required="required" value="${med.dataCadastro}" pattern="dd/MM/yyyy">
 	
 					</div>
+					
+					<div class="campo">
 	
+						<label for="datanascimento">Data de Nascimento:</label> 
+						<input type="date" id="datanascimento" name="datanascimento" style="width: 11em;"
+							required="required" value="${med.dataNascimento}" pattern="dd/MM/yyyy">
+	
+					</div>
+					
+					<div class="campo">
+					
+						<label for="genero">Gênero:</label>
+						
+						<select id="genero" name="genero">
+						
+							<option disabled="disabled" selected="selected">Selecione uma Opção</option>
+							
+							<option value="Masculino"
+							
+								<%
+									
+									if(request.getAttribute("med") != null){
+										
+										Medico medic = (Medico) request.getAttribute("med");
+										
+										if(medic.getGenero().equalsIgnoreCase("Masculino")){
+											out.print(" ");
+											out.print("selected=\"selected\"");
+											out.print(" ");
+										}
+									}
+								
+								%>
+							
+							>Masculino</option>
+							
+							<option value="Feminino"
+							
+								<%
+									
+									if(request.getAttribute("med") != null){
+										
+										Medico medic = (Medico) request.getAttribute("med");
+										
+										if(medic.getGenero().equalsIgnoreCase("Feminino")){
+											out.print(" ");
+											out.print("selected=\"selected\"");
+											out.print(" ");
+										}
+									}
+								
+								%>
+							
+							>Feminino</option>
+							
+							<option value="Outro"
+							
+								<%
+									
+									if(request.getAttribute("med") != null){
+										
+										Medico medic = (Medico) request.getAttribute("med");
+										
+										if(medic.getGenero().equalsIgnoreCase("Outro")){
+											out.print(" ");
+											out.print("selected=\"selected\"");
+											out.print(" ");
+										}
+									}
+								
+								%>
+							
+							>Outro</option>
+							
+						</select>
+					
+					</div>
+	
+				</fieldset>
+				
+				<fieldset class="grupo">
+				
 					<div class="campo">
 	
 						<label for="email">E-mail:</label> 
 						<input type="text" id="email" name="email" style="width: 25em;" required="required"
 							value="${med.email}">
 	
-					</div>
-	
-	
+					</div>				
+				
 				</fieldset>
 	
 				<div class="div-dadosusuario">

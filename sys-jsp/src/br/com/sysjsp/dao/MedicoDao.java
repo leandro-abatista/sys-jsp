@@ -23,8 +23,9 @@ public class MedicoDao {
 			
 			String sql = "INSERT INTO tbl_medico(" + 
 					"            nome, cpf, crm, uf, email, datacadastro, cep, " + 
-					"            endereco, numero, bairro, cidade, estado, ibge, id_especialidade) " + 
-					"    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+					"            endereco, numero, bairro, cidade, estado, ibge, " +
+				    "            id_especialidade, datanascimento, genero) " + 
+					"     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 			PreparedStatement insert = connection.prepareStatement(sql);
 			insert.setString(1, medico.getNome());
 			insert.setString(2, medico.getCpf());
@@ -40,6 +41,8 @@ public class MedicoDao {
 			insert.setString(12, medico.getEstado());
 			insert.setInt(13, medico.getIbge());
 			insert.setLong(14, medico.getEspecialidade());
+			insert.setString(15, medico.getDataNascimento());
+			insert.setString(16, medico.getGenero());
 			
 			insert.execute();
 			connection.commit();
@@ -82,6 +85,8 @@ public class MedicoDao {
 				medico.setEstado(rs.getString("estado"));
 				medico.setIbge(rs.getInt("ibge"));
 				medico.setEspecialidade(rs.getLong("id_especialidade"));
+				medico.setDataNascimento("datanascimento");
+				medico.setGenero("genero");
 				
 				medicos.add(medico);
 			}
@@ -145,6 +150,8 @@ public class MedicoDao {
 				medico.setEstado(rs.getString("estado"));
 				medico.setIbge(rs.getInt("ibge"));
 				medico.setEspecialidade(rs.getLong("id_especialidade"));
+				medico.setDataNascimento("datanascimento");
+				medico.setGenero("genero");
 				
 				return medico;
 			}
@@ -160,9 +167,10 @@ public class MedicoDao {
 		try {
 			
 			String sql = "UPDATE tbl_medico " + 
-					"   SET id=?, nome=?, cpf=?, crm=?, uf=?, email=?, datacadastro=?, " + 
-					"       cep=?, endereco=?, numero=?, bairro=?, cidade=?, estado=?, ibge=? , id_especialidade=? " + 
-					" WHERE id = '" + medico.getId() + "'";
+					"     SET id=?, nome=?, cpf=?, crm=?, uf=?, email=?, datacadastro=?, " + 
+					"         cep=?, endereco=?, numero=?, bairro=?, cidade=?, estado=?, ibge=? , id_especialidade=?, " + 
+					" 		  datanascimento=?, genero=? " +
+					" 	  WHERE id = '" + medico.getId() + "'";
 			PreparedStatement update = connection.prepareStatement(sql);
 			update.setLong(1, medico.getId());
 			update.setString(2, medico.getNome());
@@ -179,6 +187,8 @@ public class MedicoDao {
 			update.setString(13, medico.getEstado());
 			update.setInt(14, medico.getIbge());
 			update.setLong(15, medico.getEspecialidade());
+			update.setString(16, medico.getDataNascimento());
+			update.setString(17, medico.getGenero());
 			
 			update.executeUpdate();
 			connection.commit();

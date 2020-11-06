@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -6,7 +6,7 @@
 <html>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" type="text/css" href="resources/css/estiloCadastro.css" />
@@ -40,8 +40,8 @@
 					<thead>
 
 						<tr>
-							<th style="width: 8%; text-align: center;">CÃ³digo</th>
-							<th style="width: 30%; text-align: center;">DescriÃ§Ã£o</th>
+							<th style="width: 8%; text-align: center;">Código</th>
+							<th style="width: 30%; text-align: center;">Descrição</th>
 							<th style="width: 10%; text-align: center;">Quantd.</th>
 							<th style="width: 15%; text-align: center;">Valor Compra</th>
 							<th style="width: 15%; text-align: center;">Valor Item</th>

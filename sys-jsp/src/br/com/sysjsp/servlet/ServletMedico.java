@@ -73,6 +73,8 @@ public class ServletMedico extends HttpServlet {
 			String uf = request.getParameter("uf");
 			String email = request.getParameter("email");
 			String datacadastro = request.getParameter("datacadastro");
+			String datanascimento = request.getParameter("datanascimento");
+			String genero = request.getParameter("genero");
 
 			String cep = request.getParameter("cep");
 			String endereco = request.getParameter("endereco");
@@ -82,6 +84,7 @@ public class ServletMedico extends HttpServlet {
 			String estado = request.getParameter("estado");
 			String ibge = request.getParameter("ibge");
 			String especialidade = request.getParameter("id_especialidade");
+			
 
 			Medico medico = new Medico();
 			medico.setId(!id.isEmpty() ? Long.parseLong(id) : 0);
@@ -91,6 +94,8 @@ public class ServletMedico extends HttpServlet {
 			medico.setUf(uf);
 			medico.setEmail(email);
 			medico.setDataCadastro(datacadastro);
+			medico.setDataNascimento(datanascimento);
+			medico.setGenero(genero);
 			
 			medico.setCep(cep);
 			medico.setEndereco(endereco);
@@ -100,6 +105,7 @@ public class ServletMedico extends HttpServlet {
 			medico.setEstado(estado);
 			medico.setIbge(Integer.parseInt(ibge));
 			medico.setEspecialidade(Long.parseLong(especialidade));
+			
 			
 			String msg = null;
 			boolean adicionar = true;

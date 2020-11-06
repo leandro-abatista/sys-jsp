@@ -1,7 +1,5 @@
 package br.com.sysjsp.classes.model;
 
-import java.util.Date;
-
 public class Medico {
 
 	private Long id;
@@ -12,6 +10,8 @@ public class Medico {
 	private Long especialidade;
 	private String email;
 	private String dataCadastro;
+	private String dataNascimento;
+	private String genero;
 	/* dados do endereço do médico */
 	private String cep;
 	private String endereco;
@@ -83,6 +83,22 @@ public class Medico {
 
 	public void setUf(String uf) {
 		this.uf = uf;
+	}
+
+	public String getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(String dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public String getGenero() {
+		return genero;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
 	}
 
 	public String getCep() {

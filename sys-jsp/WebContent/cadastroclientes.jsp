@@ -126,7 +126,9 @@
 							
 							<%
 								if(request.getAttribute("cli") != null){
+									
 									Cliente cliente = (Cliente) request.getAttribute("cli");
+									
 									if(cliente.getGenero().equalsIgnoreCase("masculino")){
 										out.print(" ");
 										out.print("checked=\"checked\"");
@@ -247,8 +249,8 @@
 	
 						<label for="cep">CEP:</label> 
 						<input type="text" id="cep"
-							name="cep" style="width: 10em;" onblur="consultaCep();"
-							value="${cli.cep}" placeholder="Informe cep válido"
+							name="cep" style="width: 12em;" onblur="consultaCep();"
+							value="${cli.cep}" placeholder="Informe um cep válido"
 							onkeypress="$(this).mask('00000000')">
 	
 					</div>

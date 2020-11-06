@@ -1,3 +1,4 @@
+<%@page import="br.com.sysjsp.classes.model.TelefoneMedico"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -83,12 +84,19 @@
 						
 						<label for="tipo">Tipo:</label>
 						<select id="tipo" name="tipo">
+						
 							<option disabled="disabled" selected="selected">Selecione uma Opção</option>
+							
 							<option>Residencial</option>
 							<option>Empresa</option>
+							<option>Empresa (Fixo)</option>
+							<option>Empresa (Celular)</option>
 							<option>Celular</option>
+							<option>Celular (WhatSapp)</option>
+							<option>Celular (Telegran)</option>
 							<option>Recado</option>
 							<option>Outro</option>
+							
 						</select>
 					
 					</div>
