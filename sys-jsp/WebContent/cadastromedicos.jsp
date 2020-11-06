@@ -38,6 +38,10 @@
 			<div class="div-dadosusuario">
 				<h2>[ - Dados Pessoais - ]</h2>
 			</div>
+			
+			<div class="div-h4">
+				<h4>Campos obrigatórios com (*)</h4>
+			</div>
 	
 			<!-- agrupa os campos do formulário -->
 			<fieldset>
@@ -58,7 +62,7 @@
 	
 					<div class="campo">
 	
-						<label for="nome">Nome:</label> 
+						<label for="nome">Nome:*</label> 
 						<input type="text" id="nome" name="nome" style="width: 30em;" required="required"
 							value="${med.nome}" autofocus="autofocus">
 	
@@ -66,7 +70,7 @@
 	
 					<div class="campo">
 	
-						<label for="cpf">CPF:</label> 
+						<label for="cpf">CPF:*</label> 
 						<input type="text" id="cpf"	name="cpf" style="width: 10em;" required="required"
 							onkeypress="$(this).mask('000.000.000-00')" value="${med.cpf}">
 	
@@ -74,7 +78,7 @@
 	
 					<div class="campo">
 	
-						<label for="crm">CRM:</label> 
+						<label for="crm">CRM:*</label> 
 						<input type="text" id="crm" name="crm" style="width: 7em;" required="required"
 							onkeypress="$(this).mask('0000000000')" value="${med.crm}">
 	
@@ -82,7 +86,7 @@
 	
 					<div class="campo">
 	
-						<label for="uf">UF:</label>
+						<label for="uf">UF:*</label>
 							<select id="uf" name="uf">
 								<option disabled="disabled" selected="selected">Selecione um UF</option>
 								<option value="AC"
@@ -527,7 +531,7 @@
 				
 					<div class="campo">
 	
-						<label for="especialidade">Especialidade:</label>
+						<label for="especialidade">Especialidade:*</label>
 						<select id="especialidade" name="id_especialidade">
 						
 							<option disabled="disabled" selected="selected">Selecione uma Opção</option>
@@ -561,7 +565,7 @@
 					
 					<div class="campo">
 	
-						<label for="datanascimento">Data de Nascimento:</label> 
+						<label for="datanascimento">Data de Nascimento:*</label> 
 						<input type="date" id="datanascimento" name="datanascimento" style="width: 11em;"
 							required="required" value="${med.dataNascimento}" pattern="dd/MM/yyyy">
 	
@@ -569,7 +573,7 @@
 					
 					<div class="campo">
 					
-						<label for="genero">Gênero:</label>
+						<label for="genero">Gênero:*</label>
 						
 						<select id="genero" name="genero">
 						
@@ -642,7 +646,7 @@
 				
 					<div class="campo">
 	
-						<label for="email">E-mail:</label> 
+						<label for="email">E-mail:*</label> 
 						<input type="text" id="email" name="email" style="width: 25em;" required="required"
 							value="${med.email}">
 	

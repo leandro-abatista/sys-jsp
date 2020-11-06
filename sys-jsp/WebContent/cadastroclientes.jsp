@@ -49,6 +49,10 @@
 			<div class="div-dadosusuario">
 				<h2>[ - Dados Pessoais - ]</h2>
 			</div>
+			
+			<div class="div-h4">
+				<h4>Campos obrigatórios com (*)</h4>
+			</div>
 	
 			<!-- agrupa os campos do formulário -->
 			<fieldset>
@@ -70,16 +74,16 @@
 	
 					<div class="campo">
 	
-						<label for="nome">Nome:</label> 
+						<label for="nome">Nome:*</label> 
 						<input type="text" id="nome"
 							name="nome" style="width: 30em;" required="required"
-							value="${cli.nome}">
+							value="${cli.nome}" autofocus="autofocus">
 	
 					</div>
 	
 					<div class="campo">
 	
-						<label for="cpf">CPF:</label> 
+						<label for="cpf">CPF:*</label> 
 						<input type="text" id="cpf"
 							name="cpf" style="width: 10em;" required="required"
 							onkeypress="$(this).mask('000.000.000-00')" value="${cli.cpf}">
@@ -111,7 +115,7 @@
 	
 					<div class="campo">
 	
-						<label for="datanascimento">Data Nasc.:</label> 
+						<label for="datanascimento">Data de Nascimento:*</label> 
 						<input type="date"
 							id="datanascimento" name="datanascimento" style="width: 11em;"
 							required="required" value="${cli.datanascimento}">
@@ -120,7 +124,7 @@
 	
 					<div class="campo">
 					
-						<label for="genero">Gênero</label>
+						<label for="genero">Gênero:*</label>
 						
 						<input type="radio" id="genero" name="genero" value="masculino"
 							
@@ -173,7 +177,7 @@
 	
 					<div class="campo">
 	
-						<label for="telefonecelular">Tel. Celular:</label> 
+						<label for="telefonecelular">Tel. Celular:*</label> 
 						<input
 							type="text" id="telefonecelular" name="telefonecelular"
 							style="width: 10em;" required="required"
@@ -184,7 +188,7 @@
 	
 					<div class="campo">
 	
-						<label for="email">E-mail:</label> 
+						<label for="email">E-mail:*</label> 
 						<input type="text" id="email"
 							name="email" style="width: 25em;" required="required"
 							value="${cli.email}">

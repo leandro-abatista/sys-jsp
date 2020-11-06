@@ -34,13 +34,14 @@ public class ServletTelefone extends HttpServlet {
 			throws ServletException, IOException {
 		
 		String acao = request.getParameter("acao");
+		String cli = request.getParameter("cli");
 		
+		if (cli != null) {
+			
 		if (acao.equalsIgnoreCase("addTelefone")) {
 			
-			String cli = request.getParameter("cli");
 			Cliente cliente = clienteDao.consultaC(cli);
 
-			
 			request.getSession().setAttribute("clienteSelecionado", cliente);
 			request.setAttribute("clienteSelecionado", cliente);
 
@@ -64,7 +65,13 @@ public class ServletTelefone extends HttpServlet {
 			
 		}
 		
-		
+		} else {
+			
+			RequestDispatcher view = request.getRequestDispatcher("/cadastroclientes.jsp");
+			request.setAttribute("clientes", clienteDao.listarTodos());
+			view.forward(request, response);
+			
+		}
 		
 	}
 

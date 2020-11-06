@@ -6,7 +6,7 @@
 
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" type="text/css" href="resources/css/estiloCadastro.css"/>
@@ -39,6 +39,10 @@
 				<h2>[ - Dados do Usuário - ]</h2>
 			</div>
 			
+			<div class="div-h4">
+				<h4>Campos obrigatórios com (*)</h4>
+			</div>
+			
 			<!-- agrupa os campos -->
 			<fieldset>
 			
@@ -58,15 +62,15 @@
 					
 					<div class="campo">
 						
-						<label for="primeironome">Nome:</label>
+						<label for="primeironome">Nome:*</label>
 						<input type="text" id="primeironome" name="primeironome" style="width: 15em;" 
-						value="${user.primeironome}" required="required">
+						value="${user.primeironome}" required="required" autofocus="autofocus">
 						
 					</div>
 						
 					<div class="campo">
 						
-						<label for="sobrenome">Sobrenome:</label>
+						<label for="sobrenome">Sobrenome:*</label>
 						<input type="text" id="sobrenome" name="sobrenome" style="width: 15em;" 
 						value="${user.sobrenome}" required="required">
 						
@@ -74,7 +78,7 @@
 						
 					<div class="campo">
 						
-						<label for="ultimonome">Último Nome:</label>
+						<label for="ultimonome">Último Nome:*</label>
 						<input type="text" id="ultimonome" name="ultimonome" style="width: 15em;" 
 						value="${user.ultimonome}" required="required">
 						
@@ -86,7 +90,7 @@
 					
 					<div class="campo">
 						
-						<label for="usuario">Usuário:</label>
+						<label for="usuario">Usuário:*</label>
 						<input type="text" id="usuario" name="usuario" style="width: 20em;" 
 						value="${user.usuario}" required="required">
 					
@@ -94,7 +98,7 @@
 					
 					<div class="campo">
 						
-						<label for="senha">Senha:</label>
+						<label for="senha">Senha:*</label>
 						<input type="password" id="senha" name="senha" style="width: 20em;" 
 						value="${user.senha}" required="required">
 					
@@ -106,7 +110,7 @@
 					
 					<div class="campo">
 						
-						<label for="telefone">Tel. Celular:</label>
+						<label for="telefone">Tel. Celular:*</label>
 						<input type="text" id="telefone" name="telefone" style="width: 10em;" 
 						value="${user.telefone}" required="required"
 						onkeypress="$(this).mask('(00) 9.0000-0000')">
@@ -115,7 +119,7 @@
 					
 					<div class="campo">
 						
-						<label for="email">E-mail:</label>
+						<label for="email">E-mail:*</label>
 						<input type="text" id="email" name="email" style="width: 25em;" 
 						value="${user.email}" required="required">
 					
@@ -147,7 +151,7 @@
 					
 					<div class="campo">
 						
-						<label>Perfil:</label>
+						<label>Perfil:*</label>
 						<select id="perfil" name="perfil">
 						
 							<option disabled="disabled" selected="selected">Selecine uma Opção</option>

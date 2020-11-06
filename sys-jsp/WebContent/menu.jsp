@@ -3,6 +3,7 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="java.io.*,java.util.*, javax.servlet.*, java.text.*" %>
 
 <!DOCTYPE html>
 
@@ -84,6 +85,18 @@
 					<li><a href="index.jsp">Logout</a></li>
 
 				</ul>
+				
+			</li>
+			
+			<li>
+				
+				<%
+					
+					Date data = new Date();
+					SimpleDateFormat ft = new SimpleDateFormat ("dd/MM/yyyy - HH:mm");
+				    out.print( "<h5 align=\"center\">Data: " + ft.format(data) + "</h5>");
+				
+				%>
 				
 			</li>
 

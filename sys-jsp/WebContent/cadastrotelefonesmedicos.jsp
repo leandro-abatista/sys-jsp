@@ -40,6 +40,10 @@
 				<h1>[ - Cadastro de Telefones - ]</h1>
 			</div>
 			
+			<div class="div-h4">
+				<h4>Campos obrigatórios com (*)</h4>
+			</div>
+			
 			<!-- agrupa os campos do formulário -->
 			<fieldset>
 				
@@ -74,15 +78,15 @@
 					
 					<div class="campo">
 						
-						<label for="numero">Número:</label>
+						<label for="numero">Número:*</label>
 						<input type="text" id="numero" name="numero" style="width: 10em;" required="required"
-						onkeypress="$(this).mask('(00) 0000-0000')" >
+						onkeypress="$(this).mask('(00) 0000-0000')" autofocus="autofocus">
 					
 					</div>
 					
 					<div class="campo">
 						
-						<label for="tipo">Tipo:</label>
+						<label for="tipo">Tipo:*</label>
 						<select id="tipo" name="tipo">
 						
 							<option disabled="disabled" selected="selected">Selecione uma Opção</option>

@@ -38,6 +38,10 @@
 				<div class="div-dadosusuario">
 					<h2>[ - Dados do Produto - ]</h2>
 				</div>
+				
+				<div class="div-h4">
+					<h4>Campos obrigatórios com (*)</h4>
+				</div>
 			
 				<!-- agrupa os campos do formulário -->
 				<fieldset>
@@ -58,15 +62,15 @@
 						
 						<div class="campo">
 						
-							<label for="descricao">Descrição:</label>
+							<label for="descricao">Descrição:*</label>
 							<input type="text" id="descricao" name="descricao" style="width: 30em;"
-							value="${produto.descricao}" required="required">
+							value="${produto.descricao}" required="required" autofocus="autofocus">
 							
 						</div>
 						
 						<div class="campo">
 						
-							<label for="quantidade">Quantd.:</label>
+							<label for="quantidade">Quantd.:*</label>
 							<input type="number" id="quantidade" name="quantidade" style="width: 8em;"
 							min="1" max="2000" onkeypress="$(this).mask('0000')"
 							value="${produto.quantidade}" required="required">
@@ -75,7 +79,7 @@
 						
 						<div class="campo">
 						
-							<label for="valorcompra">Valor Compra:</label>
+							<label for="valorcompra">Valor Compra:*</label>
 							<input type="text" id="valorcompra" name="valorcompra" style="width: 10em;"
 							onkeypress="$(this).mask('###.###.##0,00', {reverse: true});"
 							value="${produto.valorCompraEmTexto}" required="required">
@@ -84,7 +88,7 @@
 						
 						<div class="campo">
 						
-							<label for="valoritem">Valor Item:</label>
+							<label for="valoritem">Valor Item:*</label>
 							<input type="text" id="valoritem" name="valoritem" style="width: 10em;"
 							onkeypress="$(this).mask('###.###.##0,00', {reverse: true});"
 							value="${produto.valorItemEmTexto}" required="required">
@@ -93,7 +97,7 @@
 						
 						<div class="campo">
 						
-							<label for="categorias">Categoria:</label>
+							<label for="categorias">Categoria:*</label>
 							<select id="categorias" name="id_categoria">
 							
 								<option disabled="disabled" selected="selected">Selecione uma Opção</option>

@@ -104,6 +104,16 @@ input, select, button{
 	*/
 }
 
+.div-h4 h4{
+	color: #C0C0C0;
+	font-size: 12px;
+	background-color: #4682B4;
+	width: 15%;
+	height: 30px;
+	line-height: 30px;
+	padding: 0 8px 2px 5px;
+}
+
 .grupo:before, .grupo:after{
 	content: " ";
 	display: table;

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt"%>
 
 <!DOCTYPE html>
 
@@ -67,8 +68,8 @@
 								<td style="width: 8%;"><c:out value="${produto.id}"></c:out></td>
 								<td style="width: 30%;"><c:out value="${produto.descricao}"></c:out></td>
 								<td style="width: 10%;"><c:out value="${produto.quantidade}"></c:out></td>
-								<td style="width: 15%;"><c:out value="${produto.valorcompra}"></c:out></td>
-								<td style="width: 15%;"><c:out value="${produto.valoritem}"></c:out></td>
+								<td style="width: 15%;"><fmt:formatNumber type="currency" maxFractionDigits="2" value="${produto.valorcompra}"/></td>
+								<td style="width: 15%;"><fmt:formatNumber type="currency" maxFractionDigits="2" value="${produto.valoritem}"/></td>
 								<td style="width: 10%;"><c:out value="${produto.categoria}"></c:out></td>
 								
 							</tr>

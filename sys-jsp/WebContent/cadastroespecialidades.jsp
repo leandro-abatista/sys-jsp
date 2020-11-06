@@ -32,6 +32,10 @@
 			<div class="div-cadastrousuario">
 				<h1>[ - Cadastro de Especialidades - ]</h1>
 			</div>
+			
+			<div class="div-h4">
+				<h4>Campos obrigatórios com (*)</h4>
+			</div>
 	
 			<!-- agrupa os campos do formulário -->
 			<fieldset>
@@ -52,9 +56,9 @@
 	
 					<div class="campo">
 	
-						<label for="descricao">Descrição:</label> 
+						<label for="descricao">Descrição:*</label> 
 						<input type="text" id="descricao" name="descricao" style="width: 30em;" required="required"
-							value="${especialidade.descricao}">
+							value="${especialidade.descricao}" autofocus="autofocus">
 	
 					</div>
 	

@@ -30,10 +30,12 @@ public class ServletTelefoneMedico extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String acao = request.getParameter("acao");
+		String med = request.getParameter("med");
 		
+		if (med != null) {
+			
 		if (acao != null && acao.equalsIgnoreCase("addTelefone")) {
 			
-			String med = request.getParameter("med");
 			Medico medico = daoMedico.consultarM(med);
 			
 			request.getSession().setAttribute("medicoSelecionado", medico);
@@ -56,6 +58,14 @@ public class ServletTelefoneMedico extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("/cadastrotelefonesmedicos.jsp");
 			request.setAttribute("telefone", dao.listarTodosTM(medico.getId()));
 			view.forward(request, response);
+		}
+		
+		} else {
+			
+			RequestDispatcher view = request.getRequestDispatcher("/cadastromedicos.jsp");
+			request.setAttribute("medicos", daoMedico.listarTodosM());
+			view.forward(request, response);
+			
 		}
 	}
 

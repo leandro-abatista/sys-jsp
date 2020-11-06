@@ -13,6 +13,13 @@ body{
 	background-repeat: no-repeat;
 	background-color: #000;
 }
+
+.menu h5{
+	text-align: center;
+	padding: 15px;
+	color: #FFDEAD;
+}
+
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 /*essa parte é chamada através da class da nav*/
