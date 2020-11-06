@@ -53,10 +53,13 @@ public class ServletLogin extends HttpServlet {
 					
 					RequestDispatcher dispatcher = request.getRequestDispatcher("menu.jsp");
 					dispatcher.forward(request, response);
+					
 				} else {
+					
 					/*caso o usuario não tenha acesso ao sistema*/
 					RequestDispatcher dispatcher = request.getRequestDispatcher("acessonegado.jsp");
 					dispatcher.forward(request, response);
+					
 				}
 				
 			} else {

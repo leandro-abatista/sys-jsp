@@ -1,7 +1,7 @@
 <jsp:useBean id="calcula" class="br.com.sysjsp.classes.model.AcessoJsp"
 	type="br.com.sysjsp.classes.model.AcessoJsp" scope="page" />
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="java.io.*,java.util.*, javax.servlet.*, java.text.*" %>
 
@@ -31,7 +31,7 @@
 
 				<ul>
 
-					<li><a href="menu.jsp">InÌcio</a></li>
+					<li><a href="menu.jsp">In√≠cio</a></li>
 
 				</ul>
 				
@@ -41,18 +41,18 @@
 
 				<ul>
 
-					<li><a href="ServletUsuario?acao=listartodos">Cadastro Usu·rios</a></li>
+					<li><a href="ServletUsuario?acao=listartodos">Cadastro Usu√°rios</a></li>
 					<li><a href="ServletCliente?acao=listartodos">Cadastro Clientes</a></li>
 					<li><a href="ServletProduto?acao=listartodos">Cadastro Produtos</a></li>
 					<li><a href="ServletEspecialidade?acao=listartodos">Cadastro Especialidades</a></li>
 					<li><a href="servletCategoria?acao=listartodos">Cadastro Categorias</a></li>
-					<li><a href="ServletMedico?acao=listartodos">Cadastro MÈdicos</a></li>
+					<li><a href="ServletMedico?acao=listartodos">Cadastro M√©dicos</a></li>
 
 				</ul>
 			
 			</li>
 
-			<li><a href="#">RelatÛrio</a></li>
+			<li><a href="#">Relat√≥rio</a></li>
 
 			<li><a href="#">Consulta</a>
 
