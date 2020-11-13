@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
-
 import br.com.sysjsp.connect.SingleConnection;
 
 public class LoginDao {

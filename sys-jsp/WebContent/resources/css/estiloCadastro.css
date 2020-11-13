@@ -154,15 +154,17 @@ fieldset.grupo .campo {
 	display: block;
 }
 
+
 .campo input[type=checkbox]{
 	margin-left: 0.5em;
 	padding: 0.3em; /*tamanho dos campos*/
 	border: 1px solid #ccc;
 	display: block;
 	-moz-transform: scale(1.7); /* FF */
-  	-webkit-transform: scale(1.7); /* Safari and Chrome */
+  	-webkit-transform: scale(1.7); /* Safari and Chrome*/
   	transform: scale(1.7);
 }
+*/
 
 .campo input[type=radio]{
 	margin-left: 0.5em;
@@ -190,6 +192,9 @@ fieldset.grupo .campo {
 	color: #00008B;
 	display: inline-block;
 	margin-right: 1em;
+	-moz-transform: scale(1.7); /* FF */
+  	-webkit-transform: scale(1.7); /* Safari and Chrome */
+  	transform: scale(1.7);
 }
 
 .botao{

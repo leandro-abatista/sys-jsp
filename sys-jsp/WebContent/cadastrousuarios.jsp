@@ -1,12 +1,14 @@
 <%@page import="br.com.sysjsp.classes.model.AcessoJsp"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="ISO-8859-1">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" type="text/css" href="resources/css/estiloCadastro.css"/>
@@ -19,8 +21,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     
-<title>Cadastro de Usuários</title>
-
+<title>Cadastro de UsuÃ¡rios</title>
 </head>
 
 <body>
@@ -32,15 +33,15 @@
 			<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Voltar para o menu</a>
 		
 			<div class="div-cadastrousuario">
-				<h1>[ - Cadastro de Usuários - ]</h1>
+				<h1>[ - Cadastro de UsuÃ¡rios - ]</h1>
 			</div>
 			
 			<div class="div-dadosusuario">
-				<h2>[ - Dados do Usuário - ]</h2>
+				<h2>[ - Dados do UsuÃ¡rio - ]</h2>
 			</div>
 			
 			<div class="div-h4">
-				<h4>Campos obrigatórios com (*)</h4>
+				<h4>Campos obrigatÃ³rios com (*)</h4>
 			</div>
 			
 			<!-- agrupa os campos -->
@@ -50,7 +51,7 @@
 						
 					<div class="campo">
 						
-						<label for="id">Código:</label>
+						<label for="id">CÃ³digo:</label>
 						<input type="text" id="id" name="id" style="width: 8em;" 
 						value="${user.id}" readonly="readonly">
 						
@@ -78,7 +79,7 @@
 						
 					<div class="campo">
 						
-						<label for="ultimonome">Último Nome:*</label>
+						<label for="ultimonome">Ãšltimo Nome:*</label>
 						<input type="text" id="ultimonome" name="ultimonome" style="width: 15em;" 
 						value="${user.ultimonome}" required="required">
 						
@@ -90,7 +91,7 @@
 					
 					<div class="campo">
 						
-						<label for="usuario">Usuário:*</label>
+						<label for="usuario">UsuÃ¡rio:*</label>
 						<input type="text" id="usuario" name="usuario" style="width: 20em;" 
 						value="${user.usuario}" required="required">
 					
@@ -154,7 +155,7 @@
 						<label>Perfil:*</label>
 						<select id="perfil" name="perfil">
 						
-							<option disabled="disabled" selected="selected">Selecine uma Opção</option>
+							<option disabled="disabled" selected="selected">Selecine uma OpÃ§Ã£o</option>
 							
 							<option value="administrador"
 								
@@ -188,7 +189,7 @@
 									}
 								%>
 							
-							>Usuário</option>
+							>UsuÃ¡rio</option>
 							
 							<option value="secretario"
 								
@@ -266,7 +267,7 @@
 	<!-- Fim do campo de pesquisa -->	
 	<section>
 	
-		<div class="caption">Usuários Cadastrados</div>
+		<div class="caption">UsuÃ¡rios Cadastrados</div>
 	
 		<div class="tbl-header">
 			
@@ -275,9 +276,9 @@
 					<thead>
 					
 						<tr>
-							<th style="width: 8%; text-align: center;">Código</th>
+							<th style="width: 8%; text-align: center;">CÃ³digo</th>
 							<th style="width: 30%; text-align: center;">Nome</th>
-							<th style="width: 20%; text-align: center;">Usuário</th>
+							<th style="width: 20%; text-align: center;">UsuÃ¡rio</th>
 							<th style="width: 20%; text-align: center;">Senha</th>
 							<th style="width: 15%; text-align: center;">Telefone</th>
 							<th style="width: 25%; text-align: center;">E-mail</th>
@@ -318,7 +319,7 @@
 								<a href="ServletUsuario?acao=delete&user=${user.id}">
 								<img alt="delete" src="resources/img/excluir.png" title="Excluir" 
 								style="width: 20px; height: 20px;" 
-								onclick="return confirm('Confirma a exclusão do registro?');">
+								onclick="return confirm('Confirma a exclusÃ£o do registro?');">
 								</a>
 							</td>				
 						
@@ -341,22 +342,22 @@
 
 	function mostraDialogo(mensagem, tipo, tempo){
 	    
-	    // se houver outro alert desse sendo exibido, cancela essa requisição
+	    // se houver outro alert desse sendo exibido, cancela essa requisiÃ§Ã£o
 	    if($("#message").is(":visible")){
 	        return false;
 	    }
 
-	    // se não setar o tempo, o padrão é 3 segundos
+	    // se nÃ£o setar o tempo, o padrÃ£o Ã© 3 segundos
 	    if(!tempo){
 	        var tempo = 3000;
 	    }
 
-	    // se não setar o tipo, o padrão é alert-info
+	    // se nÃ£o setar o tipo, o padrÃ£o Ã© alert-info
 	    if(!tipo){
 	        var tipo = "info";
 	    }
 
-	    // monta o css da mensagem para que fique flutuando na frente de todos elementos da página
+	    // monta o css da mensagem para que fique flutuando na frente de todos elementos da pÃ¡gina
 	    var cssMessage = "display: block; position: fixed; top: 0; left: 20%; right: 20%; width: 60%; padding-top: 10px; z-index: 9999";
 	    var cssInner = "margin: 0 auto; box-shadow: 1px 1px 5px black;";
 
@@ -364,7 +365,7 @@
 	    var dialogo = "";
 	    dialogo += '<div id="message" style="'+cssMessage+'">';
 	    dialogo += '    <div class="alert alert-'+tipo+' alert-dismissable" style="'+cssInner+'">';
-	    dialogo += '    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>';
+	    dialogo += '    <a href="#" class="close" data-dismiss="alert" aria-label="close">Ã—</a>';
 	    dialogo +=          mensagem;
 	    dialogo += '    </div>';
 	    dialogo += '</div>';

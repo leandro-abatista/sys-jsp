@@ -87,8 +87,11 @@
 					<div class="campo">
 	
 						<label for="uf">UF:*</label>
+						
 							<select id="uf" name="uf">
-								<option disabled="disabled" selected="selected">Selecione um UF</option>
+							
+								<option disabled="disabled" selected="selected">[ - Selecione - ]</option>
+								
 								<option value="AC"
 								
 									<%
@@ -534,7 +537,7 @@
 						<label for="especialidade">Especialidade:*</label>
 						<select id="especialidade" name="id_especialidade">
 						
-							<option disabled="disabled" selected="selected">Selecione uma Opção</option>
+							<option disabled="disabled" selected="selected">[ - Selecione - ]</option>
 							
 							<c:forEach items="${especialidades}" var="espec">
 							
@@ -557,7 +560,7 @@
 	
 					<div class="campo">
 	
-						<label for="datacadastro">Data do Cadastro:</label> 
+						<label for="datacadastro">Data do Cadastro:*</label> 
 						<input type="date" id="datacadastro" name="datacadastro" style="width: 11em;"
 							required="required" value="${med.dataCadastro}" pattern="dd/MM/yyyy">
 	
@@ -565,9 +568,9 @@
 					
 					<div class="campo">
 	
-						<label for="datanascimento">Data de Nascimento:*</label> 
-						<input type="date" id="datanascimento" name="datanascimento" style="width: 11em;"
-							required="required" value="${med.dataNascimento}" pattern="dd/MM/yyyy">
+						<label for="datanascimento">Data de Nascimento:*</label>
+						<input type="date" id="datanascimento" name="datanascimento" value="${med.dataNascimento}"
+						required="required" pattern="dd/MM/yyyy">
 	
 					</div>
 					
@@ -575,68 +578,43 @@
 					
 						<label for="genero">Gênero:*</label>
 						
-						<select id="genero" name="genero">
+						<label>
+						<input type="radio" id="genero" name="genero" value="masculino"
+							
+							<%
+								if(request.getAttribute("med") != null){
+									
+									Medico medic = (Medico) request.getAttribute("med");
+									
+									if(medic.getGenero().equalsIgnoreCase("masculino")){
+										out.print(" ");
+										out.print("checked=\"checked\"");
+										out.print(" ");
+									}
+								}
+							%>
 						
-							<option disabled="disabled" selected="selected">Selecione uma Opção</option>
+						>Masculino
+						</label>
+						
+						<label>
+						<input type="radio" id="genero" name="genero" value="feminino"
 							
-							<option value="Masculino"
-							
-								<%
+							<%
+								if(request.getAttribute("med") != null){
 									
-									if(request.getAttribute("med") != null){
-										
-										Medico medic = (Medico) request.getAttribute("med");
-										
-										if(medic.getGenero().equalsIgnoreCase("Masculino")){
-											out.print(" ");
-											out.print("selected=\"selected\"");
-											out.print(" ");
-										}
-									}
-								
-								%>
-							
-							>Masculino</option>
-							
-							<option value="Feminino"
-							
-								<%
+									Medico medic = (Medico) request.getAttribute("med");
 									
-									if(request.getAttribute("med") != null){
-										
-										Medico medic = (Medico) request.getAttribute("med");
-										
-										if(medic.getGenero().equalsIgnoreCase("Feminino")){
-											out.print(" ");
-											out.print("selected=\"selected\"");
-											out.print(" ");
-										}
+									if(medic.getGenero().equalsIgnoreCase("feminino")){
+										out.print(" ");
+										out.print("checked=\"checked\"");
+										out.print(" ");
 									}
-								
-								%>
-							
-							>Feminino</option>
-							
-							<option value="Outro"
-							
-								<%
-									
-									if(request.getAttribute("med") != null){
-										
-										Medico medic = (Medico) request.getAttribute("med");
-										
-										if(medic.getGenero().equalsIgnoreCase("Outro")){
-											out.print(" ");
-											out.print("selected=\"selected\"");
-											out.print(" ");
-										}
-									}
-								
-								%>
-							
-							>Outro</option>
-							
-						</select>
+								}
+							%>
+						
+						>Feminino
+						</label>
 					
 					</div>
 	

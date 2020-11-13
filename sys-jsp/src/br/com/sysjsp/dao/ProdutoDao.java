@@ -37,7 +37,7 @@ public class ProdutoDao {
 			e.printStackTrace();
 
 			try {
-
+				connection.rollback();
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}
@@ -147,7 +147,7 @@ public class ProdutoDao {
 			e.printStackTrace();
 
 			try {
-
+				connection.rollback();
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}
@@ -167,7 +167,7 @@ public class ProdutoDao {
 			e.printStackTrace();
 
 			try {
-
+				connection.rollback();
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}

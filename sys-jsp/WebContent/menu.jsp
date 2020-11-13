@@ -47,6 +47,9 @@
 					<li><a href="ServletEspecialidade?acao=listartodos">Cadastro Especialidades</a></li>
 					<li><a href="servletCategoria?acao=listartodos">Cadastro Categorias</a></li>
 					<li><a href="ServletMedico?acao=listartodos">Cadastro Médicos</a></li>
+					<li><a href="ServletEstado?acao=listartodos">Cadastro Estados</a></li>
+					<li><a href="ServletCidade?acao=listartodos">Cadastro Cidades</a></li>
+					<li><a href="ServletProdutoCsv?acao=listartodos">Cadastro ProdutosCsv</a></li>
 
 				</ul>
 			
