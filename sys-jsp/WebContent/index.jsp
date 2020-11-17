@@ -22,6 +22,8 @@ scope="page"/>
 		
 				<form action="ServletLogin" method="post">
 				
+					<input type="hidden" id="url" name="url" value="<%= request.getParameter("url")%>" />
+				
 					<label>Usuário:</label>
 					<input type="text" id="usuario" name="usuario" placeholder="Informe o usuário" required="required"/>
 					

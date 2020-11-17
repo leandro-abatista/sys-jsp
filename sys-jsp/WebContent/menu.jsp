@@ -44,12 +44,11 @@
 					<li><a href="ServletUsuario?acao=listartodos">Cadastro Usuários</a></li>
 					<li><a href="ServletCliente?acao=listartodos">Cadastro Clientes</a></li>
 					<li><a href="ServletProduto?acao=listartodos">Cadastro Produtos</a></li>
-					<li><a href="ServletEspecialidade?acao=listartodos">Cadastro Especialidades</a></li>
 					<li><a href="servletCategoria?acao=listartodos">Cadastro Categorias</a></li>
+					<li><a href="ServletEspecialidade?acao=listartodos">Cadastro Especialidades</a></li>
 					<li><a href="ServletMedico?acao=listartodos">Cadastro Médicos</a></li>
-					<li><a href="ServletEstado?acao=listartodos">Cadastro Estados</a></li>
-					<li><a href="ServletCidade?acao=listartodos">Cadastro Cidades</a></li>
 					<li><a href="ServletProdutoCsv?acao=listartodos">Cadastro ProdutosCsv</a></li>
+					<li><a href="ServletBandeira?acao=listartodos">Cadastro Bandeiras</a></li>
 
 				</ul>
 			
@@ -85,24 +84,12 @@
 
 				<ul>
 
-					<li><a href="index.jsp">Logout</a></li>
+					<li><a href="ServletLogin?deslogar=true">Logout</a></li>
 
 				</ul>
 				
 			</li>
 			
-			<li>
-				
-				<%
-					
-					Date data = new Date();
-					SimpleDateFormat ft = new SimpleDateFormat ("dd/MM/yyyy - HH:mm");
-				    out.print( "<h5 align=\"center\">Data: " + ft.format(data) + "</h5>");
-				
-				%>
-				
-			</li>
-
 		</ul>
 
 	</nav>

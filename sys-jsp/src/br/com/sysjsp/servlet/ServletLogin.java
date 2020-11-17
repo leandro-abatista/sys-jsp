@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.sysjsp.classes.model.AcessoJsp;
 import br.com.sysjsp.dao.LoginDao;
@@ -29,29 +30,42 @@ public class ServletLogin extends HttpServlet {
         super();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		
+		if (Boolean.parseBoolean(request.getParameter("deslogar"))) {
+			HttpServletRequest http = (HttpServletRequest) request;
+			HttpSession session = http.getSession();
+			session.invalidate();
+			// redireciona para a página de index para realizar o login novamente, para ter
+			// acesso ao sistema
+			response.sendRedirect("/index.jsp");
+		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			
-			AcessoJsp acesso = new AcessoJsp();
-			
+			//parametros da página index.jsp
 			String usuario = request.getParameter("usuario");
 			String senha = request.getParameter("senha");
+			
+			String url = request.getParameter("url");
+			
+			AcessoJsp acesso = new AcessoJsp();
 			
 			if (usuario != null && !usuario.isEmpty() && senha != null && !senha.isEmpty()) {
 				
 				if (dao.validarLogin(usuario, senha)) {
 					
-					RequestDispatcher dispatcher = request.getRequestDispatcher("menu.jsp");
+					acesso.setUsuario(usuario);
+					acesso.setSenha(senha);
+					
+					// adiciona usuário logado na sessão
+					HttpServletRequest http = (HttpServletRequest) request;
+					HttpSession session = http.getSession();
+					session.setAttribute("usuar", acesso);
+					//redireciona para o sistema e autoriza
+					RequestDispatcher dispatcher = request.getRequestDispatcher("url");
 					dispatcher.forward(request, response);
 					
 				} else {

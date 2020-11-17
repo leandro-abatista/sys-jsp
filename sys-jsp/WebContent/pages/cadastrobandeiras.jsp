@@ -87,7 +87,7 @@
 					
 					<tr>
 						
-						<th style="width: 30%; text-align: center;">Código</th>
+						<th style="width: 8%; text-align: center;">Código</th>
 						<th style="width: 30%; text-align: center;">Nome</th>
 						<th style="width: 8%; text-align: center;">#</th>
 						<th style="width: 8%; text-align: center;">#</th>
@@ -110,8 +110,8 @@
 					
 						<tr>
 							
-							<td><c:out value="${band.id}"></c:out></td>				
-							<td><c:out value="${band.nome}"></c:out></td>				
+							<td style="width: 8%;"><c:out value="${band.id}"></c:out></td>				
+							<td style="width: 30%;"><c:out value="${band.nome}"></c:out></td>				
 										
 							<td style="width: 8%;"><a href="ServletBandeira?acao=update&band=${band.id}">
 								<img alt="update" src="resources/img/editar.png" title="Atualizar" 
