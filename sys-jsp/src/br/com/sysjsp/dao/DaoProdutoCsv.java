@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.sysjsp.classes.model.Bandeira;
-import br.com.sysjsp.classes.model.Cidade;
-import br.com.sysjsp.classes.model.Estado;
 import br.com.sysjsp.classes.model.ProdutoCsv;
 import br.com.sysjsp.connect.SingleConnection;
 

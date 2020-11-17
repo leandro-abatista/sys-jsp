@@ -23,7 +23,8 @@ public class ClienteDao {
 			String sql = "INSERT INTO tbl_cliente(" + 
 					"            nome, cpf, rg, orgaoexpeditor, datanascimento, telefonefixo, " + 
 					"            telefonecelular, email, observacao, cep, endereco, numero, bairro, " + 
-					"            cidade, estado, ibge, fotobase64, contenttype, contenttypearquivo, arquivobase64, genero, fotobase64miniatura)" + 
+					"            cidade, estado, ibge, genero, fotobase64, contenttype, arquivopdfbase64, " + 
+					"            contenttypepdfarquivo, fotobase64miniatura) " + 
 					"    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 			PreparedStatement insert = connection.prepareStatement(sql);
 			insert.setString(1, cliente.getNome());
@@ -42,11 +43,14 @@ public class ClienteDao {
 			insert.setString(14, cliente.getCidade());
 			insert.setString(15, cliente.getEstado());
 			insert.setInt(16, cliente.getIbge());
-			insert.setString(17, cliente.getFotoBase64());
-			insert.setString(18, cliente.getContentType());
-			insert.setString(19, cliente.getContentTypeArquivo());
+			insert.setString(17, cliente.getGenero());
+			//insert imagem
+			insert.setString(18, cliente.getFotoBase64());
+			insert.setString(19, cliente.getContentType());
+			//insert pdf
 			insert.setString(20, cliente.getArquivoBase64());
-			insert.setString(21, cliente.getGenero());
+			insert.setString(21, cliente.getContentTypeArquivo());
+			//miniatura
 			insert.setString(22, cliente.getFotoBase64Miniatura());
 			
 			insert.execute();
@@ -92,11 +96,11 @@ public class ClienteDao {
 				cliente.setCidade(rs.getString("cidade"));
 				cliente.setEstado(rs.getString("estado"));
 				cliente.setIbge(rs.getInt("ibge"));
+				cliente.setGenero(rs.getString("genero"));
 				//cliente.setFotoBase64(rs.getString("fotobase64"));
 				cliente.setContentType(rs.getString("contenttype"));
-				cliente.setContentTypeArquivo(rs.getString("contenttypearquivo"));
-				cliente.setArquivoBase64(rs.getString("arquivobase64"));
-				cliente.setGenero(rs.getString("genero"));
+				cliente.setArquivoBase64(rs.getString("arquivopdfbase64"));
+				cliente.setContentTypeArquivo(rs.getString("contenttypepdfarquivo"));
 				cliente.setFotoBase64Miniatura(rs.getString("fotobase64miniatura"));
 				
 				clientes.add(cliente);
@@ -137,11 +141,11 @@ public class ClienteDao {
 				cliente.setCidade(rs.getString("cidade"));
 				cliente.setEstado(rs.getString("estado"));
 				cliente.setIbge(rs.getInt("ibge"));
+				cliente.setGenero(rs.getString("genero"));
 				cliente.setFotoBase64(rs.getString("fotobase64"));
 				cliente.setContentType(rs.getString("contenttype"));
-				cliente.setContentTypeArquivo(rs.getString("contenttypearquivo"));
-				cliente.setArquivoBase64(rs.getString("arquivobase64"));
-				cliente.setGenero(rs.getString("genero"));
+				cliente.setArquivoBase64(rs.getString("arquivopdfbase64"));
+				cliente.setContentTypeArquivo(rs.getString("contenttypepdfarquivo"));
 				cliente.setFotoBase64Miniatura(rs.getString("fotobase64miniatura"));
 				
 				return cliente;
@@ -156,13 +160,26 @@ public class ClienteDao {
 	public void updateC(Cliente cliente) {
 		try {
 			
-			String sql = "UPDATE tbl_cliente" + 
-					"   SET id=?, nome=?, cpf=?, rg=?, orgaoexpeditor=?, datanascimento=?, " + 
-					"       telefonefixo=?, telefonecelular=?, email=?, observacao=?, cep=?, " + 
-					"       endereco=?, numero=?, bairro=?, cidade=?, estado=?, ibge=?, " +
-					"		fotobase64=?, contenttype=?, contenttypearquivo=?, arquivobase64=?, genero=?, fotobase64miniatura=? " + 
-					" 	WHERE id = '" + cliente.getId() + "'";
-			PreparedStatement update = connection.prepareStatement(sql);
+			StringBuilder sql = new StringBuilder();
+
+			sql.append("UPDATE tbl_cliente SET id=?, nome=?, cpf=?, rg=?, orgaoexpeditor=?, datanascimento=?, telefonefixo=?, telefonecelular=?, ");
+			sql.append(" email=?, observacao=?, cep=?, endereco=?, numero=?, bairro=?, cidade=?, estado=?, ibge=?, genero=? ");
+
+			if (cliente.isAtualizarImagem()) {
+				sql.append(",	             fotobase64=?, contenttype=? ");
+			}
+
+			if (cliente.isAtualizarPdf()) {
+				sql.append(",                 contenttypepdfarquivo=?, arquivopdfbase64=? ");
+			}
+
+			if (cliente.isAtualizarImagem()) {
+				sql.append(",					  fotobase64miniatura=? ");
+			}
+
+			sql.append(" 	WHERE id = '" + cliente.getId() + "'");
+
+			PreparedStatement update = connection.prepareStatement(sql.toString());
 			update.setLong(1, cliente.getId());
 			update.setString(2, cliente.getNome());
 			update.setString(3, cliente.getCpf());
@@ -180,20 +197,39 @@ public class ClienteDao {
 			update.setString(15, cliente.getCidade());
 			update.setString(16, cliente.getEstado());
 			update.setInt(17, cliente.getIbge());
-			update.setString(18, cliente.getFotoBase64());
-			update.setString(19, cliente.getContentType());
-			update.setString(20, cliente.getContentTypeArquivo());
-			update.setString(21, cliente.getArquivoBase64());
-			update.setString(22, cliente.getGenero());
-			update.setString(23, cliente.getFotoBase64Miniatura());
-			
+			update.setString(18, cliente.getGenero());
+
+			if (cliente.isAtualizarImagem()) {
+				update.setString(19, cliente.getFotoBase64());
+				update.setString(20, cliente.getContentType());
+			}
+
+			if (cliente.isAtualizarPdf()) {
+				
+				if (cliente.isAtualizarPdf() && !cliente.isAtualizarImagem()) {
+					update.setString(19, cliente.getArquivoBase64());
+					update.setString(20, cliente.getContentTypeArquivo());
+				} else {
+					update.setString(21, cliente.getArquivoBase64());
+					update.setString(22, cliente.getContentTypeArquivo());
+				}
+				
+			} else {
+				if (cliente.isAtualizarImagem()) {
+					update.setString(21, cliente.getFotoBase64Miniatura());
+				}
+			}
+
+			if (cliente.isAtualizarImagem() && cliente.isAtualizarPdf()) {
+				update.setString(23, cliente.getFotoBase64Miniatura());
+			}
+
 			update.executeUpdate();
 			connection.commit();
-			
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			try {
 				connection.rollback();
 			} catch (Exception ex) {

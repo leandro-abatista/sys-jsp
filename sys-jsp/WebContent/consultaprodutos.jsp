@@ -30,7 +30,7 @@
 
 		<form id="formulario" action="ServletConsPro" method="post">
 		
-		<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Voltar para o menu</a>
+		<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Menu</a>
 
 			<h1>Produtos Cadastrados</h1>
 

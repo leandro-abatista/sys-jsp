@@ -1,7 +1,5 @@
 package br.com.sysjsp.classes.model;
 
-import java.math.BigDecimal;
-
 public class ProdutoCsv {
 
 	private Long id;

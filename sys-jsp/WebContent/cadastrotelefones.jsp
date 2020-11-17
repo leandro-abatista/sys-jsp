@@ -32,7 +32,7 @@
 		
 		<form id="formulario" action="ServletTelefone" method="post">
 		
-			<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Voltar para o menu</a>
+			<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Menu</a>
 			
 			<a class="div-a" href="ServletCliente?acao=listartodos"><img alt="home" src="resources/img/seta-para-tras.png"> Voltar</a>
 		

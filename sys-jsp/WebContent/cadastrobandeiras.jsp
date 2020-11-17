@@ -28,7 +28,7 @@
 		
 		<form id="formulario" action="ServletBandeira" method="post">
 		
-			<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Voltar para o menu</a>
+			<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Menu</a>
 			
 			<div class="div-cadastrousuario">
 				<h1>[ - Cadastro de Bandeiras - ]</h1>

@@ -217,7 +217,7 @@ public class ServletCliente extends HttpServlet {
 
 					} else {
 						
-						cliente.setFotoBase64(request.getParameter("fotoTemp"));
+						cliente.setAtualizarImagem(false);
 						cliente.setContentType(request.getParameter("contentTypeTemp"));
 					}
 
@@ -238,7 +238,7 @@ public class ServletCliente extends HttpServlet {
 
 					} else {
 						
-						cliente.setArquivoBase64(request.getParameter("arquivoTemp"));
+						cliente.setAtualizarPdf(false);
 						cliente.setContentTypeArquivo(request.getParameter("arquivoContentTypeTemp"));
 						
 					}

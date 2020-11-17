@@ -33,6 +33,9 @@ public class Cliente {
 
 	private String tempFotoCliente;
 
+	private boolean atualizarImagem = true;
+	private boolean atualizarPdf = true;
+
 	public Long getId() {
 		return id;
 	}
@@ -222,6 +225,22 @@ public class Cliente {
 
 	public void setFotoBase64Miniatura(String fotoBase64Miniatura) {
 		this.fotoBase64Miniatura = fotoBase64Miniatura;
+	}
+
+	public boolean isAtualizarImagem() {
+		return atualizarImagem;
+	}
+
+	public void setAtualizarImagem(boolean atualizarImagem) {
+		this.atualizarImagem = atualizarImagem;
+	}
+
+	public boolean isAtualizarPdf() {
+		return atualizarPdf;
+	}
+
+	public void setAtualizarPdf(boolean atualizarPdf) {
+		this.atualizarPdf = atualizarPdf;
 	}
 
 }

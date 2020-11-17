@@ -33,7 +33,7 @@
 
 		<form id="formulario" action="ServletProdutoCsv" method="post">
 		
-			<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Voltar para o menu</a>
+			<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Menu</a>
 		
 				<div class="div-cadastrousuario">
 					<h1>[ - Cadastro de ProdutosCSV - ]</h1>
@@ -105,7 +105,7 @@
 							<label for="valorCompra">Valor Compra:*</label>
 							<input type="text" id="valorCompra" name="valorCompra" style="width: 10em;"
 							onkeypress="$(this).mask('###.###.##0,00', {reverse: true});"
-							value="${produtocsv.valorCompraEmTexto}" required="required">
+							value="${produtocsv.valorCompra}" required="required">
 							
 						</div>
 						
@@ -114,7 +114,7 @@
 							<label for="valorVenda">Valor Venda:*</label>
 							<input type="text" id="valorVenda" name="valorVenda" style="width: 10em;"
 							onkeypress="$(this).mask('###.###.##0,00', {reverse: true});"
-							value="${produtocsv.valorVendaEmTexto}" required="required">
+							value="${produtocsv.valorVenda}" required="required">
 							
 						</div>
 						
@@ -173,7 +173,7 @@
 										
 										ProdutoCsv produtoCsv = (ProdutoCsv) request.getAttribute("produtocsv");
 										
-										if(produtoCsv.getUnidadeMedida().equalsIgnoreCase("Diesel")){
+										if(produtoCsv.getTipo().equalsIgnoreCase("Diesel")){
 											out.print(" ");
 											out.print("selected=\"selected\"");
 											out.print(" ");
@@ -190,7 +190,7 @@
 										
 										ProdutoCsv produtoCsv = (ProdutoCsv) request.getAttribute("produtocsv");
 										
-										if(produtoCsv.getUnidadeMedida().equalsIgnoreCase("Diesel S10")){
+										if(produtoCsv.getTipo().equalsIgnoreCase("Diesel S10")){
 											out.print(" ");
 											out.print("selected=\"selected\"");
 											out.print(" ");
@@ -207,7 +207,7 @@
 										
 										ProdutoCsv produtoCsv = (ProdutoCsv) request.getAttribute("produtocsv");
 										
-										if(produtoCsv.getUnidadeMedida().equalsIgnoreCase("Diesel Aditivado")){
+										if(produtoCsv.getTipo().equalsIgnoreCase("Diesel Aditivado")){
 											out.print(" ");
 											out.print("selected=\"selected\"");
 											out.print(" ");
@@ -224,7 +224,7 @@
 										
 										ProdutoCsv produtoCsv = (ProdutoCsv) request.getAttribute("produtocsv");
 										
-										if(produtoCsv.getUnidadeMedida().equalsIgnoreCase("Diesel Premium")){
+										if(produtoCsv.getTipo().equalsIgnoreCase("Diesel Premium")){
 											out.print(" ");
 											out.print("selected=\"selected\"");
 											out.print(" ");
@@ -241,7 +241,7 @@
 										
 										ProdutoCsv produtoCsv = (ProdutoCsv) request.getAttribute("produtocsv");
 										
-										if(produtoCsv.getUnidadeMedida().equalsIgnoreCase("Etanol")){
+										if(produtoCsv.getTipo().equalsIgnoreCase("Etanol")){
 											out.print(" ");
 											out.print("selected=\"selected\"");
 											out.print(" ");
@@ -258,7 +258,7 @@
 										
 										ProdutoCsv produtoCsv = (ProdutoCsv) request.getAttribute("produtocsv");
 										
-										if(produtoCsv.getUnidadeMedida().equalsIgnoreCase("Gasolina")){
+										if(produtoCsv.getTipo().equalsIgnoreCase("Gasolina")){
 											out.print(" ");
 											out.print("selected=\"selected\"");
 											out.print(" ");
@@ -275,7 +275,7 @@
 										
 										ProdutoCsv produtoCsv = (ProdutoCsv) request.getAttribute("produtocsv");
 										
-										if(produtoCsv.getUnidadeMedida().equalsIgnoreCase("Gasolina Aditivada")){
+										if(produtoCsv.getTipo().equalsIgnoreCase("Gasolina Aditivada")){
 											out.print(" ");
 											out.print("selected=\"selected\"");
 											out.print(" ");
@@ -292,7 +292,7 @@
 										
 										ProdutoCsv produtoCsv = (ProdutoCsv) request.getAttribute("produtocsv");
 										
-										if(produtoCsv.getUnidadeMedida().equalsIgnoreCase("GNV")){
+										if(produtoCsv.getTipo().equalsIgnoreCase("GNV")){
 											out.print(" ");
 											out.print("selected=\"selected\"");
 											out.print(" ");
@@ -316,7 +316,7 @@
 								<c:forEach items="${bandeiras}" var="band">
 									<option  id="${band.id}" value="${band.id}"
 									
-										<c:if test="${band.id == produtoCsv.id_bandeira}">
+										<c:if test="${band.id == produtocsv.id_bandeira}">
 		        							<c:out value="selected=\"selected\""/>
 		    							</c:if>
 									
@@ -333,17 +333,20 @@
 						
 						<div class="campo">
 						
-							<label>Estado:*</label>
+							<label for="estados">Estado:*</label>
 							<select id="estados" name="estado">
 								<option disabled="disabled" selected="selected">[- Selecione -]</option>
-								<option value=""></option>
+								<option value=""
+								
+								
+								></option>
 							</select>
 							
 						</div>
 						
 						<div class="campo">
 							
-							<label>Cidade:*</label>
+							<label for="cidades">Cidade:*</label>
 							<select id="cidades" name="cidade" style="width: 20em;">
 								<option disabled="disabled" selected="selected">[- Selecione -]</option>
 							</select>
@@ -379,7 +382,7 @@
 								<th style="width: 30%; text-align: center;">Revenda</th>
 								<th style="width: 15%; text-align: center;">CNPJ</th>
 								<th style="width: 20%; text-align: center;">Descricao Prod.</th>
-								<th style="width: 8%; text-align: center;">QTD</th>
+								<th style="width: 8%; text-align: center;">QTD/L</th>
 								<th style="width: 10%; text-align: center;">Valor Compra</th>
 								<th style="width: 10%; text-align: center;">Valor Venda</th>
 								<th style="width: 8%; text-align: center;">#</th>

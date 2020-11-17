@@ -32,7 +32,7 @@
 
 		<form id="formulario" action="ServletCliente" method="post"	enctype="multipart/form-data">
 	
-			<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Voltar para o menu</a>
+			<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Menu</a>
 	
 			<div class="div-cadastrousuario">
 				<h1>[ - Cadastro de Clientes - ]</h1>
@@ -54,9 +54,8 @@
 					<div class="campo">
 	
 						<label for="id">Código:</label> 
-						<input type="text" id="id"
-							name="id" style="width: 8em;" readonly="readonly"
-							value="${cli.id}">
+						<input type="text" id="id" name="id" style="width: 8em;" readonly="readonly"
+						value="${cli.id}">
 	
 					</div>
 	
@@ -67,37 +66,32 @@
 					<div class="campo">
 	
 						<label for="nome">Nome:*</label> 
-						<input type="text" id="nome"
-							name="nome" style="width: 30em;" required="required"
-							value="${cli.nome}" autofocus="autofocus">
+						<input type="text" id="nome" name="nome" style="width: 30em;" required="required"
+						value="${cli.nome}" autofocus="autofocus">
 	
 					</div>
 	
 					<div class="campo">
 	
 						<label for="cpf">CPF:*</label> 
-						<input type="text" id="cpf"
-							name="cpf" style="width: 10em;" required="required"
-							onkeypress="$(this).mask('000.000.000-00')" value="${cli.cpf}">
+						<input type="text" id="cpf" name="cpf" style="width: 10em;" required="required"
+						onkeypress="$(this).mask('000.000.000-00')" value="${cli.cpf}">
 	
 					</div>
 	
 					<div class="campo">
 	
 						<label for="rg">RG:</label> 
-						<input type="text" id="rg" name="rg"
-							style="width: 8em;" required="required"
-							onkeypress="$(this).mask('0000000000')" value="${cli.rg}">
+						<input type="text" id="rg" name="rg" style="width: 8em;" required="required"
+						onkeypress="$(this).mask('0000000000')" value="${cli.rg}">
 	
 					</div>
 	
 					<div class="campo">
 	
 						<label for="orgaoexpeditor">Orgão Exp.:</label> 
-						<input type="text"
-							id="orgaoexpeditor" name="orgaoexpeditor" style="width: 6em;"
-							required="required" onkeypress="$(this).mask('AAA/AA')"
-							value="${cli.orgaoexpeditor}">
+						<input type="text" id="orgaoexpeditor" name="orgaoexpeditor" style="width: 6em;"
+						required="required" onkeypress="$(this).mask('AAA/AA')" value="${cli.orgaoexpeditor}">
 	
 					</div>
 	
@@ -108,9 +102,8 @@
 					<div class="campo">
 	
 						<label for="datanascimento">Data de Nascimento:*</label> 
-						<input type="date"
-							id="datanascimento" name="datanascimento" style="width: 11em;"
-							required="required" value="${cli.datanascimento}">
+						<input type="date" id="datanascimento" name="datanascimento" style="width: 11em;"
+						required="required" value="${cli.datanascimento}">
 	
 					</div>
 	
@@ -134,8 +127,7 @@
 								}
 							%>
 						
-						>Masculino
-						</label>
+						>Masculino</label>
 						
 						<label>
 						<input type="radio" id="genero" name="genero" value="feminino"
@@ -151,8 +143,7 @@
 								}
 							%>
 						
-						>Feminino
-						</label>
+						>Feminino</label>
 						
 					</div>
 					
@@ -163,31 +154,23 @@
 					<div class="campo">
 	
 						<label for="telefonefixo">Tel. Residencial:</label> 
-						<input
-							type="text" id="telefonefixo" name="telefonefixo"
-							style="width: 10em;" required="required"
-							onkeypress="$(this).mask('(00) 0000-0000')"
-							value="${cli.telefonefixo}">
+						<input type="text" id="telefonefixo" name="telefonefixo" style="width: 10em;" required="required"
+						onkeypress="$(this).mask('(00) 0000-0000')" value="${cli.telefonefixo}">
 	
 					</div>
 	
 					<div class="campo">
 	
 						<label for="telefonecelular">Tel. Celular:*</label> 
-						<input
-							type="text" id="telefonecelular" name="telefonecelular"
-							style="width: 10em;" required="required"
-							onkeypress="$(this).mask('(00) 0.0000-0000')"
-							value="${cli.telefonecelular}">
+						<input type="text" id="telefonecelular" name="telefonecelular" style="width: 10em;" required="required"
+						onkeypress="$(this).mask('(00) 0.0000-0000')" value="${cli.telefonecelular}">
 	
 					</div>
 	
 					<div class="campo">
 	
 						<label for="email">E-mail:*</label> 
-						<input type="text" id="email"
-							name="email" style="width: 25em;" required="required"
-							value="${cli.email}">
+						<input type="text" id="email" name="email" style="width: 25em;" required="required" value="${cli.email}">
 	
 					</div>
 				
@@ -198,9 +181,7 @@
 					<div class="campo">
 	
 						<label for="observacao">Observação:</label> 
-						<input type="text"
-							id="observacao" name="observacao" style="width: 60em;"
-							value="${cli.observacao}">
+						<input type="text" id="observacao" name="observacao" style="width: 60em;" value="${cli.observacao}">
 	
 					</div>
 	
@@ -211,13 +192,12 @@
 					<div class="campo">
 	
 						<label for="foto">Foto:</label> 
-						<input type="file" id="foto"
-							name="foto" style="width: 10em; margin-left: 0.6em;"> <input
-							type="hidden" name="fotoTemp" readonly="readonly"
-							value="${cli.fotoBase64}"> <input type="hidden"
-							name="contentTypeTemp" readonly="readonly"
-							value="${cli.contentType}">
-	
+						<input type="file" id="foto" name="foto" style="width: 10em; margin-left: 0.6em;"> 
+						
+						<!-- 
+						<input type="hidden" name="fotoTemp" readonly="readonly" value="${cli.fotoBase64}"> 
+						<input type="hidden" name="contentTypeTemp" readonly="readonly" value="${cli.contentType}">
+						 -->
 					</div>
 	
 				</fieldset>
@@ -227,14 +207,12 @@
 					<div class="campo">
 	
 						<label for="arquivo">Arquivo PDF:</label> 
-						<input type="file"
-							id="arquivo" name="arquivo"
-							style="width: 10em; margin-left: 0.6em;"> <input
-							type="hidden" name="arquivoTemp" readonly="readonly"
-							value="${cli.arquivoBase64}"> <input type="hidden"
-							name="arquivoContentTypeTemp" readonly="readonly"
-							value="${cli.contentTypeArquivo}">
-	
+						<input type="file" id="arquivo" name="arquivo" style="width: 10em; margin-left: 0.6em;"> 
+						
+						<!-- 
+						<input type="hidden" name="arquivoTemp" readonly="readonly" value="${cli.arquivoBase64}"> 
+						<input type="hidden" name="arquivoContentTypeTemp" readonly="readonly" value="${cli.contentTypeArquivo}">
+						 -->
 					</div>
 	
 				</fieldset>
@@ -248,28 +226,23 @@
 					<div class="campo">
 	
 						<label for="cep">CEP:</label> 
-						<input type="text" id="cep"
-							name="cep" style="width: 12em;" onblur="consultaCep();"
-							value="${cli.cep}" placeholder="Informe um cep válido"
-							onkeypress="$(this).mask('00000000')">
+						<input type="text" id="cep" name="cep" style="width: 12em;" onblur="consultaCep();"
+						value="${cli.cep}" placeholder="Informe um cep válido" onkeypress="$(this).mask('00000000')">
 	
 					</div>
 	
 					<div class="campo">
 	
 						<label for="endereco">Endereço:</label> 
-						<input type="text"
-							id="endereco" name="endereco" style="width: 30em;"
-							value="${cli.endereco}">
+						<input type="text" id="endereco" name="endereco" style="width: 30em;" value="${cli.endereco}">
 	
 					</div>
 	
 					<div class="campo">
 	
 						<label for="numero">Número:</label> 
-						<input type="text" id="numero"
-							name="numero" style="width: 8em;"
-							onkeypress="$(this).mask('00000000')" value="${cli.numero}">
+						<input type="text" id="numero" name="numero" style="width: 8em;" onkeypress="$(this).mask('00000000')" 
+						value="${cli.numero}">
 	
 					</div>
 	
@@ -280,32 +253,28 @@
 					<div class="campo">
 	
 						<label for="bairro">Bairro:</label> 
-						<input type="text" id="bairro"
-							name="bairro" style="width: 20em;" value="${cli.bairro}">
+						<input type="text" id="bairro" name="bairro" style="width: 20em;" value="${cli.bairro}">
 	
 					</div>
 	
 					<div class="campo">
 	
 						<label for="cidade">Cidade:</label> 
-						<input type="text" id="cidade"
-							name="cidade" style="width: 20em;" value="${cli.cidade}">
+						<input type="text" id="cidade" name="cidade" style="width: 20em;" value="${cli.cidade}">
 	
 					</div>
 	
 					<div class="campo">
 	
 						<label for="estado">UF:</label> 
-						<input type="text" id="estado"
-							name="estado" style="width: 5em;" value="${cli.estado}">
+						<input type="text" id="estado" name="estado" style="width: 5em;" value="${cli.estado}">
 	
 					</div>
 	
 					<div class="campo">
 	
 						<label for="ibge">Cód. IBGE:</label> 
-						<input type="text" id="ibge"
-							name="ibge" style="width: 8em;" value="${cli.ibge}">
+						<input type="text" id="ibge" name="ibge" style="width: 8em;" value="${cli.ibge}">
 	
 					</div>
 	

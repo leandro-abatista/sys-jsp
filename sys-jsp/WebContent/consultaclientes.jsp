@@ -29,7 +29,7 @@
 
 		<form id="formulario" action="ServletConsCli" method="post">
 		
-		<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Voltar para o menu</a>
+		<a class="div-a" href="menu.jsp"><img alt="home" src="resources/img/home1.png"> Menu</a>
 
 			<h1>Clientes Cadastrados</h1>
 
@@ -44,8 +44,8 @@
 							<th style="width: 30%; text-align: center;">Nome</th>
 							<th style="width: 10%; text-align: center;">CPF</th>
 							<th style="width: 30%; text-align: center;">Email</th>
-							<th style="width: 10%; text-align: center;">Arquivo PDF</th>
-							<th style="width: 10%; text-align: center;">Foto</th>
+							<th style="width: 8%; text-align: center;">PDF</th>
+							<th style="width: 8%; text-align: center;">Imagem</th>
 						</tr>
 
 					</thead>
@@ -70,38 +70,43 @@
 								<td style="width: 30%;"><c:out value="${cli.email}"></c:out></td>
 								
 								<c:if test="${cli.arquivoBase64.isEmpty() == false}">
-									<td style="width: 10%;">
-										<a href="ServletConsCli?acao=download&tipo=arquivoEmPdf&cli=${cli.id}">
-											<img src="resources/img/pdf.png" alt="ArquivoPDF" 
-											title="Baixar PDF" style="width: 24px; height: 24px;">
-										</a>
-									</td>
-								</c:if>
+							
+								<td style="width: 8%;"><a href="ServletCliente?acao=download&tipo=arquivoEmPdf&cli=${cli.id}">
+										<img src="resources/img/pdf.png" alt="ArquivoPDF"
+										title="Baixar PDF" style="width: 24px; height: 24px;">
+								</a></td>
 								
-								<c:if test="${cli.arquivoBase64.isEmpty() || cli.arquivoBase64 == null}">
-									<td style="width: 10%;">
-										<img src="resources/img/semPdf.png" alt="ArquivoPDF" 
-										title="Sem PDF" style="width: 24px; height: 24px;" 
-										onclick="alert('Não Possui PDF Cadastrado!');">
-									</td>
-								</c:if>
+							</c:if>
+
+							<c:if test="${cli.arquivoBase64.isEmpty() || cli.arquivoBase64 == null}">
+							
+								<td style="width: 8%;">
+									<img src="resources/img/semPdf.png" alt="ArquivoPDF"
+									title="Sem PDF" style="width: 24px; height: 24px;"
+									onclick="alert('Não Possui PDF Cadastrado!');">
+								</td>
 								
-								<c:if test="${cli.fotoBase64.isEmpty() == false}"><!--  -->
-									<td style="width: 10%;">
-										<a href="ServletConsCli?acao=download&tipo=imagem&cli=${cli.id}">
-											<img src='<c:out value="${cli.tempFotoCliente}"/>' alt="ImagemFoto" 
-											title="Baixar Imagem" style="width: 24px; height: 24px;">
-										</a>
-									</td>
-								</c:if>
+							</c:if>
+
+							<c:if test="${cli.fotoBase64Miniatura.isEmpty() == false}">
 								
-								<c:if test="${cli.fotoBase64.isEmpty() || cli.fotoBase64.isEmpty() == null}">
-									<td style="width: 10%;">
-										<img src="resources/img/semImagem.png" alt="ImagemFoto" 
-										title="Sem Imagem" style="width: 24px; height: 24px;" 
-										onclick="alert('Não Possui Imagem Cadastrada!');">
-									</td>
-								</c:if>
+								<td style="width: 8%;"><a href="ServletCliente?acao=download&tipo=imagem&cli=${cli.id}">
+										<img src='<c:out value="${cli.fotoBase64Miniatura}"/>'
+										alt="ImagemFoto" title="Baixar Imagem"
+										style="width: 24px; height: 24px;">
+								</a></td>
+							</c:if>
+
+							<c:if test="${cli.fotoBase64Miniatura.isEmpty() || cli.fotoBase64Miniatura.isEmpty() == null}">
+							
+								<td style="width: 8%;">
+									<img src="resources/img/semImagem.png" alt="ImagemFoto"
+									title="Sem Imagem" style="width: 24px; height: 24px;"
+									onclick="alert('Não Possui Imagem Cadastrada!');">
+									
+								</td>
+								
+							</c:if>
 							
 							</tr>
 
