@@ -38,7 +38,7 @@ public class ServletLogin extends HttpServlet {
 			session.invalidate();
 			// redireciona para a página de index para realizar o login novamente, para ter
 			// acesso ao sistema
-			response.sendRedirect("/index.jsp");
+			response.sendRedirect("/autenticacao.jsp");
 		}
 	}
 
@@ -51,15 +51,13 @@ public class ServletLogin extends HttpServlet {
 			
 			String url = request.getParameter("url");
 			
-			AcessoJsp acesso = new AcessoJsp();
-			
 			if (usuario != null && !usuario.isEmpty() && senha != null && !senha.isEmpty()) {
 				
 				if (dao.validarLogin(usuario, senha)) {
 					
-					acesso.setUsuario(usuario);
-					acesso.setSenha(senha);
-					
+					//acesso.setUsuario(usuario);
+					//acesso.setSenha(senha);
+					AcessoJsp acesso = new AcessoJsp();
 					// adiciona usuário logado na sessão
 					HttpServletRequest http = (HttpServletRequest) request;
 					HttpSession session = http.getSession();
@@ -78,7 +76,7 @@ public class ServletLogin extends HttpServlet {
 				
 			} else {
 				
-				RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("autenticacao.jsp");
 				dispatcher.forward(request, response);
 				
 			}
